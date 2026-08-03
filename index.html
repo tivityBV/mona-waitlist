@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mona — Make Offline Normal Again</title>
+<meta name="description" content="Je telefoon staat standaard offline. Je belt in als je iets wil — en hangt weer op. Kom op de wachtlijst.">
+<meta property="og:title" content="Mona — Make Offline Normal Again">
+<meta property="og:description" content="Minder scrollen, meer leven. Je telefoon offline-by-default, met een echt inbelritueel. Kom op de wachtlijst.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2F6E68">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EAD2;--ivory:#FBF4E4;--petrol:#2F6E68;--honey:#E7A23E;--coral:#C96F4A;
+    --ink:#3A342B;--mute:#8a8172;--line:#e7dcc2;--good:#4E8D5B;--surface:#FFFDF7
+  }
+  *{box-sizing:border-box;margin:0;font-family:Comfortaa,system-ui,sans-serif}
+  html,body{background:linear-gradient(165deg,#F4EAD2,#EAD9B4);color:var(--ink);min-height:100%}
+  body{padding:calc(env(safe-area-inset-top) + 30px) 18px 60px}
+  .wrap{max-width:520px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;justify-content:center}
+  .logo{width:34px;height:34px;border-radius:10px;background:var(--petrol);display:flex;align-items:center;justify-content:center;flex:none}
+  .brand span{font-weight:700;font-size:17px;letter-spacing:.3px}
+  .tag{font-family:'Permanent Marker',cursive;color:var(--coral);text-align:center;line-height:1.05;
+    font-size:40px;margin:26px 0 0;transform:rotate(-2deg);text-shadow:0 1px 0 rgba(201,111,74,.25);filter:url(#spray)}
+  @media(min-width:480px){.tag{font-size:52px}}
+  .pitch{text-align:center;color:var(--ink);font-size:16px;line-height:1.55;margin:22px auto 0;max-width:420px}
+  .pitch b{color:var(--petrol)}
+  /* dial-up window */
+  .win{background:var(--ivory);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:26px;box-shadow:0 18px 40px -22px rgba(47,110,104,.5)}
+  .bar{background:var(--petrol);color:var(--ivory);font-size:13px;font-weight:600;padding:11px 16px;display:flex;align-items:center;gap:8px;letter-spacing:.3px}
+  .led{width:9px;height:9px;border-radius:50%;background:#7fd18f;box-shadow:0 0 7px #7fd18f}
+  .win .body{padding:22px 20px 24px}
+  .dialbtn{width:100%;border:none;border-radius:16px;background:var(--honey);color:#fff;font-family:inherit;font-weight:700;font-size:16px;padding:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+  .dialbtn:active{transform:scale(.99)}
+  .dialbtn.playing{background:var(--petrol)}
+  .dialhint{text-align:center;color:var(--mute);font-size:12px;margin-top:10px}
+  .kbps{font-family:monospace;color:var(--petrol);font-size:12px;letter-spacing:1px;text-align:center;margin-top:6px;min-height:14px}
+  /* form */
+  h2{font-size:19px;text-align:center;margin:34px 0 4px}
+  .sub{text-align:center;color:var(--mute);font-size:13.5px;margin-bottom:18px}
+  form{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px}
+  label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 6px}
+  label:first-child{margin-top:0}
+  input,select{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--cream);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;outline:none}
+  input:focus,select:focus{border-color:var(--honey)}
+  .seg{display:flex;gap:10px}
+  .seg button{flex:1;font-family:inherit;font-weight:600;font-size:14px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--cream);color:var(--mute);cursor:pointer}
+  .seg button.on{border-color:var(--petrol);background:var(--petrol);color:#fff}
+  .submit{width:100%;margin-top:20px;border:none;border-radius:14px;background:var(--coral);color:#fff;font-family:inherit;font-weight:700;font-size:16px;padding:15px;cursor:pointer}
+  .submit:disabled{opacity:.6;cursor:default}
+  .err{color:var(--coral);font-size:13px;text-align:center;margin-top:12px;min-height:16px}
+  .trust{text-align:center;color:var(--mute);font-size:12.5px;margin-top:16px;line-height:1.6}
+  .foot{text-align:center;color:var(--mute);font-size:12px;margin-top:30px}
+  .foot a{color:var(--petrol);text-decoration:none}
+  /* success */
+  .done{display:none;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:40px 24px}
+  .done .em{font-size:40px}
+  .done h2{margin:12px 0 8px}
+  .done p{color:var(--mute);font-size:14.5px;line-height:1.6;max-width:360px;margin:0 auto}
+  .nocarrier{font-family:monospace;color:var(--coral);letter-spacing:2px;font-weight:700;margin-top:16px;font-size:13px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="spray" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.3" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+<div class="wrap">
+  <div class="brand">
+    <span class="logo"><svg width="20" height="20" viewBox="0 0 100 100"><circle cx="36" cy="44" r="9" fill="#F4EAD2"/><circle cx="64" cy="44" r="9" fill="#F4EAD2"/><path d="M32,60 Q50,78 68,60" fill="none" stroke="#F4EAD2" stroke-width="9" stroke-linecap="round"/></svg></span>
+    <span>Mona</span>
+  </div>
+
+  <h1 class="tag">Make Offline<br>Normal Again</h1>
+  <p class="pitch">Je telefoon staat standaard <b>offline</b>. Je belt in als je iets wil — en hangt weer op. <b>Minder scrollen, meer leven.</b></p>
+
+  <div class="win">
+    <div class="bar"><span class="led"></span> Dial-Up Networking</div>
+    <div class="body">
+      <button class="dialbtn" id="dialBtn" aria-label="Speel het modemgeluid">
+        <span id="dialIcon">▶</span> <span id="dialTxt">Bel in — hoor de lijn</span>
+      </button>
+      <div class="kbps" id="kbps"></div>
+      <div class="dialhint">Herken je 'm nog? Zet je geluid aan.</div>
+    </div>
+  </div>
+  <audio id="modem" src="modem.mp3" preload="auto"></audio>
+
+  <h2>Kom op de wachtlijst</h2>
+  <div class="sub">We geven één seintje zodra Mona live is. Geen spam.</div>
+
+  <form id="form" autocomplete="on">
+    <label for="name">Je naam</label>
+    <input id="name" name="name" type="text" placeholder="Voornaam" required>
+
+    <label for="email">E-mailadres</label>
+    <input id="email" name="email" type="email" placeholder="jij@voorbeeld.nl" required>
+
+    <label>Heb je een Android-telefoon?</label>
+    <div class="seg" id="androidSeg">
+      <button type="button" data-v="ja">Ja</button>
+      <button type="button" data-v="nee">Nee (iPhone)</button>
+    </div>
+
+    <label for="scroll">Hoe vaak betrap je jezelf op scrollen zonder dat je het besloot?</label>
+    <select id="scroll" name="scroll" required>
+      <option value="" disabled selected>Kies…</option>
+      <option value="bijna-nooit">Bijna nooit</option>
+      <option value="af-en-toe">Af en toe</option>
+      <option value="vaak">Vaak</option>
+      <option value="de-hele-dag">De hele dag door</option>
+    </select>
+
+    <button class="submit" id="submit" type="submit">Zet me op de lijst</button>
+    <div class="err" id="err"></div>
+  </form>
+
+  <div class="done" id="done">
+    <div class="em">📞</div>
+    <h2>Je staat op de lijst</h2>
+    <p>We bellen je in zodra Mona klaar is om offline normaal te maken. Tot snel.</p>
+    <div class="nocarrier">NO CARRIER</div>
+  </div>
+
+  <div class="trust">🔒 100% gratis · geen reclame · geen spam</div>
+  <div class="foot"><a href="https://monaoffline.com">monaoffline.com</a></div>
+</div>
+
+<script>
+  // ---- Supabase (Edward: vervang deze twee placeholders door je eigen waarden uit
+  //      Supabase → Project Settings → API. De anon-key mag client-side; plak NOOIT je service_role-key hier.)
+  const SUPABASE_URL      = "SUPABASE_URL_HIER";
+  const SUPABASE_ANON_KEY = "SUPABASE_ANON_KEY_HIER";
+  const CONFIGURED = !SUPABASE_URL.includes("_HIER") && !SUPABASE_ANON_KEY.includes("_HIER");
+
+  const $ = id => document.getElementById(id);
+
+  // modem hero
+  const modem = $('modem');
+  let playing = false;
+  $('dialBtn').addEventListener('click', () => {
+    if (playing) { modem.pause(); modem.currentTime = 0; onEnd(); return; }
+    modem.play().then(() => {
+      playing = true; $('dialBtn').classList.add('playing');
+      $('dialIcon').textContent = '■'; $('dialTxt').textContent = 'Verbinden…'; $('kbps').textContent = 'connecting · 14400 bps';
+    }).catch(() => { $('kbps').textContent = '(zet je geluid aan)'; });
+  });
+  function onEnd(){ playing = false; $('dialBtn').classList.remove('playing'); $('dialIcon').textContent = '▶'; $('dialTxt').textContent = 'Bel in — hoor de lijn'; $('kbps').textContent = 'NO CARRIER'; }
+  modem.addEventListener('ended', onEnd);
+
+  // android segmented control
+  let android = null;
+  $('androidSeg').querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    $('androidSeg').querySelectorAll('button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); android = b.dataset.v;
+  }));
+
+  // submit
+  $('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const err = $('err'); err.textContent = '';
+    const name = $('name').value.trim();
+    const email = $('email').value.trim();
+    const scroll = $('scroll').value;
+    if (!android) { err.textContent = 'Kies even Android of iPhone.'; return; }
+    $('submit').disabled = true; $('submit').textContent = 'Bezig…';
+
+    const row = { name, email, android: android === 'ja', scroll_freq: scroll, source: 'waitlist' };
+
+    try {
+      if (CONFIGURED) {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(row)
+        });
+        if (!res.ok) {
+          if (res.status === 409) { showDone(); return; } // already on the list = fine
+          throw new Error('HTTP ' + res.status);
+        }
+      } else {
+        console.warn('[Mona] Supabase nog niet gekoppeld — preview-modus, aanmelding niet opgeslagen.', row);
+      }
+      showDone();
+    } catch (e2) {
+      console.error(e2);
+      err.textContent = 'Er ging iets mis. Probeer het zo nog eens.';
+      $('submit').disabled = false; $('submit').textContent = 'Zet me op de lijst';
+    }
+  });
+
+  function showDone(){ $('form').style.display = 'none'; document.querySelector('h2').style.display='none'; document.querySelector('.sub').style.display='none'; $('done').style.display = 'block'; $('done').scrollIntoView({behavior:'smooth', block:'center'}); }
+</script>
+</body>
+</html>
