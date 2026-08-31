@@ -123,8 +123,8 @@ const ALLE = [
   { key:'stop_moment', rondes:['kort','lang'], type:'open',
     als: a => a.nog_actief && a.nog_actief !== 'Ja, hij staat aan',
     hangtAf:'nog_actief',
-    vraag:'Wat was het moment dat je ’m uitzette?',
-    sub:'Dit is de vraag waar Edward het meeste aan heeft. Eén zin is genoeg, en eerlijk mag.',
+    vraag:'Wat gebeurde er waardoor je ’m uitzette?',
+    sub:'Dit is de vraag waar Edward het meeste aan heeft. Eén zin is genoeg, en het mag ongezouten.',
     hint:'Bijvoorbeeld: ik moest snel iets opzoeken en had geen zin in het wachten.' },
 
   { key:'verschil', rondes:['lang'], type:'keuze',
@@ -295,8 +295,8 @@ async function klaar(){
     + '<div class="sub" id="eind" style="text-align:center">Even opsturen…</div>';
   const ok = await stuur('compleet');
   $('eind').innerHTML = ok
-    ? 'Hier heeft Edward echt iets aan. Dit soort antwoorden bepalen wat er als volgende gebouwd wordt, '
-      + 'en wat er juist weer uit gaat.<br><br>Je kunt dit venster sluiten.'
+    ? 'Hier heeft Edward echt iets aan. Dit soort antwoorden bepaalt wat er als volgende '
+      + 'gebouwd wordt.<br><br>Je kunt dit venster sluiten.'
     : 'Het opsturen lukte niet, waarschijnlijk door de verbinding. Probeer het zo nog eens, '
       + 'of stuur je antwoord gewoon als bericht.';
   $('foot').textContent = '';
