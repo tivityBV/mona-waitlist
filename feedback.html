@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mona | Hoe gaat het met de lijn?</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2F6E68">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EAD2;--ivory:#FBF4E4;--petrol:#2F6E68;--petrold:#255853;--honey:#E7A23E;
+    --coral:#C96F4A;--ink:#3A342B;--mute:#8a8172;--line:#e7dcc2
+  }
+  *{box-sizing:border-box;margin:0;font-family:Comfortaa,system-ui,sans-serif}
+  html,body{background:linear-gradient(165deg,#F4EAD2,#EAD9B4);color:var(--ink);min-height:100%}
+  body{padding:calc(env(safe-area-inset-top) + 28px) 18px 60px}
+  .wrap{max-width:480px;margin:0 auto}
+
+  .tag{display:block;width:min(70vw,320px);aspect-ratio:1100/358;margin:0 auto 24px;
+    background-color:var(--coral);
+    -webkit-mask-image:url(payoff.png);mask-image:url(payoff.png);
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    -webkit-mask-position:center;mask-position:center;
+    -webkit-mask-size:contain;mask-size:contain;
+    transform:rotate(-3deg)}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  .win{background:var(--ivory);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    box-shadow:0 18px 40px -22px rgba(47,110,104,.5)}
+  .bar{background:var(--petrol);color:var(--ivory);font-size:13px;font-weight:600;padding:11px 16px;
+    display:flex;align-items:center;gap:8px;letter-spacing:.3px}
+  .led{width:9px;height:9px;border-radius:50%;background:#7fd18f;box-shadow:0 0 7px #7fd18f;flex:none}
+  .bar .count{margin-left:auto;font-weight:400;opacity:.75;font-size:12px;font-variant-numeric:tabular-nums}
+  .body{padding:26px 22px 24px}
+
+  h1{font-size:21px;line-height:1.35;font-weight:700}
+  .sub{margin-top:9px;font-size:14px;line-height:1.5;color:var(--mute)}
+
+  .opts{margin-top:20px;display:flex;flex-direction:column;gap:9px}
+  .opt{width:100%;text-align:left;font-family:inherit;font-size:15.5px;font-weight:600;color:var(--ink);
+    background:#fff;border:2px solid var(--line);border-radius:14px;padding:15px 17px;cursor:pointer;
+    transition:border-color .12s,background .12s}
+  .opt:hover{border-color:var(--honey)}
+  .opt.on{border-color:var(--honey);background:#FDF3E2}
+
+  textarea{width:100%;margin-top:18px;font-family:inherit;font-size:15.5px;line-height:1.5;color:var(--ink);
+    background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px 15px;min-height:112px;resize:vertical}
+  textarea:focus{outline:none;border-color:var(--honey)}
+  input.one{width:100%;margin-top:18px;font-family:inherit;font-size:15.5px;color:var(--ink);
+    background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px 15px}
+  input.one:focus{outline:none;border-color:var(--honey)}
+
+  .primary{width:100%;margin-top:18px;border:none;border-radius:16px;background:var(--honey);color:#fff;
+    font-family:inherit;font-weight:700;font-size:16px;padding:15px;cursor:pointer}
+  .primary:disabled{opacity:.55;cursor:default}
+  .link{display:block;margin:12px auto 0;background:none;border:none;font-family:inherit;font-size:13.5px;
+    color:var(--petrol);text-decoration:underline;cursor:pointer;padding:6px}
+  .back{margin-top:14px;text-align:center}
+  .back button{background:none;border:none;font-family:inherit;font-size:13px;color:var(--mute);cursor:pointer;padding:4px}
+
+  .foot{margin-top:20px;text-align:center;font-size:12px;line-height:1.55;color:var(--mute)}
+  .hp{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);opacity:0}
+  .face{display:block;width:74px;height:74px;margin:0 auto 16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="tag" role="img" aria-label="Make offline normal again"></span>
+  <h2 class="sr">Mona, feedback van testers</h2>
+
+  <div class="win">
+    <div class="bar"><span class="led"></span> <span id="barTitle">Hoe gaat het met de lijn?</span>
+      <span class="count" id="count"></span></div>
+    <div class="body" id="body"></div>
+  </div>
+
+  <div class="foot" id="foot">
+    Je antwoorden gaan alleen naar Edward, de maker van Mona.<br>
+    Geen naam nodig, tenzij je zelf wil dat hij kan terugvragen.
+  </div>
+
+  <label class="hp">Laat dit veld leeg<input id="hp" tabindex="-1" autocomplete="off"></label>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ *
+ * Mona, feedbackformulier
+ *
+ * Twee rondes, via de link:
+ *   feedback.html?r=kort   een paar dagen na installatie, drie vragen
+ *   feedback.html          rond dag 21, de volledige set
+ *
+ * Waarom de eerste twee antwoorden apart worden opgeslagen: de belangrijkste
+ * vraag is waarom iemand gestopt is, en juist die mensen maken een formulier
+ * het minst vaak af. Na vraag 2 gaat er daarom al een rij weg met stage='deel'.
+ * Aan het eind volgt alles nog een keer als stage='compleet', met dezelfde sid.
+ * ------------------------------------------------------------------ */
+
+const SUPABASE_URL = "https://lftibffclhufvwxrpumo.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_O_T3-7V3qzaPJDLlln8bIA_PTSsD4bG";
+const TABLE = "feedback";
+
+const params = new URLSearchParams(location.search);
+const RONDE  = params.get('r') === 'kort' ? 'kort' : 'lang';
+const SID    = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).slice(0, 36);
+
+const answers = {};
+let stap = 0;
+
+/* De vragen. `als` maakt een vraag voorwaardelijk: hij verschijnt alleen als die
+   functie waar teruggeeft. Zo krijgt iemand die Mona nog gebruikt de afhaakvraag
+   niet te zien. */
+const ALLE = [
+  { key:'nog_actief', rondes:['kort','lang'], type:'keuze',
+    vraag:'Gebruik je Mona nu nog?',
+    opties:['Ja, hij staat aan','Tijdelijk uit','Verwijderd'] },
+
+  { key:'stop_moment', rondes:['kort','lang'], type:'open',
+    als: a => a.nog_actief && a.nog_actief !== 'Ja, hij staat aan',
+    hangtAf:'nog_actief',
+    vraag:'Wat was het moment dat je ’m uitzette?',
+    sub:'Dit is de vraag waar Edward het meeste aan heeft. Eén zin is genoeg, en eerlijk mag.',
+    hint:'Bijvoorbeeld: ik moest snel iets opzoeken en had geen zin in het wachten.' },
+
+  { key:'verschil', rondes:['lang'], type:'keuze',
+    vraag:'Merk je verschil in hoe vaak je je telefoon pakt?',
+    opties:['Veel minder','Iets minder','Geen verschil','Juist meer'] },
+
+  { key:'moment_inbellen', rondes:['lang'], type:'keuze',
+    vraag:'Wat gebeurt er meestal op het moment dat je wil inbellen?',
+    opties:['Ik bel in en ga online','Ik bedenk me en leg ’m weg','Wisselt per keer',
+            'Ik bel meteen in, zonder erover na te denken'] },
+
+  { key:'inbeltijd', rondes:['lang'], type:'keuze',
+    vraag:'Het inbellen duurt ongeveer zestien seconden. Hoe voelt dat?',
+    opties:['Precies goed','Maakt me niet zoveel uit','Mag wat korter','Te lang'] },
+
+  { key:'irritatie', rondes:['kort','lang'], type:'open',
+    vraag: RONDE === 'kort'
+      ? 'Wat viel je op in de eerste dagen?'
+      : 'Wat ging er mis, of irriteerde?',
+    sub: RONDE === 'kort'
+      ? 'Goed en slecht, allebei welkom.'
+      : 'Ook de kleine dingen. Juist de kleine dingen, eigenlijk.',
+    hint:'Typ gerust in steekwoorden.' },
+
+  { key:'een_zin', rondes:['lang'], type:'open',
+    vraag:'Hoe zou je Mona in één zin aan iemand uitleggen?',
+    sub:'Jouw woorden zijn bruikbaarder dan die van een reclamebureau.',
+    hint:'Eén zin.' },
+
+  { key:'aangeraden', rondes:['lang'], type:'keuze',
+    vraag:'Heb je Mona al eens aan iemand aangeraden?',
+    opties:['Ja','Nog niet, maar zou ik wel doen','Nee'] },
+
+  { key:'contact', rondes:['kort','lang'], type:'kort',
+    vraag:'Mag Edward nog iets terugvragen?',
+    sub:'Alleen als je dat wil. Je naam of je Instagram is genoeg. Leeg laten mag.',
+    hint:'@jouwnaam' }
+];
+
+const VRAGEN = ALLE.filter(v => v.rondes.includes(RONDE));
+
+const $ = id => document.getElementById(id);
+const body = $('body');
+
+function zichtbaar(i){ const v = VRAGEN[i]; return v && (!v.als || v.als(answers)); }
+
+function volgende(i){ let n = i + 1; while (n < VRAGEN.length && !zichtbaar(n)) n++; return n; }
+function vorige(i){ let p = i - 1; while (p >= 0 && !zichtbaar(p)) p--; return p; }
+
+/* Het nummer in de titelbalk telt alleen de vragen die deze invuller ook echt
+   krijgt. Een voorwaardelijke vraag telt mee zolang nog niet vaststaat dat hij
+   wegvalt, zodat het totaal alleen kan dalen en nooit stijgt. Een teller die
+   omhoog springt leest als een formulier dat langer wordt terwijl je bezig bent. */
+function telling(){
+  const totaal = VRAGEN.filter(v =>
+    !v.als || v.als(answers) || (v.hangtAf && answers[v.hangtAf] === undefined)
+  ).length;
+  let nu = 0;
+  for (let i = 0; i <= stap && i < VRAGEN.length; i++) if (zichtbaar(i)) nu++;
+  return nu + ' van ' + totaal;
+}
+
+function toon(){
+  if (stap >= VRAGEN.length) return klaar();
+  if (!zichtbaar(stap)) { stap = volgende(stap); return toon(); }
+
+  const v = VRAGEN[stap];
+  $('count').textContent = telling();
+  body.innerHTML = '';
+
+  const h = document.createElement('h1'); h.textContent = v.vraag; body.appendChild(h);
+  if (v.sub) { const s = document.createElement('div'); s.className = 'sub'; s.textContent = v.sub; body.appendChild(s); }
+
+  if (v.type === 'keuze') {
+    const box = document.createElement('div'); box.className = 'opts';
+    v.opties.forEach(tekst => {
+      const b = document.createElement('button');
+      b.className = 'opt' + (answers[v.key] === tekst ? ' on' : '');
+      b.textContent = tekst;
+      b.addEventListener('click', () => {
+        answers[v.key] = tekst;
+        [...box.children].forEach(c => c.classList.remove('on'));
+        b.classList.add('on');
+        setTimeout(door, 180);      /* even laten zien dat de tik geland is */
+      });
+      box.appendChild(b);
+    });
+    body.appendChild(box);
+  } else {
+    const el = document.createElement(v.type === 'kort' ? 'input' : 'textarea');
+    if (v.type === 'kort') { el.className = 'one'; el.type = 'text'; }
+    el.placeholder = v.hint || '';
+    el.value = answers[v.key] || '';
+    body.appendChild(el);
+
+    const b = document.createElement('button');
+    b.className = 'primary';
+    b.textContent = (stap === VRAGEN.length - 1) ? 'Versturen' : 'Verder';
+    b.addEventListener('click', () => { answers[v.key] = el.value.trim(); door(); });
+    body.appendChild(b);
+
+    const skip = document.createElement('button');
+    skip.className = 'link';
+    skip.textContent = 'Sla deze over';
+    skip.addEventListener('click', () => { answers[v.key] = ''; door(); });
+    body.appendChild(skip);
+    setTimeout(() => el.focus(), 60);
+  }
+
+  if (vorige(stap) >= 0) {
+    const wrap = document.createElement('div'); wrap.className = 'back';
+    const t = document.createElement('button');
+    t.textContent = '← terug';
+    t.addEventListener('click', () => { stap = vorige(stap); toon(); });
+    wrap.appendChild(t); body.appendChild(wrap);
+  }
+}
+
+/* Twee momenten waarop er alvast een rij wegggaat, allebei één keer.
+   Eerst zodra bekend is of iemand Mona nog gebruikt: dat is het retentiecijfer,
+   en dat wil je ook hebben van iemand die daarna afhaakt. Daarna nog een keer
+   zodra hij heeft opgeschreven waarom hij gestopt is, want dat is het antwoord
+   waar het hele formulier voor bestaat. Beide rijen dragen dezelfde sid, dus bij
+   het uitlezen neem je de laatste 'deel'-rij per sid. */
+const deelGedaan = {};
+function misschienDeel(){
+  if (!deelGedaan.status && answers.nog_actief) { deelGedaan.status = true; return stuur('deel'); }
+  if (!deelGedaan.reden && answers.stop_moment) { deelGedaan.reden = true; return stuur('deel'); }
+}
+function door(){
+  const n = volgende(stap);
+  misschienDeel();
+  stap = n; toon();
+}
+
+async function stuur(stage){
+  if ($('hp').value) return true;                  /* botvangst voor spam */
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return false;   /* previewstand */
+  const rij = Object.assign({ sid: SID, ronde: RONDE, stage: stage }, answers);
+  try {
+    const r = await fetch(SUPABASE_URL + '/rest/v1/' + TABLE, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(rij)
+    });
+    return r.ok;
+  } catch (e) { return false; }
+}
+
+/* Het gezicht van Mona, knipogend. Zelfde outline-stijl als in de app. */
+const BLIJ = '<svg class="face" viewBox="0 0 100 100" fill="none" stroke="#255853" stroke-width="2.6" '
+  + 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+  + '<rect x="18" y="22" width="64" height="56" rx="14"/>'
+  + '<path d="M36 46c1.6-2.6 4.6-2.6 6.2 0"/>'
+  + '<circle cx="61" cy="46" r="3.1" fill="#255853" stroke="none"/>'
+  + '<path d="M39 60c4.4 4.6 17.6 4.6 22 0"/></svg>';
+
+async function klaar(){
+  $('barTitle').textContent = 'Dank je';
+  $('count').textContent = '';
+  body.innerHTML = BLIJ
+    + '<h1 style="text-align:center">Genoteerd, dank je wel.</h1>'
+    + '<div class="sub" id="eind" style="text-align:center">Even opsturen…</div>';
+  const ok = await stuur('compleet');
+  $('eind').innerHTML = ok
+    ? 'Hier heeft Edward echt iets aan. Dit soort antwoorden bepalen wat er als volgende gebouwd wordt, '
+      + 'en wat er juist weer uit gaat.<br><br>Je kunt dit venster sluiten.'
+    : 'Het opsturen lukte niet, waarschijnlijk door de verbinding. Probeer het zo nog eens, '
+      + 'of stuur je antwoord gewoon als bericht.';
+  $('foot').textContent = '';
+}
+
+toon();
+</script>
+</body>
+</html>
