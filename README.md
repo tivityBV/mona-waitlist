@@ -32,8 +32,12 @@ ongeveer anderhalve minuut.
 
 | Link | Wanneer | Vragen |
 |---|---|---|
-| `monaoffline.com/feedback.html?r=kort` | een paar dagen na installatie | 3 |
-| `monaoffline.com/feedback.html` | rond dag 21 | 8 |
+| `monaoffline.com/feedback?r=kort` | een paar dagen na installatie | 3 |
+| `monaoffline.com/feedback` | rond dag 21 | 8 |
+
+De links werken zonder `.html` dankzij `vercel.json` met `cleanUrls`. Zonder dat
+bestand geeft `/feedback` een 404, en dat was op 31 aug ook zo tot dit erbij kwam.
+De variant mét `.html` blijft werken: Vercel stuurt die door naar de korte vorm.
 
 **Eenmalig instellen:** draai `schema-feedback.sql` in Supabase, SQL Editor. De
 Supabase-URL en de publieke sleutel staan al in de pagina, dezelfde als in
