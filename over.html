@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Over Mona Offline | Make Offline Normal Again</title>
+<meta name="description" content="Mona Offline zet je telefoon standaard offline. Om online te gaan bel je in, met een echte modemhandshake, en de lijn valt vanzelf weer weg. Gemaakt door tivity B.V. in Amsterdam.">
+<meta name="theme-color" content="#2F6E68">
+<style>
+  /* Comfortaa, zelf gehost sinds 1 sep 2026. Stond hiervoor op fonts.googleapis.com,
+     maar dan gaat het IP-adres van elke bezoeker naar Google voordat er iets is
+     aangeklikt, en dan klopt de zin "geen enkele andere software van derden" in het
+     privacybeleid niet meer. Twee bestanden, samen 44 kB: het is een variabel
+     lettertype, dus een bestand dekt alle gewichten van 300 tot 700.
+     Comfortaa staat onder de SIL Open Font License, zelf hosten mag dus. */
+  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
+    src:url(/fonts/comfortaa-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
+    src:url(/fonts/comfortaa-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  :root{
+    --cream:#F4EAD2;--ivory:#FBF4E4;--petrol:#2F6E68;--honey:#E7A23E;--coral:#C96F4A;
+    --ink:#3A342B;--mute:#8a8172;--line:#e7dcc2;--surface:#FFFDF7
+  }
+  *{box-sizing:border-box;margin:0;font-family:Comfortaa,system-ui,sans-serif}
+  html,body{background:linear-gradient(165deg,#F4EAD2,#EAD9B4);color:var(--ink);min-height:100%}
+  body{padding:calc(env(safe-area-inset-top) + 30px) 18px 60px}
+  .wrap{max-width:560px;margin:0 auto}
+  .top{text-align:center;margin-bottom:24px}
+  .top a{color:var(--petrol);text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.3px}
+  .top a:hover{text-decoration:underline}
+  .doc{background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:28px 24px;box-shadow:0 18px 40px -22px rgba(47,110,104,.5)}
+  .doc h1{font-size:22px;line-height:1.3;margin-bottom:16px}
+  .doc h2{font-size:16px;margin:26px 0 8px;color:var(--petrol)}
+  .doc p{font-size:15px;line-height:1.65;margin-bottom:12px}
+  .doc ul{margin:0 0 12px 20px;padding:0}
+  .doc li{font-size:15px;line-height:1.65;margin-bottom:8px}
+  .doc a{color:var(--petrol)}
+  .doc .kicker{color:var(--coral);font-weight:700;font-size:13px;
+    letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px}
+  .sitefoot{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+    color:var(--mute);font-size:12.5px;line-height:1.75;text-align:center}
+  .sitefoot a{color:var(--petrol);text-decoration:none}
+  .sitefoot a:hover{text-decoration:underline}
+  .sitefoot p{margin:0 0 10px}
+  .sitefoot .adr{font-style:normal}
+  .sitefoot nav{display:flex;align-items:center;justify-content:center;
+    gap:14px;flex-wrap:wrap;margin-top:14px}
+  .sitefoot .ig{display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;margin:-9px 0;border-radius:10px}
+  .sitefoot .ig svg{flex:none;opacity:.8}
+  .sitefoot .ig:hover svg,.sitefoot .ig:focus-visible svg{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top"><a href="/">Mona Offline</a></div>
+
+  <main class="doc">
+    <p class="kicker">Make offline normal again</p>
+    <h1>Over Mona Offline</h1>
+
+    <p>Mona Offline is een Android-app die je telefoon standaard offline zet. Niet
+    voor even, niet als straf, maar als uitgangspunt. Wil je online, dan bel je in.
+    En net als vroeger duurt dat een momentje.</p>
+
+    <h2>Het ritueel</h2>
+    <p>Je tikt op "Dial in". Er speelt een echte modemhandshake af, ongeveer zestien
+    seconden lang piepen en ruisen, precies zoals een inbelmodem in de jaren negentig
+    klonk. Daarna verschijnt <strong>CONNECT 14400</strong> en de vraag hoe lang je
+    online wilt: drie, zeven of dertig minuten. Je kiest, de teller loopt, en als de
+    tijd om is valt de lijn weg met <strong>NO CARRIER</strong>. Je telefoon staat
+    weer offline. Daarna volgt een korte wachttijd voordat je opnieuw kunt inbellen.</p>
+    <p>Die zestien seconden zijn geen laadtijd. Er valt niets te versnellen, want ze
+    zijn het product. In die tijd heb je namelijk ruimte om je af te vragen wat je
+    eigenlijk kwam doen.</p>
+
+    <h2>Waarom frictie het punt is</h2>
+    <p>De meeste momenten waarop we onze telefoon pakken zijn geen beslissing. Het is
+    een reflex: een dood moment, een hand die al beweegt, en tien minuten later weet je
+    niet meer waarom je begon. Apps zijn zo gebouwd dat die reflex loont.</p>
+    <p>Je kunt daar een slot tegenover zetten, maar harde blokkers werken tot ze pijn
+    doen, en dan verdwijnen ze van de telefoon. Mona kiest een andere weg. De drempel
+    is laag genoeg om er altijd overheen te komen als je iets echt wilt, en hoog genoeg
+    om de reflex te onderbreken. Je wordt niets verboden. Je wordt even gevraagd of je
+    het meent.</p>
+    <p>Dat is ook waarom Mona nergens streng of belerend is. Er zijn geen punten, geen
+    badges, geen reeksen die je kunt verbreken en geen meldingen die je terugroepen.
+    De app laat alleen zien hoe vaak je hebt ingebeld. Mensen wennen aan
+    waarschuwingen, maar niet aan zichzelf zien.</p>
+
+    <h2>Wat bereikbaar blijft</h2>
+    <p>Offline is prachtig tot je bank, je navigatie of je berichten eruit liggen op
+    een verkeerd moment. Daarom heeft Mona een lijst met apps die altijd bereikbaar
+    blijven, ook als de lijn dicht is. Die stel je zelf samen: je berichtenapp, je
+    bank, je OV-app, je kaarten. Wat daarop staat merkt niets van de blokkade.</p>
+    <p>De blokkade zelf werkt via een lokale VPN-verbinding. Lokaal betekent hier
+    letterlijk lokaal: er is geen server, je verkeer gaat nergens langs, en er wordt
+    niets bekeken of bewaard. De verbinding bestaat alleen om je telefoon offline te
+    kunnen zetten.</p>
+
+    <h2>Wat Mona niet is</h2>
+    <p>Geen productiviteitsapp met grafieken die je moet verslaan. Geen digitale
+    detox in tien stappen. Geen abonnement dat je opzegt en dan vergeet.</p>
+    <p>En geen onbreekbaar slot. Wie de app wil uitzetten, kan dat. Dat is een bewuste
+    keuze: software die je gijzelt, gooi je weg. Mona wil de app zijn die je aanhoudt,
+    en dat lukt alleen als het niet vervelend is om hem te hebben.</p>
+
+    <h2>Waar het vandaan komt</h2>
+    <p>Mona Offline wordt gemaakt door <strong>tivity B.V.</strong> in Amsterdam. De
+    app is nu in besloten test bij een kleine groep gebruikers die hem dagelijks
+    gebruikt en er eerlijk over vertelt wat er niet klopt. Wat zij melden bepaalt wat
+    er gebouwd wordt.</p>
+    <p>De app is gratis en reclamevrij, en er zit geen advertentienetwerk of tracker
+    in. Wat er wel aan gegevens omgaat, en dat is opvallend weinig, staat op de
+    <a href="/privacy">privacypagina</a>.</p>
+    <p>Wil je meedoen of iets vragen, dan kan dat via
+    <a href="/contact">de contactpagina</a> of rechtstreeks op
+    <a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a>.</p>
+  </main>
+
+  <footer class="sitefoot">
+    <p class="adr"><strong>tivity B.V.</strong><br>
+      Keizersgracht 720 HV, 1017 EW Amsterdam, Nederland<br>
+      KvK 84898569</p>
+    <p><a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a></p>
+    <p>Mona Offline is een product van <a href="https://tivity.nl">tivity B.V.</a></p>
+    <nav>
+      <a href="/over">Over Mona</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+      <a class="ig" href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer" aria-label="Mona Offline op Instagram" title="Mona Offline op Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+    </nav>
+  </footer>
+
+</div>
+</body>
+</html>

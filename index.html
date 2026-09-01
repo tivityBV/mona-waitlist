@@ -9,10 +9,20 @@
 <meta property="og:description" content="Minder scrollen, meer leven. Je telefoon offline-by-default, met een echt inbelritueel. Kom op de wachtlijst.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#2F6E68">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
+  /* Comfortaa, zelf gehost sinds 1 sep 2026. Stond hiervoor op fonts.googleapis.com,
+     maar dan gaat het IP-adres van elke bezoeker naar Google voordat er iets is
+     aangeklikt, en dan klopt de zin "geen enkele andere software van derden" in het
+     privacybeleid niet meer. Twee bestanden, samen 44 kB: het is een variabel
+     lettertype, dus een bestand dekt alle gewichten van 300 tot 700.
+     Comfortaa staat onder de SIL Open Font License, zelf hosten mag dus.
+     Permanent Marker werd wel opgehaald maar nergens gebruikt, en is vervallen. */
+  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
+    src:url(/fonts/comfortaa-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
+    src:url(/fonts/comfortaa-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
   :root{
     --cream:#F4EAD2;--ivory:#FBF4E4;--petrol:#2F6E68;--honey:#E7A23E;--coral:#C96F4A;
     --ink:#3A342B;--mute:#8a8172;--line:#e7dcc2;--good:#4E8D5B;--surface:#FFFDF7
@@ -77,15 +87,24 @@
   .submit:disabled{opacity:.6;cursor:default}
   .err{color:var(--coral);font-size:13px;text-align:center;margin-top:12px;min-height:16px}
   .trust{text-align:center;color:var(--mute);font-size:12.5px;margin-top:16px;line-height:1.6}
-  .foot{text-align:center;color:var(--mute);font-size:12px;margin-top:30px;
-    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
-  .foot a{color:var(--petrol);text-decoration:none}
+  /* Sitefooter met de bedrijfsgegevens. Staat er sinds 1 sep 2026: Apple wees de
+     inschrijving af omdat op deze site nergens te zien was welke rechtspersoon
+     achter het domein zit, en omdat er geen enkele interne link was. Alles hierin
+     staat als gewone tekst in de HTML, zonder JavaScript, zodat een beoordelaar
+     het ook met een dichtgezette browser ziet. */
+  .sitefoot{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
+    color:var(--mute);font-size:12.5px;line-height:1.75;text-align:center}
+  .sitefoot a{color:var(--petrol);text-decoration:none}
+  .sitefoot a:hover{text-decoration:underline}
+  .sitefoot p{margin:0 0 10px}
+  .sitefoot .adr{font-style:normal}
+  .sitefoot nav{display:flex;align-items:center;justify-content:center;
+    gap:14px;flex-wrap:wrap;margin-top:14px}
   /* icon only: no handle, but keep a finger-sized tap target around it */
-  .foot .ig{display:inline-flex;align-items:center;justify-content:center;
+  .sitefoot .ig{display:inline-flex;align-items:center;justify-content:center;
     width:34px;height:34px;margin:-9px 0;border-radius:10px}
-  .foot .ig svg{flex:none;opacity:.8}
-  .foot .ig:hover svg,.foot .ig:focus-visible svg{opacity:1}
-  .foot a:hover{text-decoration:underline}
+  .sitefoot .ig svg{flex:none;opacity:.8}
+  .sitefoot .ig:hover svg,.sitefoot .ig:focus-visible svg{opacity:1}
   /* success */
   .done{display:none;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:40px 24px}
   .done .em{font-size:40px}
@@ -164,10 +183,19 @@
   </div>
 
   <div class="trust">🔒 100% gratis · geen reclame · geen spam</div>
-  <div class="foot">
-    <a href="https://monaoffline.com">monaoffline.com</a>
-    <a class="ig" href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer" aria-label="Mona Offline op Instagram" title="Mona Offline op Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-  </div>
+  <footer class="sitefoot">
+    <p class="adr"><strong>tivity B.V.</strong><br>
+      Keizersgracht 720 HV, 1017 EW Amsterdam, Nederland<br>
+      KvK 84898569</p>
+    <p><a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a></p>
+    <p>Mona Offline is een product van <a href="https://tivity.nl">tivity B.V.</a></p>
+    <nav>
+      <a href="/over">Over Mona</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+      <a class="ig" href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer" aria-label="Mona Offline op Instagram" title="Mona Offline op Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+    </nav>
+  </footer>
 </div>
 
 <script>
