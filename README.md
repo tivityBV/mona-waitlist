@@ -60,3 +60,72 @@ houden.
 
 ## Data uitlezen
 Supabase → **Table editor → waitlist**, of exporteer naar CSV. (Anon kan niet lezen; jij wel via het dashboard.)
+
+## Bevestigingsmail bij aanmelding (`api/welkom.js`)
+
+Tot 2 september 2026 kreeg niemand die zich aanmeldde iets terug. Dit is punt 14b
+uit `ACTIELIJST.md`, nu gebouwd.
+
+Het is een **database-webhook**, geen regel in de verzendcode van de pagina. Reden:
+de app schrijft naar dezelfde tabel, met `source` op `app` in plaats van `waitlist`.
+Een webhook op de insert vangt allebei de routes, en de verzendlogica van het
+formulier hoeft niet aangeraakt te worden.
+
+```
+insert op public.waitlist
+   -> Supabase Database Webhook
+   -> POST https://monaoffline.com/api/welkom
+   -> SMTP2GO verstuurt de bevestiging
+```
+
+**Drie teksten, automatisch gekozen** uit de kolommen die er al zijn:
+
+| `source` | `android` | Tekst |
+|---|---|---|
+| `app` | maakt niet uit | je hebt Mona al, je staat op de lijst voor nieuwe versies |
+| `waitlist` | `true` | wachtlijst, de besloten test groeit stap voor stap |
+| `waitlist` | `false` | iPhone, versie in ontwikkeling, inschrijving bij Apple loopt |
+
+### Instellen, eenmalig
+
+**1. Twee omgevingsvariabelen in Vercel** (Project, Settings, Environment Variables).
+Zet ze op alle drie de omgevingen. **Nooit in deze repo**, die is publiek.
+
+- `SMTP2GO_API_KEY` — een API-sleutel uit het SMTP2GO-dashboard onder Sending, API Keys.
+  Geef hem alleen het recht om mail te versturen.
+- `MONA_WEBHOOK_SECRET` — een zelfbedachte lange reeks tekens. Die voorkomt dat
+  iemand die de URL raadt mail kan laten versturen vanaf jouw domein.
+
+Na het toevoegen opnieuw deployen, want een functie ziet alleen de variabelen die
+bestonden toen hij werd gebouwd.
+
+**2. De webhook in Supabase** (Database, Webhooks, Create a new hook):
+
+| Veld | Waarde |
+|---|---|
+| Table | `public.waitlist` |
+| Events | alleen **Insert** |
+| Type | HTTP Request |
+| Method | `POST` |
+| URL | `https://monaoffline.com/api/welkom` |
+| HTTP Header | naam `x-mona-secret`, waarde dezelfde als `MONA_WEBHOOK_SECRET` |
+
+**3. Controleren.** Meld je aan op de site met een adres dat nog niet op de lijst
+staat. In Vercel onder Logs hoort `welkom: bevestiging verstuurd, variant ...` te
+staan. Staat er `SMTP2GO weigerde`, dan klopt de sleutel of de domeinverificatie
+niet. Staat er niets, dan bereikt de webhook de functie niet: kijk in Supabase
+onder Database, Webhooks bij de afleverpogingen.
+
+### Wat de functie bewust wel en niet doet
+
+Bij een mislukking geeft hij **500** terug in plaats van 200, zodat Supabase het
+opnieuw probeert in plaats van de aanmelding stil te laten verdwijnen.
+
+Er staat **nooit een e-mailadres in de logregels**, conform `USER-PREFERENCES.md`.
+De logregel noemt alleen welke van de drie varianten is verstuurd.
+
+De app vult `Mona tester` in het naamveld, want daar wordt geen naam gevraagd. Die
+waarde wordt herkend en niet als aanhef gebruikt.
+
+Afmelden gaat per antwoord op de mail. Er is bewust geen afmeldlink met een eigen
+database erachter: dat zou een tweede plek met adressen opleveren.
