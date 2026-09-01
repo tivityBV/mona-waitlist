@@ -80,7 +80,9 @@
   label:first-child{margin-top:0}
   input,select{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--cream);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;outline:none}
   input:focus,select:focus{border-color:var(--honey)}
-  .seg{display:flex;gap:10px}
+  /* Onder elkaar sinds 2 sep 2026: de knoppen dragen nu hele zinnen in plaats van
+     "Ja" en "Nee", en die passen naast elkaar niet op een telefoonscherm. */
+  .seg{display:flex;flex-direction:column;gap:10px}
   .seg button{flex:1;font-family:inherit;font-weight:600;font-size:14px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--cream);color:var(--mute);cursor:pointer}
   .seg button.on{border-color:var(--petrol);background:var(--petrol);color:#fff}
   .submit{width:100%;margin-top:20px;border:none;border-radius:14px;background:var(--coral);color:#fff;font-family:inherit;font-weight:700;font-size:16px;padding:15px;cursor:pointer}
@@ -156,10 +158,10 @@
     <label for="email">E-mailadres</label>
     <input id="email" name="email" type="email" placeholder="jij@voorbeeld.nl" required>
 
-    <label>Heb je een Android-telefoon?</label>
+    <label>Je telefoon</label>
     <div class="seg" id="androidSeg">
-      <button type="button" data-v="ja">Ja</button>
-      <button type="button" data-v="nee">Nee (iPhone)</button>
+      <button type="button" data-v="nee">Ik heb een iPhone</button>
+      <button type="button" data-v="ja">Ik heb een Android telefoon</button>
     </div>
 
     <label for="scroll">Hoe vaak betrap je jezelf op scrollen zonder dat je het besloot?</label>
@@ -234,7 +236,7 @@
     const name = $('name').value.trim();
     const email = $('email').value.trim();
     const scroll = $('scroll').value;
-    if (!android) { err.textContent = 'Kies even Android of iPhone.'; return; }
+    if (!android) { err.textContent = 'Kies even welke telefoon je hebt.'; return; }
     $('submit').disabled = true; $('submit').textContent = 'Bezig…';
 
     const row = { name, email, android: android === 'ja', scroll_freq: scroll, source: 'waitlist' };
