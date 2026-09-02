@@ -129,3 +129,34 @@ waarde wordt herkend en niet als aanhef gebruikt.
 
 Afmelden gaat per antwoord op de mail. Er is bewust geen afmeldlink met een eigen
 database erachter: dat zou een tweede plek met adressen opleveren.
+
+## Bedankmail na het feedbackformulier (`api/bedankt.js`)
+
+Zelfde opzet als de wachtlijstmail, tweede webhook, op tabel `public.feedback`.
+Instellen in Supabase, Database, Webhooks:
+
+| Veld | Waarde |
+|---|---|
+| Table | `public.feedback` |
+| Events | alleen **Insert** |
+| URL | `https://monaoffline.com/api/bedankt` |
+| HTTP Header | naam `x-mona-secret`, dezelfde waarde als bij `welkom` |
+
+Dezelfde twee omgevingsvariabelen, er hoeft niets bij.
+
+**Twee dingen die makkelijk misgaan als je hieraan sleutelt.**
+
+Het formulier schrijft tot **drie rijen per invuller** weg, allemaal met dezelfde
+`sid`: twee keer `stage='deel'` onderweg en aan het eind `stage='compleet'`. Een
+webhook die op elke insert mailt stuurt dus drie mails naar dezelfde persoon. De
+functie reageert daarom alleen op `compleet`.
+
+Het adres is **optioneel en mag leeg blijven**. De vraag heette tot 2 sep 2026
+"je naam of je Instagram" en vraagt sindsdien om een mailadres, want anders valt
+er niets terug te sturen. Wie de vraag overslaat blijft anoniem en krijgt niets.
+Staat er iets anders dan een adres in, bijvoorbeeld een oude Instagram-handle uit
+een eerder ingevuld formulier, dan gaat er ook niets uit.
+
+De pagina zelf controleert het adres licht voordat je verder kunt: een handle of
+een adres zonder punt achter de apenstaart wordt geweigerd met een regel eronder.
+Overslaan blijft altijd mogelijk.

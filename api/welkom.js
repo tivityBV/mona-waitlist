@@ -11,28 +11,14 @@
 // Instellen staat in README.md onder "Bevestigingsmail". Twee omgevingsvariabelen,
 // allebei in Vercel, nooit in deze repo: die is publiek.
 
-const SMTP2GO_URL = 'https://api.smtp2go.com/v3/email/send';
-const AFZENDER = 'Mona Offline <hello@monaoffline.com>';
-const ANTWOORD = 'hello@monaoffline.com';
-
-// De app vult een vaste waarde in het naamveld, want daar vraagt hij geen naam.
-// Die moet nooit als aanhef gebruikt worden.
-const GEEN_ECHTE_NAAM = 'mona tester';
-
-function aanhef(naam) {
-  const n = (naam || '').trim();
-  if (!n || n.toLowerCase() === GEEN_ECHTE_NAAM) return 'Hoi';
-  return 'Hoi ' + n;
-}
+import { aanhef, verstuur } from '../lib/mail.js';
 
 // Drie teksten, precies de drie die ACTIELIJST punt 14b noemt. Welke het wordt
 // volgt uit de kolommen `android` en `source`, dus er is geen extra veld nodig.
 function bericht(rij) {
   const hoi = aanhef(rij.name);
-  const viaApp = rij.source === 'app';
-  const android = rij.android === true;
 
-  if (viaApp) {
+  if (rij.source === 'app') {
     return {
       onderwerp: 'Je staat op de lijst',
       regels: [
@@ -47,7 +33,7 @@ function bericht(rij) {
     };
   }
 
-  if (android) {
+  if (rij.android === true) {
     return {
       onderwerp: 'Je staat op de wachtlijst van Mona',
       regels: [
@@ -75,35 +61,6 @@ function bericht(rij) {
       'installeren valt, ben jij een van de eersten die het hoort.'
     ]
   };
-}
-
-function alsTekst(regels) {
-  return regels.join('\n')
-    + '\n\nGroet,\nMona Offline'
-    + '\n\n---\nJe krijgt deze mail omdat je je hebt aangemeld op monaoffline.com of in de app.'
-    + '\nWil je van de lijst af? Antwoord op deze mail, dan halen we je eraf.'
-    + '\ntivity B.V., Keizersgracht 720 HV, 1017 EW Amsterdam, KvK 84898569.';
-}
-
-function ontsnap(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-function alsHtml(regels) {
-  const body = regels
-    .map(function (r) { return r === '' ? '<p style="margin:0 0 14px"></p>' : '<p style="margin:0 0 10px">' + ontsnap(r) + '</p>'; })
-    .join('');
-  return '<div style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;font-size:15px;'
-    + 'line-height:1.6;color:#3A342B;background:#FBF4E4;padding:26px 22px;max-width:520px">'
-    + body
-    + '<p style="margin:18px 0 0">Groet,<br>Mona Offline</p>'
-    + '<hr style="border:none;border-top:1px solid #e7dcc2;margin:22px 0 14px">'
-    + '<p style="margin:0;font-size:12px;color:#8a8172">Je krijgt deze mail omdat je je hebt '
-    + 'aangemeld op monaoffline.com of in de app. Wil je van de lijst af? Antwoord op deze '
-    + 'mail, dan halen we je eraf.</p>'
-    + '<p style="margin:8px 0 0;font-size:12px;color:#8a8172">tivity B.V., Keizersgracht 720 HV, '
-    + '1017 EW Amsterdam, KvK 84898569</p>'
-    + '</div>';
 }
 
 export default async function handler(req, res) {
@@ -138,38 +95,11 @@ export default async function handler(req, res) {
   }
 
   const b = bericht(rij);
+  const gelukt = await verstuur(sleutel, rij.email, b.onderwerp, b.regels, 'wachtlijst');
 
-  let antwoord;
-  try {
-    antwoord = await fetch(SMTP2GO_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Smtp2go-Api-Key': sleutel,
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        sender: AFZENDER,
-        to: [rij.email],
-        subject: b.onderwerp,
-        text_body: alsTekst(b.regels),
-        html_body: alsHtml(b.regels),
-        custom_headers: [{ header: 'Reply-To', value: ANTWOORD }]
-      })
-    });
-  } catch (e) {
-    // Netwerkfout: 500 terug, dan probeert Supabase het opnieuw.
-    console.error('welkom: SMTP2GO niet bereikbaar', e && e.message);
-    return res.status(500).json({ fout: 'versturen mislukt' });
-  }
-
-  const uitslag = await antwoord.json().catch(function () { return null; });
-  const verstuurd = uitslag && uitslag.data && uitslag.data.succeeded;
-
-  if (!antwoord.ok || !verstuurd) {
-    // Nooit het adres in de logs, dat is de afspraak uit USER-PREFERENCES.md.
-    console.error('welkom: SMTP2GO weigerde, status ' + antwoord.status,
-      uitslag && uitslag.data && uitslag.data.error);
+  if (!gelukt) {
+    // 500 zodat Supabase het opnieuw probeert in plaats van de aanmelding stil
+    // te laten verdwijnen.
     return res.status(500).json({ fout: 'versturen mislukt' });
   }
 

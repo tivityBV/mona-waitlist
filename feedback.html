@@ -158,10 +158,13 @@ const ALLE = [
     vraag:'Heb je Mona al eens aan iemand aangeraden?',
     opties:['Ja','Nog niet, maar zou ik wel doen','Nee'] },
 
-  { key:'contact', rondes:['kort','lang'], type:'kort',
+  /* Vroeg tot 2 sep 2026 om "je naam of je Instagram". Sinds die dag om een
+     mailadres, want anders valt er niets terug te sturen. Blijft overslaanbaar:
+     wie niets invult blijft anoniem en krijgt ook geen bedankmail. */
+  { key:'contact', rondes:['kort','lang'], type:'mail',
     vraag:'Mag Edward nog iets terugvragen?',
-    sub:'Alleen als je dat wil. Je naam of je Instagram is genoeg. Leeg laten mag.',
-    hint:'@jouwnaam' }
+    sub:'Laat dan je mailadres achter, dan krijg je ook een bevestiging. Leeg laten mag, dan blijft je antwoord anoniem.',
+    hint:'jij@voorbeeld.nl' }
 ];
 
 const VRAGEN = ALLE.filter(v => v.rondes.includes(RONDE));
@@ -214,18 +217,36 @@ function toon(){
     });
     body.appendChild(box);
   } else {
-    const el = document.createElement(v.type === 'kort' ? 'input' : 'textarea');
-    if (v.type === 'kort') { el.className = 'one'; el.type = 'text'; }
+    const kortVeld = v.type === 'kort' || v.type === 'mail';
+    const el = document.createElement(kortVeld ? 'input' : 'textarea');
+    if (kortVeld) { el.className = 'one'; el.type = v.type === 'mail' ? 'email' : 'text'; }
+    if (v.type === 'mail') { el.inputMode = 'email'; el.autocapitalize = 'off'; el.spellcheck = false; }
     el.placeholder = v.hint || '';
     el.value = answers[v.key] || '';
     body.appendChild(el);
 
+    /* Alleen bij het mailveld, en alleen als er iets staat: een typefout in een
+       adres merk je anders pas als de bedankmail nooit aankomt. Leeg blijft goed,
+       want de vraag is overslaanbaar. */
+    const let_ = document.createElement('div');
+    let_.className = 'sub';
+    let_.style.cssText = 'color:#C96F4A;min-height:18px;margin-top:8px';
+    if (v.type === 'mail') body.appendChild(let_);
+    const adresOk = s => !s || /^[^\s@]+@[^\s@.]+\.[^\s@]{2,}$/.test(s);
+
     const b = document.createElement('button');
     b.className = 'primary';
     b.textContent = (stap === VRAGEN.length - 1) ? 'Versturen' : 'Verder';
-    b.addEventListener('click', () => { answers[v.key] = el.value.trim(); door(); });
+    b.addEventListener('click', () => {
+      const w = el.value.trim();
+      if (v.type === 'mail' && !adresOk(w)) {
+        let_.textContent = 'Dat ziet er niet uit als een mailadres. Verbeter het, of sla de vraag over.';
+        el.focus();
+        return;
+      }
+      answers[v.key] = w; door();
+    });
     body.appendChild(b);
-
     const skip = document.createElement('button');
     skip.className = 'link';
     skip.textContent = 'Sla deze over';
