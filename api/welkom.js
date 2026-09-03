@@ -54,8 +54,8 @@ function bericht(rij) {
       hoi + ',',
       '',
       'Je staat op de lijst. Wel even eerlijk zijn over waar je aan toe bent: Mona bestaat',
-      'nu alleen voor Android. De iPhone-versie is in ontwikkeling en onze inschrijving bij',
-      'Apple loopt.',
+      'nu alleen voor Android. De iPhone-versie is in ontwikkeling. Ons ontwikkelaarsaccount',
+      'bij Apple is rond, dus we zijn al druk aan het bouwen.',
       '',
       'Dat betekent dat het bij jou wat langer duurt dan bij Android. Zodra er iets te',
       'installeren valt, ben jij een van de eersten die het hoort.'
