@@ -84,7 +84,7 @@ insert op public.waitlist
 |---|---|---|
 | `app` | maakt niet uit | je hebt Mona al, je staat op de lijst voor nieuwe versies |
 | `waitlist` | `true` | wachtlijst, de besloten test groeit stap voor stap |
-| `waitlist` | `false` | iPhone, versie in ontwikkeling, inschrijving bij Apple loopt |
+| `waitlist` | `false` | iPhone, versie in ontwikkeling, ontwikkelaarsaccount bij Apple is rond |
 
 ### Instellen, eenmalig
 
