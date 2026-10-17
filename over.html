@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Over Mona Offline | Make Offline Normal Again</title>
+<link rel="canonical" href="https://monaoffline.com/over">
+<link rel="alternate" hreflang="nl" href="https://monaoffline.com/over">
+<link rel="alternate" hreflang="en" href="https://monaoffline.com/en/about">
+<link rel="alternate" hreflang="x-default" href="https://monaoffline.com/over">
 <meta name="description" content="Mona Offline zet je telefoon standaard offline. Om online te gaan bel je in, met een echte modemhandshake, en de lijn valt vanzelf weer weg. Gemaakt door tivity B.V. in Amsterdam.">
 <meta name="theme-color" content="#2F6E68">
 <style>
@@ -30,6 +34,9 @@
   .top{text-align:center;margin-bottom:24px}
   .top a{color:var(--petrol);text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.3px}
   .top a:hover{text-decoration:underline}
+  .lang{margin-top:8px;font-size:13px;color:var(--mute)}
+  .lang a{font-weight:400}
+  .lang a[aria-current]{font-weight:700;text-decoration:underline}
   .doc{background:var(--surface);border:1px solid var(--line);border-radius:20px;
     padding:28px 24px;box-shadow:0 18px 40px -22px rgba(47,110,104,.5)}
   .doc h1{font-size:22px;line-height:1.3;margin-bottom:16px}
@@ -57,7 +64,9 @@
 <body>
 <div class="wrap">
 
-  <div class="top"><a href="/">Mona Offline</a></div>
+  <div class="top"><a href="/">Mona Offline</a>
+    <div class="lang"><a href="/over" hreflang="nl" lang="nl" aria-current="page">NL</a> | <a href="/en/about" hreflang="en" lang="en">EN</a></div>
+  </div>
 
   <main class="doc">
     <p class="kicker">Make offline normal again</p>
