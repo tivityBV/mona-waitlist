@@ -1,11 +1,14 @@
-# Mona — wachtlijst-landingspagina
+# Mona: wachtlijst-landingspagina
 
-Statische pagina (één `index.html` + `modem.mp3`) met een wachtlijst-formulier dat naar Supabase schrijft.
+Statische site, negen pagina's zonder bouwstap, met een wachtlijst-formulier dat naar Supabase schrijft. Nederlands in de hoofdmap, Engels in `/en/`.
 
 ## Bestanden
-- `index.html` — de pagina (Mona-huisstijl, modemgeluid als hero, formulier).
-- `modem.mp3` — het inbelgeluid (hero-knop).
-- `schema.sql` — draai dit één keer in Supabase (waitlist-tabel + insert-only RLS).
+- `index.html`: de Nederlandse homepage (Mona-huisstijl, modemgeluid als hero, formulier).
+- `over.html`, `contact.html`, `privacy.html`: de Nederlandse onderpagina's.
+- `feedback.html`: het formulier voor testers, blijft Nederlands.
+- `en/index.html`, `en/about.html`, `en/contact.html`, `en/privacy.html`: de Engelse tegenhangers.
+- `modem.mp3`: het inbelgeluid (hero-knop).
+- `schema.sql`: draai dit één keer in Supabase (waitlist-tabel + insert-only RLS).
 
 ## Supabase koppelen (2 plekken invullen)
 1. Draai `schema.sql` in Supabase → **SQL Editor**.
@@ -21,6 +24,44 @@ Statische pagina (één `index.html` + `modem.mp3`) met een wachtlijst-formulier
 3. Vercel → Project → **Settings → Domains** → voeg `monaoffline.com` (+ `makeofflinenormalagain.com` als redirect) toe.
 4. Vercel toont de **nameservers** (ns1/ns2.vercel-dns.com) → zet die bij **TierraNet** als de nameservers van het domein.
 5. Wachten op DNS-propagatie → live.
+
+## Twee talen (NL en EN)
+
+Het Nederlands is de bron en staat in de hoofdmap. Het Engels staat in `/en/` als
+echte map, dus `en/privacy.html` is met `cleanUrls` gewoon `/en/privacy`. De
+Nederlandse URL's zijn daarbij niet veranderd.
+
+| Nederlands | Engels |
+|---|---|
+| `/` | `/en/` |
+| `/over` | `/en/about` |
+| `/contact` | `/en/contact` |
+| `/privacy` | `/en/privacy` |
+| `/feedback` | geen, blijft Nederlands |
+
+Elke pagina draagt een canonical naar zichzelf en drie hreflang-regels: `nl`, `en`
+en `x-default`. Die laatste wijst naar het Nederlands, want de werving is
+Nederlands eerst.
+
+**De taalwissel** staat als "NL | EN" in de kop en linkt naar de tegenhanger van
+die pagina, nooit naar de homepage van de andere taal. De taal waarop je staat is
+dik en onderstreept, via `aria-current`.
+
+**Wat het script onderaan de `<head>` doet.** Twee dingen, zonder cookies. Het
+onthoudt de keuze in localStorage onder `mona-lang` zodra iemand op NL of EN
+klikt, en op de homepage volgt het eenmalig de browsertaal zolang er nog geen
+keuze is opgeslagen. Diepe links leiden nooit automatisch om, ook niet met een
+opgeslagen keuze. Dat is bewust: wie op `/privacy` of `/en/about` binnenkomt heeft
+die URL van iemand gekregen, en `/privacy` moet voor de beoordelaar van Apple
+altijd Nederlands blijven. Elke toegang tot localStorage staat in een `try`, dus
+een browser met dichtgezette opslag maakt de pagina niet stuk.
+
+**Een pagina erbij.** Zet het Nederlands in de hoofdmap en het Engels in `/en/`,
+geef allebei een canonical, drie hreflang-regels, de taalwissel in de kop en
+hetzelfde script onderaan de `<head>`. Let op: een pagina in `/en/` staat een map
+diep, dus verwijzingen naar `payoff.png`, `modem.mp3` en de achtergrondfoto's
+hebben daar een schuine streep ervoor nodig. Zonder die streep zoekt de browser
+ze in `/en/` en krijgt hij een 404.
 
 ## Feedbackformulier voor testers (`feedback.html`)
 
@@ -78,22 +119,30 @@ insert op public.waitlist
    -> SMTP2GO verstuurt de bevestiging
 ```
 
-**Drie teksten, automatisch gekozen** uit de kolommen die er al zijn:
+**Vijf teksten, automatisch gekozen** uit de kolommen die er al zijn:
 
 | `source` | `android` | Tekst |
 |---|---|---|
 | `app` | maakt niet uit | je hebt Mona al, je staat op de lijst voor nieuwe versies |
 | `waitlist` | `true` | wachtlijst, de besloten test groeit stap voor stap |
 | `waitlist` | `false` | iPhone, versie in ontwikkeling, ontwikkelaarsaccount bij Apple is rond |
+| `waitlist-en` | `true` | dezelfde wachtlijsttekst, in het Engels |
+| `waitlist-en` | `false` | dezelfde iPhone-tekst, in het Engels |
+
+De Engelse pagina schrijft `source` als `waitlist-en`. Zonder dat verschil krijgt
+iemand die zich op `/en/` aanmeldt een Nederlandse bevestiging terug. `lib/mail.js`
+kiest de taal op de soort: eindigt die op `-en`, dan worden de aanhef, de
+afsluiting, de voet en de bedrijfsregel Engels. De aanmelding vanuit de app blijft
+Nederlands, want die testers komen uit de Nederlandse werving.
 
 ### Instellen, eenmalig
 
 **1. Twee omgevingsvariabelen in Vercel** (Project, Settings, Environment Variables).
 Zet ze op alle drie de omgevingen. **Nooit in deze repo**, die is publiek.
 
-- `SMTP2GO_API_KEY` — een API-sleutel uit het SMTP2GO-dashboard onder Sending, API Keys.
+- `SMTP2GO_API_KEY`: een API-sleutel uit het SMTP2GO-dashboard onder Sending, API Keys.
   Geef hem alleen het recht om mail te versturen.
-- `MONA_WEBHOOK_SECRET` — een zelfbedachte lange reeks tekens. Die voorkomt dat
+- `MONA_WEBHOOK_SECRET`: een zelfbedachte lange reeks tekens. Die voorkomt dat
   iemand die de URL raadt mail kan laten versturen vanaf jouw domein.
 
 Na het toevoegen opnieuw deployen, want een functie ziet alleen de variabelen die
@@ -122,7 +171,7 @@ Bij een mislukking geeft hij **500** terug in plaats van 200, zodat Supabase het
 opnieuw probeert in plaats van de aanmelding stil te laten verdwijnen.
 
 Er staat **nooit een e-mailadres in de logregels**, conform `USER-PREFERENCES.md`.
-De logregel noemt alleen welke van de drie varianten is verstuurd.
+De logregel noemt alleen welke variant is verstuurd.
 
 De app vult `Mona tester` in het naamveld, want daar wordt geen naam gevraagd. Die
 waarde wordt herkend en niet als aanhef gebruikt.
