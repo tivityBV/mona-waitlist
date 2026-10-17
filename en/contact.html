@@ -58,6 +58,40 @@
   .sitefoot .ig svg{flex:none;opacity:.8}
   .sitefoot .ig:hover svg,.sitefoot .ig:focus-visible svg{opacity:1}
 </style>
+<script>
+/* Taalkeuze. Geen cookies, alleen localStorage onder de sleutel mona-lang.
+
+   Twee dingen gebeuren hier. De keuze van de bezoeker wordt onthouden zodra hij
+   op NL of EN klikt, en op de homepage wordt eenmalig de browsertaal gevolgd
+   zolang er nog geen keuze is opgeslagen.
+
+   Diepe links leiden nooit om, ook niet met een opgeslagen keuze. Wie op
+   /privacy of /en/about binnenkomt heeft die URL van iemand gekregen, en
+   /privacy moet voor de beoordelaar van Apple altijd Nederlands blijven.
+
+   Het staat in de kop en niet onderaan de pagina, zodat de omleiding gebeurt
+   voordat de bezoeker de verkeerde taal ziet staan. */
+(function () {
+  var SLEUTEL = 'mona-lang';
+  function keuze() { try { return localStorage.getItem(SLEUTEL); } catch (e) { return null; } }
+  function onthoud(t) { try { localStorage.setItem(SLEUTEL, t); } catch (e) {} }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('.lang a') : null;
+    if (a) onthoud(a.getAttribute('hreflang') === 'en' ? 'en' : 'nl');
+  });
+
+  var pad = location.pathname;
+  var opNL = pad === '/' || pad === '/index.html';
+  var opEN = pad === '/en/' || pad === '/en/index.html';
+  if ((!opNL && !opEN) || keuze()) return;
+
+  var taal = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+  var wilNederlands = taal.toLowerCase().indexOf('nl') === 0;
+  if (opNL && !wilNederlands) location.replace('/en/');
+  else if (opEN && wilNederlands) location.replace('/');
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
