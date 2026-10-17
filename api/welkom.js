@@ -13,9 +13,17 @@
 
 import { aanhef, verstuur } from '../lib/mail.js';
 
-// Drie teksten, precies de drie die ACTIELIJST punt 14b noemt. Welke het wordt
-// volgt uit de kolommen `android` en `source`, dus er is geen extra veld nodig.
+// Drie Nederlandse teksten, precies de drie die ACTIELIJST punt 14b noemt, en
+// twee Engelse voor wie zich op /en/ aanmeldt. Welke het wordt volgt uit de
+// kolommen `android` en `source`, dus er is geen extra veld nodig.
+//
+// De pagina onder /en/ schrijft `source` als 'waitlist-en'. Zonder dat verschil
+// zou iemand die zich op de Engelse pagina aanmeldt een Nederlandse mail
+// terugkrijgen. De soort gaat mee naar verstuur(), die er de voet en de
+// afsluiting op kiest.
 function bericht(rij) {
+  if (rij.source === 'waitlist-en') return berichtEngels(rij);
+
   const hoi = aanhef(rij.name);
 
   if (rij.source === 'app') {
@@ -63,6 +71,41 @@ function bericht(rij) {
   };
 }
 
+// Dezelfde twee gevallen als hierboven, in het Engels. De app meldt zich nooit
+// in het Engels aan, want zijn testers komen uit de Nederlandse werving.
+function berichtEngels(rij) {
+  const hi = aanhef(rij.name, 'en');
+
+  if (rij.android === true) {
+    return {
+      onderwerp: 'You are on the Mona waitlist',
+      regels: [
+        hi + ',',
+        '',
+        'You are on the waitlist. Mona is running in a closed test with a small group who',
+        'use the app every day, and that group grows step by step.',
+        '',
+        'As soon as there is room, you will get a message from us with an invitation and',
+        'how to join. Until then you do not have to do anything.'
+      ]
+    };
+  }
+
+  return {
+    onderwerp: 'You are on the list, the iPhone version is coming',
+    regels: [
+      hi + ',',
+      '',
+      'You are on the list. To be honest about what to expect: Mona exists for Android',
+      'only at the moment. The iPhone version is in development. Our developer account',
+      'with Apple is in place, so we are already building.',
+      '',
+      'That means it will take longer for you than for Android. As soon as there is',
+      'something to install, you will be one of the first to hear.'
+    ]
+  };
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -95,7 +138,8 @@ export default async function handler(req, res) {
   }
 
   const b = bericht(rij);
-  const gelukt = await verstuur(sleutel, rij.email, b.onderwerp, b.regels, 'wachtlijst');
+  const soort = rij.source === 'waitlist-en' ? 'wachtlijst-en' : 'wachtlijst';
+  const gelukt = await verstuur(sleutel, rij.email, b.onderwerp, b.regels, soort);
 
   if (!gelukt) {
     // 500 zodat Supabase het opnieuw probeert in plaats van de aanmelding stil
@@ -104,6 +148,8 @@ export default async function handler(req, res) {
   }
 
   console.log('welkom: bevestiging verstuurd, variant ' +
-    (rij.source === 'app' ? 'app' : (rij.android === true ? 'android' : 'iphone')));
+    (rij.source === 'app' ? 'app'
+      : (rij.source === 'waitlist-en' ? 'en-' : '') +
+        (rij.android === true ? 'android' : 'iphone')));
   return res.status(200).json({ verstuurd: true });
 }
