@@ -9,56 +9,94 @@
 <link rel="alternate" hreflang="en" href="https://monaoffline.com/en/about">
 <link rel="alternate" hreflang="x-default" href="https://monaoffline.com/over">
 <meta name="description" content="Mona Offline puts your phone offline by default. To go online you dial in, with a real modem handshake, and the line drops by itself. Made by tivity B.V. in Amsterdam.">
-<meta name="theme-color" content="#2F6E68">
+<meta name="theme-color" content="#2F4A3A">
 <style>
-  /* Comfortaa, zelf gehost sinds 1 sep 2026. Stond hiervoor op fonts.googleapis.com,
-     maar dan gaat het IP-adres van elke bezoeker naar Google voordat er iets is
-     aangeklikt, en dan klopt de zin "geen enkele andere software van derden" in het
-     privacybeleid niet meer. Twee bestanden, samen 44 kB: het is een variabel
-     lettertype, dus een bestand dekt alle gewichten van 300 tot 700.
-     Comfortaa staat onder de SIL Open Font License, zelf hosten mag dus. */
-  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
-    src:url(/fonts/comfortaa-latin-ext.woff2) format('woff2');
-    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
-    src:url(/fonts/comfortaa-latin.woff2) format('woff2');
+  /* Lettertypes zelf gehost, zie de toelichting op de homepage. */
+  @font-face{font-family:'Grandstander';font-style:normal;font-weight:900;font-display:swap;
+    src:url(/fonts/grandstander-900-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Grandstander';font-style:normal;font-weight:900;font-display:swap;
+    src:url(/fonts/grandstander-900-latin.woff2) format('woff2');
     unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-400-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-400-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-500-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-500-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-600-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+  /* Palet Buitenadem, gelijk aan de homepage. */
   :root{
-    --cream:#F4EAD2;--ivory:#FBF4E4;--petrol:#2F6E68;--honey:#E7A23E;--coral:#C96F4A;
-    --ink:#3A342B;--mute:#8a8172;--line:#e7dcc2;--surface:#FFFDF7
+    --room:#F2EAD5;--room-input:#FBF7EC;--salie:#8FA98A;--ochtendblauw:#B9D0D6;
+    --mos:#2F4A3A;--mos-diep:#22362A;--honing:#DDA552;--honing-hover:#E8B566;
+    --pad:clamp(20px, 5vw, 72px)
   }
-  *{box-sizing:border-box;margin:0;font-family:Comfortaa,system-ui,sans-serif}
-  html,body{background:linear-gradient(165deg,#F4EAD2,#EAD9B4);color:var(--ink);min-height:100%}
-  body{padding:calc(env(safe-area-inset-top) + 30px) 18px 60px}
-  .wrap{max-width:560px;margin:0 auto}
-  .top{text-align:center;margin-bottom:24px}
-  .top a{color:var(--petrol);text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.3px}
-  .top a:hover{text-decoration:underline}
-  .lang{margin-top:8px;font-size:13px;color:var(--mute)}
-  .lang a{font-weight:400}
-  .lang a[aria-current]{font-weight:700;text-decoration:underline}
-  .doc{background:var(--surface);border:1px solid var(--line);border-radius:20px;
-    padding:28px 24px;box-shadow:0 18px 40px -22px rgba(47,110,104,.5)}
-  .doc h1{font-size:22px;line-height:1.3;margin-bottom:16px}
-  .doc h2{font-size:16px;margin:26px 0 8px;color:var(--petrol)}
-  .doc p{font-size:15px;line-height:1.65;margin-bottom:12px}
-  .doc ul{margin:0 0 12px 20px;padding:0}
-  .doc li{font-size:15px;line-height:1.65;margin-bottom:8px}
-  .doc a{color:var(--petrol)}
-  .doc .kicker{color:var(--coral);font-weight:700;font-size:13px;
-    letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px}
-  .sitefoot{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
-    color:var(--mute);font-size:12.5px;line-height:1.75;text-align:center}
-  .sitefoot a{color:var(--petrol);text-decoration:none}
-  .sitefoot a:hover{text-decoration:underline}
-  .sitefoot p{margin:0 0 10px}
-  .sitefoot .adr{font-style:normal}
-  .sitefoot nav{display:flex;align-items:center;justify-content:center;
-    gap:14px;flex-wrap:wrap;margin-top:14px}
-  .sitefoot .ig{display:inline-flex;align-items:center;justify-content:center;
-    width:34px;height:34px;margin:-9px 0;border-radius:10px}
-  .sitefoot .ig svg{flex:none;opacity:.8}
-  .sitefoot .ig:hover svg,.sitefoot .ig:focus-visible svg{opacity:1}
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--room);color:var(--mos);
+    font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:16px;line-height:1.75}
+  img{display:block}
+  a{color:var(--mos);text-decoration:underline;text-underline-offset:3px}
+  a:hover{color:var(--honing)}
+
+  /* Kop, gelijk aan de homepage */
+  nav{display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:22px var(--pad)}
+  nav .merk{display:flex;align-items:center;gap:12px;text-decoration:none}
+  nav .merk img{width:54px;height:54px;object-fit:contain}
+  .navrechts{display:flex;align-items:center;gap:22px;font-size:14px}
+  .lang{display:flex;gap:8px}
+  .lang a{text-decoration:none;opacity:.6;font-weight:400}
+  .lang a[aria-current]{opacity:1;font-weight:600;text-decoration:underline}
+  .lang span{opacity:.4}
+  .pil{text-decoration:none;background:var(--mos);color:var(--room);
+    padding:11px 18px;border-radius:999px;font-weight:600;font-size:14px}
+  .pil:hover{background:var(--mos-diep);color:var(--room)}
+
+  /* Het document zelf. Dezelfde kaart als het wachtlijstformulier: harde schaduw
+     zonder vervaging, ruime binnenmarge, en een regellengte die leesbaar blijft. */
+  .blad{padding:clamp(28px,4vw,56px) var(--pad) clamp(56px,8vw,104px)}
+  .doc{max-width:760px;margin:0 auto;background:var(--room-input);border-radius:24px;
+    padding:clamp(26px,4vw,48px);box-shadow:8px 8px 0 rgba(47,74,58,.16)}
+  .doc .kicker{font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--mos);opacity:.6;margin-bottom:14px}
+  .doc h1{font-family:Grandstander,system-ui,sans-serif;font-weight:900;
+    font-size:clamp(32px,4vw,46px);line-height:1.06;margin-bottom:10px;text-wrap:balance}
+  .doc .updated{font-size:13px;color:var(--mos);opacity:.6;margin-bottom:28px}
+  .doc h2{font-family:Grandstander,system-ui,sans-serif;font-weight:900;font-size:24px;
+    line-height:1.15;margin:34px 0 10px;text-wrap:balance}
+  .doc h3{font-size:15px;font-weight:600;margin:22px 0 6px}
+  .doc p{margin-bottom:14px;text-wrap:pretty}
+  .doc ul{margin:0 0 14px 20px;padding:0}
+  .doc li{margin-bottom:8px}
+  .doc .adr{font-style:normal;line-height:1.85;margin-bottom:14px}
+  .doc .mail{font-size:19px;font-weight:600;margin:6px 0 22px}
+  .doc code{font-size:14px;background:var(--room);padding:2px 7px;border-radius:6px}
+
+  /* Voet, gelijk aan de homepage. De bedrijfsregel en de interne links staan er
+     sinds 1 september 2026, omdat Apple de inschrijving afwees toen die ontbraken. */
+  footer{background:var(--mos);color:var(--room);padding:44px var(--pad)}
+  footer .mid{max-width:1220px;margin:0 auto;display:flex;flex-wrap:wrap;
+    justify-content:space-between;align-items:center;gap:24px;font-size:14px}
+  footer img{width:48px;height:48px;object-fit:contain}
+  footer nav{display:flex;flex-wrap:wrap;gap:22px;padding:0}
+  footer a{color:var(--room)}
+  footer a:hover{color:var(--honing)}
+  .bedrijf{width:100%;border-top:1px solid rgba(242,234,213,.18);padding-top:18px;
+    font-size:12.5px;line-height:1.75;color:rgba(242,234,213,.6);font-style:normal}
 </style>
 <script>
 /* Taalkeuze. Geen cookies, alleen localStorage onder de sleutel mona-lang.
@@ -96,13 +134,19 @@
 </script>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="top"><a href="/en/">Mona Offline</a>
-    <div class="lang"><a href="/over" hreflang="nl" lang="nl">NL</a> | <a href="/en/about" hreflang="en" lang="en" aria-current="page">EN</a></div>
+<nav>
+  <a class="merk" href="/en/" aria-label="Mona Offline, to the homepage">
+    <img src="/assets/mona-logo-mos.png" alt="Mona Offline" width="54" height="54">
+  </a>
+  <div class="navrechts">
+    <div class="lang"><a href="/over" hreflang="nl" lang="nl">NL</a><span>|</span><a href="/en/about" hreflang="en" lang="en" aria-current="page">EN</a></div>
+    <a class="pil" href="/en/#wachtlijst">Waitlist</a>
   </div>
+</nav>
 
-  <main class="doc">
+<main class="blad">
+  <div class="doc">
     <p class="kicker">Make offline normal again</p>
     <h1>About Mona Offline</h1>
 
@@ -164,22 +208,27 @@
     <p>Want to take part or ask something? You can do that through
     <a href="/en/contact">the contact page</a> or directly at
     <a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a>.</p>
-  </main>
+    </div>
+</main>
 
-  <footer class="sitefoot">
-    <p class="adr"><strong>tivity B.V.</strong><br>
-      Keizersgracht 720 HV, 1017 EW Amsterdam, The Netherlands<br>
-      Chamber of Commerce (KvK) 84898569</p>
-    <p><a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a></p>
-    <p>Mona Offline is a product of <a href="https://tivity.nl">tivity B.V.</a></p>
+<footer>
+  <div class="mid">
+    <img src="/assets/mona-logo-room.png" alt="Mona Offline" width="48" height="48">
     <nav>
       <a href="/en/about">About Mona</a>
       <a href="/en/privacy">Privacy</a>
       <a href="/en/contact">Contact</a>
-      <a class="ig" href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer" aria-label="Mona Offline on Instagram" title="Mona Offline on Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer">@monaoffline.app</a>
+      <a href="https://www.tiktok.com/@mona.offline" target="_blank" rel="noopener noreferrer">@mona.offline</a>
+      <a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a>
     </nav>
-  </footer>
+    <address class="bedrijf">
+      Mona Offline is a product of <a href="https://tivity.nl">tivity B.V.</a>,
+      Keizersgracht 720 HV, 1017 EW Amsterdam, the Netherlands.
+      Chamber of Commerce (KvK) 84898569.
+    </address>
+  </div>
+</footer>
 
-</div>
 </body>
 </html>
