@@ -118,6 +118,12 @@
   .sticker img{width:92px;height:76px;object-fit:contain}
   .sticker span{font-weight:600;font-size:15px;letter-spacing:.14em;color:var(--room)}
 
+  /* Het vervolg van de introtekst, onder de hero. Zelfde achtergrond, zodat het
+     als doorlopende opening leest en niet als een eigen kleurband. */
+  .intro{padding:0 var(--pad) clamp(44px,6vw,80px)}
+  .intro .mid{max-width:720px;text-align:center}
+  .intro p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;text-wrap:pretty}
+
   /* Verhaalband */
   .verhaal{background:var(--salie);padding:var(--band) var(--pad)}
   .verhaal .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
@@ -267,10 +273,7 @@
     <h1><img class="payoff" src="/assets/mona-tagline-mos.png" alt="Make Offline Normal Again"></h1>
     <div class="subregel">
       <p>It is a technological miracle, really. Wherever you are, you are in touch
-      with the whole world. And the whole world is in touch with you, all day, from
-      a family photo to a headline you did not ask for. Reaching for your phone
-      stopped being a decision and became a reflex. Going online was something you
-      chose.</p>
+      with the whole world.</p>
       <p class="slot">Mona helps you interrupt the update reflex and decide when and
       where you are reading that message.</p>
     </div>
@@ -290,6 +293,14 @@
     </div>
   </div>
 </header>
+
+<section class="intro">
+  <div class="mid">
+    <p>And the whole world is in touch with you, all day, from a family photo to a
+    headline you did not ask for. Reaching for your phone stopped being a decision
+    and became a reflex. Going online was something you chose.</p>
+  </div>
+</section>
 
 <section class="verhaal">
   <div class="mid">

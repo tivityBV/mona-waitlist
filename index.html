@@ -117,6 +117,12 @@
   .sticker img{width:92px;height:76px;object-fit:contain}
   .sticker span{font-weight:600;font-size:15px;letter-spacing:.14em;color:var(--room)}
 
+  /* Het vervolg van de introtekst, onder de hero. Zelfde achtergrond, zodat het
+     als doorlopende opening leest en niet als een eigen kleurband. */
+  .intro{padding:0 var(--pad) clamp(44px,6vw,80px)}
+  .intro .mid{max-width:720px;text-align:center}
+  .intro p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;text-wrap:pretty}
+
   /* Verhaalband */
   .verhaal{background:var(--salie);padding:var(--band) var(--pad)}
   .verhaal .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
@@ -266,11 +272,8 @@
     <h1><img class="payoff" src="/assets/mona-tagline-mos.png" alt="Make Offline Normal Again"></h1>
     <div class="subregel">
       <p>Het is eigenlijk een technologisch wonder. Waar je ook bent, je staat in
-      contact met de hele wereld. En de hele wereld staat in contact met jou, de
-      hele dag, van een familiefoto tot een krantenkop waar je niet om vroeg. Naar
-      je telefoon grijpen was ooit een beslissing en is een reflex geworden. Online
-      gaan was iets wat je koos.</p>
-      <p class="slot">Mona helpt je die updatereflex te onderbreken, zodat jij
+      contact met de hele wereld.</p>
+      <p class="slot">Mona helpt je de updatereflex te onderbreken, zodat jij
       bepaalt wanneer en waar je dat bericht leest.</p>
     </div>
     <div class="knoppen">
@@ -289,6 +292,14 @@
     </div>
   </div>
 </header>
+
+<section class="intro">
+  <div class="mid">
+    <p>En de hele wereld staat in contact met jou, de hele dag, van een familiefoto
+    tot een krantenkop waar je niet om vroeg. Naar je telefoon grijpen was ooit een
+    beslissing en is een reflex geworden. Online gaan was iets wat je koos.</p>
+  </div>
+</section>
 
 <section class="verhaal">
   <div class="mid">
