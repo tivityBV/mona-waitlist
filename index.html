@@ -10,120 +10,197 @@
 <link rel="alternate" hreflang="x-default" href="https://monaoffline.com/">
 <meta name="description" content="Je telefoon staat standaard offline. Je belt in als je iets wil, en hangt weer op. Kom op de wachtlijst.">
 <meta property="og:title" content="Mona | Make Offline Normal Again">
-<meta property="og:description" content="Minder scrollen, meer leven. Je telefoon offline-by-default, met een echt inbelritueel. Kom op de wachtlijst.">
+<meta property="og:description" content="Mona laat je telefoon weer inbellen. Langzamer, beperkt, en met een glimlach. Kom op de wachtlijst.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#2F6E68">
+<meta name="theme-color" content="#2F4A3A">
 <style>
-  /* Comfortaa, zelf gehost sinds 1 sep 2026. Stond hiervoor op fonts.googleapis.com,
-     maar dan gaat het IP-adres van elke bezoeker naar Google voordat er iets is
-     aangeklikt, en dan klopt de zin "geen enkele andere software van derden" in het
-     privacybeleid niet meer. Twee bestanden, samen 44 kB: het is een variabel
-     lettertype, dus een bestand dekt alle gewichten van 300 tot 700.
-     Comfortaa staat onder de SIL Open Font License, zelf hosten mag dus.
-     Permanent Marker werd wel opgehaald maar nergens gebruikt, en is vervallen. */
-  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
-    src:url(/fonts/comfortaa-latin-ext.woff2) format('woff2');
-    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
-  @font-face{font-family:Comfortaa;font-style:normal;font-weight:300 700;font-display:swap;
-    src:url(/fonts/comfortaa-latin.woff2) format('woff2');
+  /* Lettertypes staan hier zelf gehost, net als Comfortaa op de andere pagina's.
+     De ontwerpbriefing laadt Grandstander en IBM Plex Mono bij Google, maar dan
+     gaat het IP-adres van elke bezoeker naar Google voordat er iets is
+     aangeklikt, en dan klopt de privacypagina niet meer. Allebei staan ze onder
+     de SIL Open Font License, dus zelf hosten mag. Acht bestanden, samen 127 kB:
+     latin en latin-ext per gewicht. */
+  @font-face{font-family:'Grandstander';font-style:normal;font-weight:900;font-display:swap;
+    src:url(/fonts/grandstander-900-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Grandstander';font-style:normal;font-weight:900;font-display:swap;
+    src:url(/fonts/grandstander-900-latin.woff2) format('woff2');
     unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-400-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-400-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-500-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-500-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-600-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+  /* Palet Buitenadem. Petrol en koraal zijn hier vervallen, die staan alleen nog
+     in de app en op de andere pagina's van de site. */
   :root{
-    --cream:#F4EAD2;--ivory:#FBF4E4;--petrol:#2F6E68;--honey:#E7A23E;--coral:#C96F4A;
-    --ink:#3A342B;--mute:#8a8172;--line:#e7dcc2;--good:#4E8D5B;--surface:#FFFDF7
+    --room:#F2EAD5;--room-input:#FBF7EC;--salie:#8FA98A;--ochtendblauw:#B9D0D6;
+    --mos:#2F4A3A;--mos-diep:#22362A;--honing:#DDA552;--honing-hover:#E8B566;
+    --pad:clamp(20px, 5vw, 72px);--band:clamp(64px, 8vw, 112px)
   }
-  *{box-sizing:border-box;margin:0;font-family:Comfortaa,system-ui,sans-serif}
-  html,body{background:linear-gradient(165deg,#F4EAD2,#EAD9B4);color:var(--ink);min-height:100%}
-  body{padding:calc(env(safe-area-inset-top) + 30px) 18px 60px}
-  .wrap{max-width:520px;margin:0 auto;position:relative;z-index:2}
-  /* achtergrond-carrousel: scrollende mensen */
-  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#EAD9B4}
-  .bg .layer{position:absolute;inset:0;background-size:cover;background-position:center;
-    opacity:0;transition:opacity 1.6s ease-in-out;transform:scale(1.04);will-change:opacity}
-  .bg .scrim{position:absolute;inset:0;z-index:10;pointer-events:none;
-    background:linear-gradient(165deg,rgba(244,234,210,.80),rgba(234,217,180,.87))}
-  .brand{display:flex;align-items:center;gap:10px;justify-content:center}
-  .logo{width:34px;height:34px;border-radius:10px;flex:none;display:block}
-  .brand span{font-weight:700;font-size:17px;letter-spacing:.3px}
-  .lang{margin-top:10px;font-size:13px;color:var(--mute);text-align:center}
-  .lang a{color:var(--petrol);text-decoration:none;font-weight:400}
-  .lang a:hover{text-decoration:underline}
-  .lang a[aria-current]{font-weight:700;text-decoration:underline}
-  /* Edwards eigen kapitalen, als masker ingeladen zodat de kleur uit de stylesheet
-     blijft komen. Zelfde constructie als .masthead .tag in de app. Het MonaTag-lettertype
-     is hiermee vervallen en verwijderd: dat scheelde 97 kB in deze pagina. */
-  .tag{display:block;width:min(84vw,420px);aspect-ratio:1100/358;margin:26px auto 0;
-    background-color:var(--coral);
-    -webkit-mask-image:url(payoff.png);mask-image:url(payoff.png);
-    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
-    -webkit-mask-position:center;mask-position:center;
-    -webkit-mask-size:contain;mask-size:contain;
-    transform:rotate(-3deg)}
-  @media(min-width:480px){.tag{width:min(74vw,520px)}}
-  /* De tekst blijft in de DOM voor schermlezers en zoekmachines, maar uit beeld.
-     Niet met text-indent: dat verplaatst alleen de eerste regel, en door de <br>
-     kwam de tweede regel gewoon door het masker heen. */
-  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-    clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  .pitch{text-align:center;color:var(--ink);font-size:16px;line-height:1.55;margin:22px auto 0;max-width:420px}
-  .pitch b{color:var(--petrol)}
-  .pitch+.pitch{margin-top:14px}
-  .lead{margin:22px auto 0;max-width:468px;background:rgba(251,244,228,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(231,220,194,.75);border-radius:18px;padding:20px 24px;box-shadow:0 16px 36px -26px rgba(47,110,104,.5)}
-  .lead .pitch{margin:0;max-width:none;line-height:1.62}
-  .lead .pitch+.pitch{margin-top:12px}
-  /* dial-up window */
-  .win{background:var(--ivory);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:26px;box-shadow:0 18px 40px -22px rgba(47,110,104,.5)}
-  .bar{background:var(--petrol);color:var(--ivory);font-size:13px;font-weight:600;padding:11px 16px;display:flex;align-items:center;gap:8px;letter-spacing:.3px}
-  .led{width:9px;height:9px;border-radius:50%;background:#7fd18f;box-shadow:0 0 7px #7fd18f}
-  .win .body{padding:22px 20px 24px}
-  .dialbtn{width:100%;border:none;border-radius:16px;background:var(--honey);color:#fff;font-family:inherit;font-weight:700;font-size:16px;padding:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
-  .dialbtn:active{transform:scale(.99)}
-  .dialbtn.playing{background:var(--petrol)}
-  .dialhint{text-align:center;color:var(--mute);font-size:12px;margin-top:10px}
-  .kbps{font-family:monospace;color:var(--petrol);font-size:12px;letter-spacing:1px;text-align:center;margin-top:6px;min-height:14px}
-  /* form */
-  h2{font-size:19px;text-align:center;margin:34px 0 4px}
-  .sub{text-align:center;color:var(--mute);font-size:13.5px;margin-bottom:18px}
-  form{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px}
-  label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 6px}
-  label:first-child{margin-top:0}
-  input,select{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--cream);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;outline:none}
-  input:focus,select:focus{border-color:var(--honey)}
-  /* Onder elkaar sinds 2 sep 2026: de knoppen dragen nu hele zinnen in plaats van
-     "Ja" en "Nee", en die passen naast elkaar niet op een telefoonscherm. */
-  .seg{display:flex;flex-direction:column;gap:10px}
-  /* Toelichting onder de iPhone-knop, staat er sinds 2 sep 2026: die groep kan
-     nog niets installeren, dus zonder uitleg lijkt de keuze een dood spoor. */
-  .seghint{font-size:12px;line-height:1.5;color:var(--mute);text-align:center;margin:-3px 2px 0}
-  .seg button{flex:none;font-family:inherit;font-weight:600;font-size:14px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--cream);color:var(--mute);cursor:pointer}
-  .seg button.on{border-color:var(--petrol);background:var(--petrol);color:#fff}
-  .submit{width:100%;margin-top:20px;border:none;border-radius:14px;background:var(--coral);color:#fff;font-family:inherit;font-weight:700;font-size:16px;padding:15px;cursor:pointer}
-  .submit:disabled{opacity:.6;cursor:default}
-  .err{color:var(--coral);font-size:13px;text-align:center;margin-top:12px;min-height:16px}
-  .trust{text-align:center;color:var(--mute);font-size:12.5px;margin-top:16px;line-height:1.6}
-  /* Sitefooter met de bedrijfsgegevens. Staat er sinds 1 sep 2026: Apple wees de
-     inschrijving af omdat op deze site nergens te zien was welke rechtspersoon
-     achter het domein zit, en omdat er geen enkele interne link was. Alles hierin
-     staat als gewone tekst in de HTML, zonder JavaScript, zodat een beoordelaar
-     het ook met een dichtgezette browser ziet. */
-  .sitefoot{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
-    color:var(--mute);font-size:12.5px;line-height:1.75;text-align:center}
-  .sitefoot a{color:var(--petrol);text-decoration:none}
-  .sitefoot a:hover{text-decoration:underline}
-  .sitefoot p{margin:0 0 10px}
-  .sitefoot .adr{font-style:normal}
-  .sitefoot nav{display:flex;align-items:center;justify-content:center;
-    gap:14px;flex-wrap:wrap;margin-top:14px}
-  /* icon only: no handle, but keep a finger-sized tap target around it */
-  .sitefoot .ig{display:inline-flex;align-items:center;justify-content:center;
-    width:34px;height:34px;margin:-9px 0;border-radius:10px}
-  .sitefoot .ig svg{flex:none;opacity:.8}
-  .sitefoot .ig:hover svg,.sitefoot .ig:focus-visible svg{opacity:1}
-  /* success */
-  .done{display:none;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:40px 24px}
-  .done .em{font-size:40px}
-  .done h2{margin:12px 0 8px}
-  .done p{color:var(--mute);font-size:14.5px;line-height:1.6;max-width:360px;margin:0 auto}
-  .nocarrier{font-family:monospace;color:var(--coral);letter-spacing:2px;font-weight:700;margin-top:16px;font-size:13px}
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--room);color:var(--mos);
+    font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:16px;line-height:1.7}
+  img{display:block}
+  a{color:var(--mos);text-decoration:underline;text-underline-offset:3px}
+  a:hover{color:var(--honing)}
+  h1,h2{font-family:Grandstander,system-ui,sans-serif;font-weight:900;text-wrap:balance}
+  .mid{max-width:1220px;margin:0 auto}
+  .oog{font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+
+  /* Nav */
+  nav{display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:22px var(--pad)}
+  nav .merk{display:flex;align-items:center;gap:12px;text-decoration:none}
+  nav .merk img{width:54px;height:54px;object-fit:contain}
+  .navrechts{display:flex;align-items:center;gap:22px;font-size:14px}
+  .lang{display:flex;gap:8px}
+  .lang a{text-decoration:none;opacity:.6;font-weight:400}
+  .lang a[aria-current]{opacity:1;font-weight:600;text-decoration:underline}
+  .lang span{opacity:.4}
+  .pil{text-decoration:none;background:var(--mos);color:var(--room);
+    padding:11px 18px;border-radius:999px;font-weight:600;font-size:14px}
+  .pil:hover{background:var(--mos-diep);color:var(--room)}
+
+  /* Hero */
+  header{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));
+    gap:clamp(32px,5vw,72px);align-items:center;max-width:1360px;margin:0 auto;
+    padding:clamp(24px,4vw,56px) var(--pad) clamp(56px,7vw,104px)}
+  .heroteksten{display:flex;flex-direction:column;align-items:center;text-align:center;gap:30px}
+  h1{margin:0}
+  .payoff{width:100%;max-width:620px;height:auto}
+  .subregel{font-size:19px;line-height:1.65;max-width:500px;text-wrap:pretty}
+  .knoppen{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+  .knop-honing{text-decoration:none;background:var(--honing);color:var(--mos-diep);
+    padding:16px 24px;border-radius:14px;font-weight:600;font-size:16px}
+  .knop-honing:hover{background:var(--honing-hover);color:var(--mos-diep)}
+  .knop-rand{text-decoration:none;border:2px solid var(--mos);color:var(--mos);
+    padding:14px 22px;border-radius:14px;font-weight:600;font-size:16px}
+  .knop-rand:hover{background:var(--mos);color:var(--room)}
+  .herofoto{position:relative;height:clamp(360px,46vw,600px)}
+  .herofoto>img{width:100%;height:100%;object-fit:cover;border-radius:28px}
+  .chip{position:absolute;left:18px;top:18px;background:var(--room);padding:8px 12px;
+    border-radius:8px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    pointer-events:none}
+  .sticker{position:absolute;right:-14px;bottom:40px;background:var(--mos);
+    padding:18px 20px 16px;border-radius:18px;transform:rotate(-3deg);display:flex;
+    flex-direction:column;align-items:center;gap:10px;
+    box-shadow:6px 6px 0 rgba(47,74,58,.22);pointer-events:none}
+  .sticker img{width:92px;height:76px;object-fit:contain}
+  .sticker span{font-weight:600;font-size:15px;letter-spacing:.14em;color:var(--room)}
+
+  /* Verhaalband */
+  .verhaal{background:var(--salie);padding:var(--band) var(--pad)}
+  .verhaal .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+    gap:clamp(28px,4vw,56px)}
+  .verhaal article{display:flex;flex-direction:column;gap:18px;color:var(--mos-diep)}
+  .verhaal img{width:86px;height:70px;object-fit:contain;object-position:left}
+  .verhaal h2{font-size:34px;line-height:1.08;color:var(--mos-diep)}
+  .verhaal p{font-size:16px;line-height:1.75;text-wrap:pretty}
+
+  /* Inbelband */
+  .inbellen{background:var(--mos);color:var(--room);padding:var(--band) var(--pad)}
+  .inbellen .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));
+    gap:clamp(32px,5vw,72px);align-items:center}
+  .inbellen .kolom{display:flex;flex-direction:column;gap:22px}
+  .inbellen h2{font-size:clamp(38px,4.4vw,56px);line-height:1.04}
+  .inbellen .uitleg{font-size:17px;line-height:1.7;color:rgba(242,234,213,.85);max-width:460px}
+  .netwerklabel{display:flex;align-items:center;gap:10px;color:var(--honing)}
+  .stip{width:10px;height:10px;border-radius:50%;background:var(--honing);flex:none;
+    animation:monaBlink 1.6s steps(1,end) infinite}
+  @keyframes monaBlink{0%,46%{opacity:1}50%,96%{opacity:.2}100%{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.stip{animation:none}}
+  .belknop{align-self:flex-start;display:flex;align-items:center;gap:12px;
+    background:var(--honing);color:var(--mos-diep);border:none;padding:18px 26px;
+    border-radius:14px;font-family:inherit;font-weight:600;font-size:17px;cursor:pointer}
+  .belknop:hover{background:var(--honing-hover)}
+  .terminal{background:var(--mos-diep);border-radius:22px;padding:30px 30px 26px;
+    min-height:300px;display:flex;flex-direction:column;justify-content:space-between;
+    gap:24px;box-shadow:8px 8px 0 rgba(0,0,0,.18)}
+  .leds{display:flex;justify-content:space-between;align-items:center}
+  .leds div{display:flex;gap:8px}
+  .led{width:11px;height:11px;border-radius:50%;background:rgba(242,234,213,.18)}
+  .led.aan{background:var(--honing)}
+  .led.cd{background:var(--salie)}
+  .leds>span{font-size:12px;letter-spacing:.16em;color:rgba(242,234,213,.5)}
+  .regels{display:flex;flex-direction:column;gap:10px;font-size:18px;line-height:1.5}
+  .regels div{color:var(--room)}
+  .regels .wacht{color:rgba(242,234,213,.6)}
+  .regels .honing{color:var(--honing)}
+  .regels .ruis{color:rgba(242,234,213,.75)}
+  .regels .duur{color:rgba(242,234,213,.55)}
+  .lijnweg{display:flex;align-items:center;gap:16px}
+  .lijnweg img{width:64px;height:52px;object-fit:contain}
+  .lijnweg span{font-size:14px;color:rgba(242,234,213,.7)}
+
+  /* Wachtlijstband */
+  .wachtlijst{background:var(--ochtendblauw);padding:var(--band) var(--pad)}
+  .wachtlijst .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));
+    gap:clamp(32px,5vw,72px);align-items:start}
+  .wachtlijst .kolom{display:flex;flex-direction:column;gap:22px}
+  .wachtlijst .kolom>img{width:120px;height:98px;object-fit:contain;object-position:left}
+  .wachtlijst h2{font-size:clamp(38px,4.4vw,56px);line-height:1.04}
+  .wachtlijst .kolom p{font-size:17px;line-height:1.7;max-width:440px}
+  form{background:var(--room);border-radius:24px;padding:clamp(24px,3vw,36px);
+    display:flex;flex-direction:column;gap:20px;box-shadow:8px 8px 0 rgba(47,74,58,.16)}
+  .veld{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500}
+  input,select{font-family:inherit;font-size:16px;padding:15px 16px;border-radius:12px;
+    border:2px solid rgba(47,74,58,.18);background:var(--room-input);color:var(--mos);
+    outline:none;width:100%}
+  input:focus,select:focus{border-color:var(--mos)}
+  input::placeholder{color:rgba(47,74,58,.45)}
+  .segment{display:grid;grid-template-columns:1fr 1fr;gap:8px;
+    background:rgba(47,74,58,.08);padding:5px;border-radius:14px}
+  .segment button{font-family:inherit;font-size:15px;font-weight:600;padding:13px;
+    border-radius:10px;border:none;cursor:pointer;background:transparent;color:var(--mos)}
+  .segment button[aria-pressed="true"]{background:var(--mos);color:var(--room)}
+  .hint{font-size:13px;font-weight:400;line-height:1.6;opacity:.75}
+  .fout{font-size:13px;font-weight:400;line-height:1.6;color:var(--mos)}
+  .fout:empty{display:none}
+  .verzend{background:var(--mos);color:var(--room);border:none;padding:17px;
+    border-radius:14px;font-family:inherit;font-weight:600;font-size:16px;cursor:pointer}
+  .verzend:hover{background:var(--mos-diep)}
+  .verzend:disabled{opacity:.6;cursor:default}
+  .gelukt{background:var(--mos);color:var(--room);border-radius:24px;padding:40px 36px;
+    display:none;flex-direction:column;align-items:flex-start;gap:18px}
+  .gelukt img{width:100px;height:82px;object-fit:contain}
+  .gelukt .kop{font-family:Grandstander,system-ui,sans-serif;font-weight:900;font-size:34px;
+    line-height:1.1}
+  .gelukt p{font-size:15px;line-height:1.7;color:rgba(242,234,213,.8)}
+
+  /* Voet. De bedrijfsregel en de interne links staan hier sinds 1 september 2026,
+     omdat Apple de inschrijving afwees toen nergens op de site stond welke
+     rechtspersoon achter het domein zit en er geen enkele interne link was. Het
+     ontwerp liet ze weg, dus ze zijn hier teruggezet in het nieuwe palet. */
+  footer{background:var(--mos);color:var(--room);padding:44px var(--pad)}
+  footer .mid{display:flex;flex-wrap:wrap;justify-content:space-between;
+    align-items:center;gap:24px;font-size:14px}
+  footer img{width:48px;height:48px;object-fit:contain}
+  footer nav{display:flex;flex-wrap:wrap;gap:22px;padding:0}
+  footer a{color:var(--room)}
+  footer a:hover{color:var(--honing)}
+  .bedrijf{width:100%;border-top:1px solid rgba(242,234,213,.18);padding-top:18px;
+    font-size:12.5px;line-height:1.75;color:rgba(242,234,213,.6);font-style:normal}
+
+  @media (max-width:480px){
+    .sticker{right:12px;bottom:16px;transform:rotate(-3deg) scale(.9)}
+  }
 </style>
 <script>
 /* Taalkeuze. Geen cookies, alleen localStorage onder de sleutel mona-lang.
@@ -161,132 +238,308 @@
 </script>
 </head>
 <body>
-<div class="bg" aria-hidden="true">
-  <div class="layer" id="bgA"></div>
-  <div class="layer" id="bgB"></div>
-  <div class="scrim"></div>
-</div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="spray" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.3" xChannelSelector="R" yChannelSelector="G"/></filter><filter id="sprayrough" x="-12%" y="-12%" width="124%" height="124%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 
-<div class="wrap">
-  <div class="brand">
-    <img class="logo" src="data:image/png;base64,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" width="34" height="34" alt="App-icoon van Mona Offline">
-    <span>Mona</span>
+<nav>
+  <a class="merk" href="#top" aria-label="Mona Offline, naar boven">
+    <img src="/assets/mona-logo-mos.png" alt="Mona Offline" width="54" height="54">
+  </a>
+  <div class="navrechts">
+    <div class="lang"><a href="/" hreflang="nl" lang="nl" aria-current="page">NL</a><span>|</span><a href="/en/" hreflang="en" lang="en">EN</a></div>
+    <a class="pil" href="#wachtlijst">Wachtlijst</a>
   </div>
-  <div class="lang"><a href="/" hreflang="nl" lang="nl" aria-current="page">NL</a> | <a href="/en/" hreflang="en" lang="en">EN</a></div>
+</nav>
 
-  <h1 class="tag"><span class="sr">Make Offline Normal Again</span></h1>
-  <div class="lead">
-  <p class="pitch">Er was een tijd dat offline zijn normaal was, en je alleen online ging uit eigen beweging. Om je mail te checken. Om iets op te zoeken. Of om het nieuws te lezen.</p>
-  <p class="pitch">Nu ben je <b>altijd online</b>, en de reflex om naar je telefoon te grijpen is voor de meeste mensen te sterk om te weerstaan. Zelfs als je op een prachtige plek bent.</p>
-  <p class="pitch"><b>Mona maakt offline zijn weer normaal</b>, door die reflex wat stroever te maken. Net als vroeger, toen je nog moest <b>inbellen met een modem</b>. Het vertraagt je, en je online tijd is beperkt, zodat je niet meer ineens een uur van je leven kwijt bent aan het scrollen door kattenfilmpjes.</p>
-  </div>
-
-  <div class="win">
-    <div class="bar"><span class="led"></span> Dial-Up Networking</div>
-    <div class="body">
-      <button class="dialbtn" id="dialBtn" aria-label="Speel het modemgeluid">
-        <span id="dialIcon">▶</span> <span id="dialTxt">Bel in en hoor de lijn</span>
-      </button>
-      <div class="kbps" id="kbps"></div>
-      <div class="dialhint">Herken je 'm nog? Zet je geluid aan.</div>
+<header id="top">
+  <div class="heroteksten">
+    <h1><img class="payoff" src="/assets/mona-tagline-mos.png" alt="Make Offline Normal Again"></h1>
+    <p class="subregel">Mona laat je telefoon weer inbellen. Langzamer, beperkt, en met een glimlach.</p>
+    <div class="knoppen">
+      <a class="knop-honing" href="#wachtlijst">Kom op de wachtlijst</a>
+      <a class="knop-rand" href="#inbellen">&#9654; Hoor de lijn</a>
     </div>
   </div>
-  <audio id="modem" src="modem.mp3" preload="auto"></audio>
-
-  <h2>Kom op de wachtlijst</h2>
-  <div class="sub">We geven één seintje zodra Mona live is. Geen spam.</div>
-
-  <form id="form" autocomplete="on">
-    <label for="name">Je naam</label>
-    <input id="name" name="name" type="text" placeholder="Voornaam" required>
-
-    <label for="email">E-mailadres</label>
-    <input id="email" name="email" type="email" placeholder="jij@voorbeeld.nl" required>
-
-    <label>Je telefoon</label>
-    <div class="seg" id="androidSeg">
-      <button type="button" data-v="nee">Ik heb een iPhone</button>
-      <p class="seghint">De iPhone versie is in ontwikkeling. Ons ontwikkelaarsaccount bij
-        Apple is rond, dus we zijn al druk aan het bouwen. Je hoort het als eerste!</p>
-      <button type="button" data-v="ja">Ik heb een Android telefoon</button>
+  <div class="herofoto">
+    <img src="/bg-metro.jpg" alt="Mensen in de metro, allemaal op hun telefoon">
+    <div class="chip">De online wereld</div>
+    <div class="sticker">
+      <img src="/assets/face-x-honing.png" alt="" width="92" height="76">
+      <span>NO CARRIER</span>
     </div>
-    <label for="scroll">Hoe vaak betrap je jezelf op scrollen zonder dat je het besloot?</label>
-    <select id="scroll" name="scroll" required>
-      <option value="" disabled selected>Kies…</option>
-      <option value="bijna-nooit">Bijna nooit</option>
-      <option value="af-en-toe">Af en toe</option>
-      <option value="vaak">Vaak</option>
-      <option value="de-hele-dag">De hele dag door</option>
-    </select>
-
-    <button class="submit" id="submit" type="submit">Zet me op de lijst</button>
-    <div class="err" id="err"></div>
-  </form>
-
-  <div class="done" id="done">
-    <div class="em">📞</div>
-    <h2>Je staat op de lijst</h2>
-    <p>We bellen je in zodra Mona klaar is om offline normaal te maken. Tot snel.</p>
-    <div class="nocarrier">NO CARRIER</div>
   </div>
+</header>
 
-  <div class="trust">🔒 100% gratis · geen reclame · geen spam</div>
-  <footer class="sitefoot">
-    <p class="adr"><strong>tivity B.V.</strong><br>
-      Keizersgracht 720 HV, 1017 EW Amsterdam, Nederland<br>
-      KvK 84898569</p>
-    <p><a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a></p>
-    <p>Mona Offline is een product van <a href="https://tivity.nl">tivity B.V.</a></p>
+<section class="verhaal">
+  <div class="mid">
+    <article>
+      <img src="/assets/face-wink-mos.png" alt="" width="86" height="70">
+      <span class="oog">Toen</span>
+      <h2>Offline was gewoon normaal.</h2>
+      <p>Je ging alleen online uit eigen beweging. Om je mail te checken. Om iets op te zoeken. Of om het nieuws te lezen.</p>
+    </article>
+    <article>
+      <img src="/assets/face-neutral-mos.png" alt="" width="86" height="70">
+      <span class="oog">Nu</span>
+      <h2>Je bent altijd online.</h2>
+      <p>De reflex om naar je telefoon te grijpen is voor de meeste mensen te sterk om te weerstaan. Zelfs als je op een prachtige plek bent.</p>
+    </article>
+    <article>
+      <img src="/assets/face-x-mos.png" alt="" width="86" height="70">
+      <span class="oog">Mona</span>
+      <h2>Inbellen, net als vroeger.</h2>
+      <p>Mona maakt die reflex wat stroever. Het vertraagt je en je online tijd is beperkt, zodat je niet ineens een uur kwijt bent aan kattenfilmpjes.</p>
+    </article>
+  </div>
+</section>
+
+<section class="inbellen" id="inbellen">
+  <div class="mid">
+    <div class="kolom">
+      <div class="netwerklabel oog"><span class="stip" aria-hidden="true"></span><span>Dial-Up Networking</span></div>
+      <h2>Herken je &rsquo;m nog?</h2>
+      <p class="uitleg">Zet je geluid aan en bel in. Zo voelt online gaan met Mona: een klein ritueel, met een begin en een eind.</p>
+      <button class="belknop" id="belknop" type="button">&#9654; Bel in en hoor de lijn</button>
+    </div>
+    <div class="terminal">
+      <div class="leds">
+        <div>
+          <span class="led" id="ledTx"></span>
+          <span class="led" id="ledRx"></span>
+          <span class="led" id="ledCd"></span>
+        </div>
+        <span>TX RX CD</span>
+      </div>
+      <div class="regels" id="regels" aria-live="polite">
+        <div class="wacht">&gt; klaar om in te bellen_</div>
+      </div>
+      <div class="lijnweg" id="lijnweg" hidden>
+        <img src="/assets/face-x-honing.png" alt="" width="64" height="52">
+        <span>Lijn weg. Tijd voor buiten.</span>
+      </div>
+    </div>
+  </div>
+  <audio id="modem" src="/modem.mp3" preload="auto"></audio>
+</section>
+
+<section class="wachtlijst" id="wachtlijst">
+  <div class="mid">
+    <div class="kolom">
+      <img src="/assets/face-wink-mos.png" alt="" width="120" height="98">
+      <h2>Kom op de wachtlijst.</h2>
+      <p>We geven &eacute;&eacute;n seintje zodra Mona live is. Geen spam.</p>
+    </div>
+
+    <form id="form" autocomplete="on" novalidate>
+      <label class="veld" for="naam">Je naam
+        <input id="naam" name="name" type="text" placeholder="Voornaam" autocomplete="given-name">
+      </label>
+
+      <label class="veld" for="email">E-mailadres
+        <input id="email" name="email" type="email" placeholder="jij@voorbeeld.nl" autocomplete="email" required>
+        <span class="fout" id="foutEmail" role="alert"></span>
+      </label>
+
+      <div class="veld">
+        <span id="telefoonLabel">Je telefoon</span>
+        <div class="segment" role="group" aria-labelledby="telefoonLabel">
+          <button type="button" data-telefoon="iphone" aria-pressed="false">iPhone</button>
+          <button type="button" data-telefoon="android" aria-pressed="false">Android</button>
+        </div>
+        <span class="hint" id="telefoonHint">Kies welke telefoon je hebt, dan weet je waar je aan toe bent.</span>
+        <span class="fout" id="foutTelefoon" role="alert"></span>
+      </div>
+
+      <label class="veld" for="scroll">Hoe vaak betrap je jezelf op scrollen zonder dat je het besloot?
+        <select id="scroll" name="scroll">
+          <option value="" disabled selected>Kies&hellip;</option>
+          <option value="bijna-nooit">Bijna nooit</option>
+          <option value="af-en-toe">Af en toe</option>
+          <option value="vaak">Vaak</option>
+          <option value="de-hele-dag">De hele dag door</option>
+        </select>
+        <span class="fout" id="foutScroll" role="alert"></span>
+      </label>
+
+      <button class="verzend" id="verzend" type="submit">Zet me op de lijst</button>
+      <span class="fout" id="foutAlgemeen" role="alert"></span>
+    </form>
+
+    <div class="gelukt" id="gelukt">
+      <img src="/assets/face-wink-room.png" alt="" width="100" height="82">
+      <span class="kop">Je staat erop.</span>
+      <p>We bellen je in zodra Mona live is. Tot die tijd: naar buiten.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="mid">
+    <img src="/assets/mona-logo-room.png" alt="Mona Offline" width="48" height="48">
     <nav>
       <a href="/over">Over Mona</a>
       <a href="/privacy">Privacy</a>
       <a href="/contact">Contact</a>
-      <a class="ig" href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer" aria-label="Mona Offline op Instagram" title="Mona Offline op Instagram"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer">@monaoffline.app</a>
+      <a href="https://www.tiktok.com/@mona.offline" target="_blank" rel="noopener noreferrer">@mona.offline</a>
+      <a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a>
     </nav>
-  </footer>
-</div>
+    <address class="bedrijf">
+      Mona Offline is een product van <a href="https://tivity.nl">tivity B.V.</a>,
+      Keizersgracht 720 HV, 1017 EW Amsterdam, Nederland. KvK 84898569.
+    </address>
+  </div>
+</footer>
 
 <script>
-  // ---- Supabase (Edward: vervang deze twee placeholders door je eigen waarden uit
-  //      Supabase → Project Settings → API. De anon-key mag client-side; plak NOOIT je service_role-key hier.)
+  // ---- Supabase. De anon-key mag client-side; de service_role-key hoort hier nooit.
   const SUPABASE_URL      = "https://lftibffclhufvwxrpumo.supabase.co";
   const SUPABASE_ANON_KEY = "sb_publishable_O_T3-7V3qzaPJDLlln8bIA_PTSsD4bG";
   const CONFIGURED = !SUPABASE_URL.includes("_HIER") && !SUPABASE_ANON_KEY.includes("_HIER");
 
   const $ = id => document.getElementById(id);
 
-  // modem hero
+  /* ---------------------------------------------------------------- inbelreeks
+     De ontwerpbriefing zet elke stap 1300ms na de vorige, maar modem.mp3 duurt
+     16,4 seconde. Dan staat NO CARRIER al op het scherm terwijl de handshake nog
+     piept. De stappen hangen daarom aan de tijd van het geluid: CONNECT als de
+     handshake zo goed als klaar is, NO CARRIER als het bestand afloopt.
+     Lukt afspelen niet, bijvoorbeeld omdat de browser het blokkeert, dan valt
+     hij terug op de losse tijden uit het ontwerp. */
+  const REGELS = [
+    { tekst: '&gt; ATDT 0800 MONA',                klasse: 'honing' },
+    { tekst: 'piieeeeee… krrrrshhh…',    klasse: 'ruis'   },
+    { tekst: 'CONNECT 14400',                      klasse: ''       },
+    { tekst: '… 7 minuten online …',     klasse: 'duur'   }
+  ];
+
+  /* Wanneer elke regel verschijnt. De eerste twee staan vast aan het begin van de
+     handshake, de laatste twee rekenen terug vanaf het eind van het bestand. Zo
+     blijft het kloppen als modem.mp3 ooit wordt vervangen: de opname op deze site
+     duurt 19,3 seconde en die in de app 16,4, en met vaste tijden hangt CONNECT
+     dan op de verkeerde plek. */
+  function momenten() {
+    const d = isFinite(modem.duration) && modem.duration > 6 ? modem.duration : 16.4;
+    return [0, 1.6, d - 2.8, d - 1.5];
+  }
+  const ZONDER_GELUID = [0, 1300, 2600, 3900, 5200];
+
   const modem = $('modem');
-  let playing = false;
-  $('dialBtn').addEventListener('click', () => {
-    if (playing) { modem.pause(); modem.currentTime = 0; onEnd(); return; }
-    modem.play().then(() => {
-      playing = true; $('dialBtn').classList.add('playing');
-      $('dialIcon').textContent = '■'; $('dialTxt').textContent = 'Verbinden…'; $('kbps').textContent = 'connecting · 14400 bps';
-    }).catch(() => { $('kbps').textContent = '(zet je geluid aan)'; });
+  let tellers = [], bezig = false, tijdHaak = null, huidigeStap = -1;
+
+  function stop() {
+    tellers.forEach(clearTimeout); tellers = [];
+    if (tijdHaak) { modem.removeEventListener('timeupdate', tijdHaak); tijdHaak = null; }
+  }
+
+  function toonRegels(aantal) {
+    const r = $('regels');
+    if (aantal === 0) { r.innerHTML = '<div class="wacht">&gt; klaar om in te bellen_</div>'; return; }
+    r.innerHTML = REGELS.slice(0, aantal)
+      .map(x => '<div class="' + x.klasse + '">' + x.tekst + '</div>').join('');
+  }
+
+  function leds(stap) {
+    const bezigNu = stap > 0 && stap < 5;
+    $('ledTx').className = 'led' + (bezigNu ? ' aan' : '');
+    $('ledRx').className = 'led' + (stap >= 2 && stap < 5 ? ' aan' : '');
+    $('ledCd').className = 'led' + (stap >= 3 && stap < 5 ? ' cd' : '');
+  }
+
+  function zet(stap) {
+    // timeupdate vuurt een paar keer per seconde, dus alleen tekenen bij een echte stap.
+    if (stap === huidigeStap) return;
+    huidigeStap = stap;
+    bezig = stap > 0 && stap < 5;
+    if (stap === 5) {
+      toonRegels(4);
+      $('regels').insertAdjacentHTML('beforeend', '<div class="honing">NO CARRIER</div>');
+      $('lijnweg').hidden = false;
+    } else {
+      toonRegels(stap);
+      $('lijnweg').hidden = true;
+    }
+    leds(stap);
+    $('belknop').innerHTML = bezig ? 'Bezig met inbellen…'
+      : (stap === 5 ? '&#9654; Nog een keer' : '&#9654; Bel in en hoor de lijn');
+  }
+
+  function bel() {
+    stop();
+    huidigeStap = -1;
+    zet(1);
+    try { modem.pause(); modem.currentTime = 0; } catch (e) {}
+    const terugval = () => {
+      ZONDER_GELUID.forEach((ms, i) => {
+        if (i === 0) return;
+        tellers.push(setTimeout(() => zet(i + 1), ms));
+      });
+    };
+    const spelen = modem.play();
+    if (!spelen || !spelen.then) { terugval(); return; }
+    spelen.then(() => {
+      const op = momenten();
+      tijdHaak = () => {
+        let stap = 1;
+        for (let i = 1; i < op.length; i++) if (modem.currentTime >= op[i]) stap = i + 1;
+        if (stap > 1) zet(stap);
+      };
+      modem.addEventListener('timeupdate', tijdHaak);
+    }).catch(terugval);
+  }
+
+  modem.addEventListener('ended', () => { stop(); zet(5); });
+  $('belknop').addEventListener('click', bel);
+
+  /* ---------------------------------------------------------------- formulier */
+  let telefoon = null;
+  const HINTS = {
+    iphone: 'De iPhone-versie is in ontwikkeling. We laten het weten zodra hij er is.',
+    android: 'De Android-versie komt als eerste. Je hoort het als je mag beginnen.'
+  };
+
+  document.querySelectorAll('.segment button').forEach(b => {
+    b.addEventListener('click', () => {
+      telefoon = b.dataset.telefoon;
+      document.querySelectorAll('.segment button').forEach(x =>
+        x.setAttribute('aria-pressed', String(x === b)));
+      $('telefoonHint').textContent = HINTS[telefoon];
+      $('foutTelefoon').textContent = '';
+    });
   });
-  function onEnd(){ playing = false; $('dialBtn').classList.remove('playing'); $('dialIcon').textContent = '▶'; $('dialTxt').textContent = 'Bel in en hoor de lijn'; $('kbps').textContent = 'NO CARRIER'; }
-  modem.addEventListener('ended', onEnd);
 
-  // android segmented control
-  let android = null;
-  $('androidSeg').querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
-    $('androidSeg').querySelectorAll('button').forEach(x => x.classList.remove('on'));
-    b.classList.add('on'); android = b.dataset.v;
-  }));
+  function leegFouten() {
+    ['foutEmail', 'foutTelefoon', 'foutScroll', 'foutAlgemeen'].forEach(id => $(id).textContent = '');
+  }
 
-  // submit
   $('form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const err = $('err'); err.textContent = '';
-    const name = $('name').value.trim();
+    leegFouten();
+
+    const naam = $('naam').value.trim();
     const email = $('email').value.trim();
     const scroll = $('scroll').value;
-    if (!android) { err.textContent = 'Kies even welke telefoon je hebt.'; return; }
-    $('submit').disabled = true; $('submit').textContent = 'Bezig…';
 
-    const row = { name, email, android: android === 'ja', scroll_freq: scroll, source: 'waitlist' };
+    /* Het ontwerp zet de telefoonkeuze standaard op iPhone. Dat is hier bewust niet
+       gedaan: dan telt iedereen die niet kijkt als iPhone, en juist dat getal bepaalt
+       welk platform voorgaat. */
+    let eerste = null;
+    if (!email) {
+      $('foutEmail').textContent = 'Vul je e-mailadres in.'; eerste = eerste || $('email');
+    } else if (!$('email').checkValidity()) {
+      $('foutEmail').textContent = 'Dit adres klopt nog niet.'; eerste = eerste || $('email');
+    }
+    if (!telefoon) {
+      $('foutTelefoon').textContent = 'Kies even welke telefoon je hebt.';
+      eerste = eerste || document.querySelector('.segment button');
+    }
+    if (!scroll) {
+      $('foutScroll').textContent = 'Kies een antwoord.'; eerste = eerste || $('scroll');
+    }
+    if (eerste) { eerste.focus(); return; }
+
+    $('verzend').disabled = true;
+    $('verzend').textContent = 'Bezig…';
+
+    const row = { name: naam, email, android: telefoon === 'android', scroll_freq: scroll, source: 'waitlist' };
 
     try {
       if (CONFIGURED) {
@@ -301,39 +554,26 @@
           body: JSON.stringify(row)
         });
         if (!res.ok) {
-          if (res.status === 409) { showDone(); return; } // already on the list = fine
+          if (res.status === 409) { toonGelukt(); return; } // staat er al op, dus goed
           throw new Error('HTTP ' + res.status);
         }
       } else {
         console.warn('[Mona] Supabase nog niet gekoppeld, preview-modus, aanmelding niet opgeslagen.', row);
       }
-      showDone();
+      toonGelukt();
     } catch (e2) {
       console.error(e2);
-      err.textContent = 'Er ging iets mis. Probeer het zo nog eens.';
-      $('submit').disabled = false; $('submit').textContent = 'Zet me op de lijst';
+      $('foutAlgemeen').textContent = 'Er ging iets mis. Probeer het zo nog eens.';
+      $('verzend').disabled = false;
+      $('verzend').textContent = 'Zet me op de lijst';
     }
   });
 
-  function showDone(){ $('form').style.display = 'none'; document.querySelector('h2').style.display='none'; document.querySelector('.sub').style.display='none'; $('done').style.display = 'block'; $('done').scrollIntoView({behavior:'smooth', block:'center'}); }
-
-  // achtergrond-carrousel: echte cross-dissolve (onderste laag blijft gevuld, nieuwe vloeit erover)
-  (function(){
-    var IMAGES=['bg-metro.jpg','bg-boot.jpg','bg-speeltuin.jpg'];
-    var A=document.getElementById('bgA'), B=document.getElementById('bgB');
-    if(!A||!B) return;
-    IMAGES.forEach(function(s){ var im=new Image(); im.src=s; });
-    A.style.backgroundImage="url('"+IMAGES[0]+"')"; A.style.opacity=1; A.style.zIndex=2; B.style.zIndex=1;
-    if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var front=A, back=B, i=0;
-    setInterval(function(){
-      i=(i+1)%IMAGES.length;
-      back.style.backgroundImage="url('"+IMAGES[i]+"')";
-      back.style.opacity=0; back.style.zIndex=3; front.style.zIndex=2;
-      requestAnimationFrame(function(){ requestAnimationFrame(function(){ back.style.opacity=1; }); });
-      setTimeout(function(){ front.style.opacity=0; var t=front; front=back; back=t; }, 1700);
-    }, 7000);
-  })();
+  function toonGelukt() {
+    $('form').style.display = 'none';
+    $('gelukt').style.display = 'flex';
+    $('gelukt').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 </script>
 </body>
 </html>
