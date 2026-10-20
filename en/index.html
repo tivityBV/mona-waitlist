@@ -106,6 +106,14 @@
   .sticker img{width:92px;height:76px;object-fit:contain}
   .sticker span{font-weight:600;font-size:15px;letter-spacing:.14em;color:var(--room)}
 
+  /* Introblok onder de hero. Zelfde achtergrond als de hero, zodat het als
+     opening leest en niet als een eigen band. De laatste regel staat apart en
+     zwaarder, want dat is de zin waar de alinea naartoe werkt. */
+  .intro{padding:0 var(--pad) clamp(48px,7vw,88px)}
+  .intro .mid{max-width:760px;text-align:center}
+  .intro p{font-size:clamp(17px,1.5vw,19px);line-height:1.7;text-wrap:pretty}
+  .intro .slot{margin-top:18px;font-weight:600;color:var(--mos-diep)}
+
   /* Verhaalband */
   .verhaal{background:var(--salie);padding:var(--band) var(--pad)}
   .verhaal .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
@@ -268,6 +276,18 @@
     </div>
   </div>
 </header>
+
+<section class="intro">
+  <div class="mid">
+    <p>It is a technological miracle, really. Wherever you are, you are in touch
+    with the whole world. And the whole world is in touch with you, all day, from
+    a family photo to a headline you did not ask for. Reaching for your phone
+    stopped being a decision and became a reflex. Going online was something you
+    chose.</p>
+    <p class="slot">Mona helps you interrupt the update reflex and decide when and
+    where you are reading that message.</p>
+  </div>
+</section>
 
 <section class="verhaal">
   <div class="mid">
