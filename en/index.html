@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="x-default" href="https://monaoffline.com/">
 <meta name="description" content="Your phone is offline by default. You dial in when you want something, and then you hang up. Join the waitlist.">
 <meta property="og:title" content="Mona | Make Offline Normal Again">
-<meta property="og:description" content="Reaching for your phone stopped being a decision and became a reflex. Mona helps you interrupt it. Join the waitlist.">
+<meta property="og:description" content="Reaching for your phone used to be your own decision, but it has become a reflex. Mona helps you interrupt it. Join the waitlist.">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#2F4A3A">
@@ -82,7 +82,7 @@
   /* Hero */
   header{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));
     gap:clamp(32px,5vw,72px);align-items:center;max-width:1360px;margin:0 auto;
-    padding:clamp(24px,4vw,56px) var(--pad) clamp(56px,7vw,104px)}
+    padding:clamp(24px,4vw,56px) var(--pad) clamp(28px,4vw,56px)}
   .heroteksten{display:flex;flex-direction:column;align-items:center;text-align:center;gap:30px}
   h1{margin:0}
   .payoff{width:100%;max-width:620px;height:auto}
@@ -90,8 +90,8 @@
      slotregel vragen om een iets kleinere letter en een bredere kolom dan de
      korte subregel uit de ontwerpbriefing, anders wordt het een muur. */
   .subregel{display:flex;flex-direction:column;gap:14px;max-width:580px}
-  .subregel p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;text-wrap:pretty}
-  .subregel .slot{font-weight:600;color:var(--mos-diep)}
+  .subregel p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;text-wrap:balance}
+  .subregel .slot{font-weight:600;color:var(--mos-diep);font-size:clamp(17px,1.5vw,19px)}
   .knoppen{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
   .knop-honing{text-decoration:none;background:var(--honing);color:var(--mos-diep);
     padding:16px 24px;border-radius:14px;font-weight:600;font-size:16px}
@@ -112,7 +112,7 @@
     /* De beelden komen vol uit de camera en dat leest als gemaakt. Een flinke
        stap terug in verzadiging haalt die glans eraf en past bij het palet.
        Als filter en niet in de bestanden zelf, zodat eraan te draaien valt. */
-    filter:saturate(.72)}
+    filter:saturate(.75)}
   .herofoto .laag.aan{opacity:1}
   @media (prefers-reduced-motion:reduce){.herofoto .laag{transition:none}}
   .chip{position:absolute;left:18px;top:18px;background:var(--room);padding:8px 12px;
@@ -127,9 +127,9 @@
 
   /* Het vervolg van de introtekst, onder de hero. Zelfde achtergrond, zodat het
      als doorlopende opening leest en niet als een eigen kleurband. */
-  .intro{padding:0 var(--pad) clamp(44px,6vw,80px)}
-  .intro .mid{max-width:720px;text-align:center}
-  .intro p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;text-wrap:pretty}
+  .intro{padding:0 var(--pad) clamp(40px,5vw,72px)}
+  .intro .mid{max-width:640px;text-align:center}
+  .intro p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;text-wrap:balance}
 
   /* Verhaalband */
   .verhaal{background:var(--salie);padding:var(--band) var(--pad)}
@@ -279,8 +279,8 @@
   <div class="heroteksten">
     <h1><img class="payoff" src="/assets/mona-tagline-mos.png" alt="Make Offline Normal Again"></h1>
     <div class="subregel">
-      <p>It is a technological miracle, really. Wherever you are, you are in touch
-      with the whole world.</p>
+      <p>It is a technological miracle, really.<br>
+      Wherever you are, you are in touch with the whole world.</p>
       <p class="slot">Mona helps you interrupt the update reflex and decide when and
       where you are reading that message.</p>
     </div>
@@ -304,8 +304,9 @@
 <section class="intro">
   <div class="mid">
     <p>And the whole world is in touch with you, all day, from a family photo to a
-    headline you did not ask for. Reaching for your phone stopped being a decision
-    and became a reflex. Going online was something you chose.</p>
+    headline you did not ask for.<br>
+    Reaching for your phone used to be your own decision, but it has become a
+    reflex. Going online was something you chose.</p>
   </div>
 </section>
 
