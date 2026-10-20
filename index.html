@@ -80,7 +80,7 @@
 
   /* Hero */
   header{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));
-    gap:clamp(32px,5vw,72px);align-items:center;max-width:1360px;margin:0 auto;
+    gap:clamp(32px,5vw,72px);align-items:center;max-width:1560px;margin:0 auto;
     padding:clamp(24px,4vw,56px) var(--pad) clamp(28px,4vw,56px)}
   /* Links uitgelijnd en niet gecentreerd. De ontwerpbriefing centreerde deze
      kolom, maar die rekende op een subregel van een of twee regels. Met zes
@@ -88,11 +88,11 @@
      te rusten. Nu lopen payoff, tekst, belofte en knoppen langs een linkerlijn. */
   .heroteksten{display:flex;flex-direction:column;align-items:flex-start;gap:26px}
   h1{margin:0}
-  .payoff{width:100%;max-width:620px;height:auto}
+  .payoff{width:100%;max-width:660px;height:auto;margin-left:-3.3%}
   /* De introtekst staat in de hero, boven de knoppen. Vijf zinnen plus een
      slotregel vragen om een iets kleinere letter en een bredere kolom dan de
      korte subregel uit de ontwerpbriefing, anders wordt het een muur. */
-  .subregel{display:flex;flex-direction:column;gap:14px;max-width:580px}
+  .subregel{display:flex;flex-direction:column;gap:14px;max-width:680px}
   .subregel p{font-size:clamp(16px,1.4vw,18px);line-height:1.7}
   /* Elke regel die de eigenaar aangaf is een eigen blokje. Met een <br> balanceert
      de browser de hele alinea als een geheel, en dan blijft er een los woord op de
@@ -110,7 +110,7 @@
   /* Breder dan hoog. Met 46vw werd het vlak in de twee-koloms hero hoger dan
      breed, en dan staat er een staande foto in een liggend ontwerp. Op 1280
      levert dit ongeveer 1,4 staand tegenover liggend op, op een telefoon ook. */
-  .herofoto{position:relative;height:clamp(240px,30vw,400px)}
+  .herofoto{position:relative;height:clamp(290px,36.3vw,484px)}
   /* Carrousel: drie beelden over elkaar, en alleen de bovenste is zichtbaar.
      Overvloeien met opacity en niet met een wissel van background-image, zodat
      de browser niets opnieuw hoeft te tekenen tijdens de overgang. Zet de
@@ -272,8 +272,9 @@
     <div class="subregel">
       <p><span>Het is eigenlijk een technologisch wonder.</span>
       <span>Waar je ook bent, je staat in contact met de hele wereld.</span>
-      <span>En de hele wereld staat in contact met jou, de hele dag, van een
-      familiefoto tot een krantenkop waar je niet om vroeg.</span>
+      <span>En de hele wereld staat in contact met jou.</span>
+      <span>De hele dag, en de hele nacht.</span>
+      <span>Van een familiefoto tot een krantenkop waar je niet om vroeg.</span>
       <span>Naar je telefoon grijpen was ooit jouw beslissing maar is een reflex
       geworden. Online gaan was iets wat je koos.</span></p>
       <p class="slot">Mona helpt je de updatereflex te onderbreken, zodat jij
