@@ -89,8 +89,13 @@
      slotregel vragen om een iets kleinere letter en een bredere kolom dan de
      korte subregel uit de ontwerpbriefing, anders wordt het een muur. */
   .subregel{display:flex;flex-direction:column;gap:14px;max-width:580px}
-  .subregel p{font-size:clamp(16px,1.4vw,18px);line-height:1.7;text-wrap:balance}
-  .subregel .slot{font-weight:600;color:var(--mos-diep);font-size:clamp(17px,1.5vw,19px)}
+  .subregel p{font-size:clamp(16px,1.4vw,18px);line-height:1.7}
+  /* Elke regel die de eigenaar aangaf is een eigen blokje. Met een <br> balanceert
+     de browser de hele alinea als een geheel, en dan blijft er een los woord op de
+     laatste regel staan. Per blokje balanceert hij elke zin apart. */
+  .subregel p span,.intro p span{display:block;text-wrap:balance}
+  .subregel .slot{font-weight:600;color:var(--mos-diep);font-size:clamp(17px,1.5vw,19px);
+    text-wrap:balance}
   .knoppen{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
   .knop-honing{text-decoration:none;background:var(--honing);color:var(--mos-diep);
     padding:16px 24px;border-radius:14px;font-weight:600;font-size:16px}
@@ -278,8 +283,8 @@
   <div class="heroteksten">
     <h1><img class="payoff" src="/assets/mona-tagline-mos.png" alt="Make Offline Normal Again"></h1>
     <div class="subregel">
-      <p>Het is eigenlijk een technologisch wonder.<br>
-      Waar je ook bent, je staat in contact met de hele wereld.</p>
+      <p><span>Het is eigenlijk een technologisch wonder.</span>
+      <span>Waar je ook bent, je staat in contact met de hele wereld.</span></p>
       <p class="slot">Mona helpt je de updatereflex te onderbreken, zodat jij
       bepaalt wanneer en waar je dat bericht leest.</p>
     </div>
@@ -302,10 +307,10 @@
 
 <section class="intro">
   <div class="mid">
-    <p>En de hele wereld staat in contact met jou, de hele dag, van een familiefoto
-    tot een krantenkop waar je niet om vroeg.<br>
-    Naar je telefoon grijpen was ooit jouw beslissing maar is een reflex geworden.
-    Online gaan was iets wat je koos.</p>
+    <p><span>En de hele wereld staat in contact met jou, de hele dag, van een
+    familiefoto tot een krantenkop waar je niet om vroeg.</span>
+    <span>Naar je telefoon grijpen was ooit jouw beslissing maar is een reflex
+    geworden. Online gaan was iets wat je koos.</span></p>
   </div>
 </section>
 
