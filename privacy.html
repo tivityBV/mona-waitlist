@@ -148,8 +148,13 @@
             scherm staat alleen op pagina's van derden, en iOS 26.4 heeft het gedrag
             veranderd. "In de instellingen van je toestel" blijft dus staan.
          3. Bewaartermijnen bij SMTP2GO (35 dagen standaard) en Vercel (1 uur op
-            Hobby, 1 dag op Pro) staan er niet in, want ze hangen van het abonnement
-            af en veranderen zonder dat wij iets doen.
+            Hobby, 1 dag op Pro) staan sinds 19 oktober in de tekst, met erbij dat
+            ze van het abonnement afhangen en voor onze eigen accounts nog niet
+            bevestigd zijn. Zodra dat wel zo is, hoort hier een harde termijn te
+            staan en kan die zin weg.
+         4. Wat Google bij de ping ziet (het IP-adres van de verbinding) staat er
+            sinds 19 oktober bij. Dat volgt uit hoe HTTP werkt en niet uit onze
+            code, dus er valt niets aan te verifiëren in modem.html.
          Nog open: of de ping vanuit WKWebView daadwerkelijk aankomt. -->
     <h2>Welke gegevens we verwerken</h2>
     <p>Er zijn precies twee stromen. Allebei zijn ze optioneel, allebei zet je ze
@@ -177,6 +182,10 @@
     kant.</p>
     <p><strong>Waarvoor.</strong> Om te zien of mensen Mona blijven gebruiken. Dat is
     de enige vraag die we ermee stellen.</p>
+    <p><strong>Wat Google daarbij ziet.</strong> Het bericht gaat naar Google Apps
+    Script, en zoals bij elk verzoek over internet ziet de ontvanger het IP-adres
+    waarmee je toestel de verbinding maakt. Dat hoort niet bij de inhoud van het
+    bericht, wij slaan het nergens op en we gebruiken het nergens voor.</p>
     <p><strong>Grondslag.</strong> Je toestemming. Je geeft die op een scherm met twee
     knoppen, en je kunt hem daarna altijd intrekken met de schakelaar in de app.</p>
 
@@ -227,7 +236,8 @@
     kiestoon te zetten.</p>
     <p>Daarvoor vraagt Mona je om toestemming voor jezelf (individuele autorisatie).
     Er is geen ouder, beheerder of ander persoon die meekijkt. Je kunt de
-    toestemming altijd intrekken in de instellingen van je toestel.</p>
+    toestemming altijd intrekken in de instellingen van je toestel, onder
+    Schermtijd.</p>
     <p>Welke apps dat zijn, kies je zelf met de systeemkiezer van Apple. Die keuze
     bewaart Mona alleen op je toestel en stuurt Mona nergens heen. Apple geeft Mona
     geen lijst van je apps: de keuze bestaat voor Mona uit codes die Mona niet naar
@@ -256,6 +266,12 @@
     installatiecode. Daarna verwijderen we de regels.</p>
     <p>Wachtlijstaanmeldingen: tot je je afmeldt, en uiterlijk tot 12 maanden na de
     lancering van de app.</p>
+    <p>Bij SMTP2GO en Vercel ligt de termijn niet bij ons, maar bij hun eigen beleid,
+    en daar hangt hij af van het abonnement. SMTP2GO noemt in zijn documentatie 35
+    dagen als standaard voor e-mailgegevens. Vercel bewaart de logregels van zijn
+    functies kort, van een uur tot enkele dagen. Welke termijn voor onze eigen
+    accounts geldt, staat hier nog niet vast, en we vullen het aan zodra we het bij
+    beide diensten hebben bevestigd.</p>
     <p>Vraag je eerder om verwijdering, dan doen we dat eerder. Zie hieronder.</p>
 
     <h2>Je rechten</h2>
