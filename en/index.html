@@ -99,13 +99,20 @@
   .knop-rand{text-decoration:none;border:2px solid var(--mos);color:var(--mos);
     padding:14px 22px;border-radius:14px;font-weight:600;font-size:16px}
   .knop-rand:hover{background:var(--mos);color:var(--room)}
-  .herofoto{position:relative;height:clamp(360px,46vw,600px)}
+  /* Breder dan hoog. Met 46vw werd het vlak in de twee-koloms hero hoger dan
+     breed, en dan staat er een staande foto in een liggend ontwerp. Op 1280
+     levert dit ongeveer 1,4 staand tegenover liggend op, op een telefoon ook. */
+  .herofoto{position:relative;height:clamp(240px,30vw,400px)}
   /* Carrousel: drie beelden over elkaar, en alleen de bovenste is zichtbaar.
      Overvloeien met opacity en niet met een wissel van background-image, zodat
      de browser niets opnieuw hoeft te tekenen tijdens de overgang. Zet de
      bezoeker beweging uit, dan blijft het eerste beeld gewoon staan. */
   .herofoto .laag{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    border-radius:28px;opacity:0;transition:opacity 1.6s ease-in-out}
+    border-radius:28px;opacity:0;transition:opacity 1.6s ease-in-out;
+    /* De beelden komen vol uit de camera en dat leest als gemaakt. Een flinke
+       stap terug in verzadiging haalt die glans eraf en past bij het palet.
+       Als filter en niet in de bestanden zelf, zodat eraan te draaien valt. */
+    filter:saturate(.72)}
   .herofoto .laag.aan{opacity:1}
   @media (prefers-reduced-motion:reduce){.herofoto .laag{transition:none}}
   .chip{position:absolute;left:18px;top:18px;background:var(--room);padding:8px 12px;
