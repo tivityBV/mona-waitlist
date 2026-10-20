@@ -8,6 +8,7 @@ Statische site, negen pagina's zonder bouwstap, met een wachtlijst-formulier dat
 - `feedback.html`: het formulier voor testers, blijft Nederlands.
 - `en/index.html`, `en/about.html`, `en/contact.html`, `en/privacy.html`: de Engelse tegenhangers.
 - `modem.mp3`: het inbelgeluid (hero-knop).
+- `CHANGELOG.md`: wat er aan de site veranderde en waarom.
 - `schema.sql`: draai dit één keer in Supabase (waitlist-tabel + insert-only RLS).
 
 ## Supabase koppelen (2 plekken invullen)
