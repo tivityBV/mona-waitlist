@@ -15,7 +15,7 @@ familiefoto tot een krantenkop". (`a9b985f`)
 gaan was ooit je eigen beslissing." en in het Engels "Going online used to be
 your own decision." Die vervangt de zin over naar je telefoon grijpen en de
 reflex, en ook "Online gaan was iets wat je koos", dat er nu dubbel in zou
-zitten. De og:description is bewust ongewijzigd gebleven.
+zitten. De og:description, de tekst bij een gedeelde link, volgt dezelfde zin.
 
 ---
 
