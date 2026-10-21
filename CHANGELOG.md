@@ -11,6 +11,12 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 to a headline", zodat het Engels gelijkloopt met het Nederlandse "Van een
 familiefoto tot een krantenkop". (`a9b985f`)
 
+**Intro op de homepage.** De laatste regel van de subregel werd "Het internet op
+gaan was ooit je eigen beslissing." en in het Engels "Going online used to be
+your own decision." Die vervangt de zin over naar je telefoon grijpen en de
+reflex, en ook "Online gaan was iets wat je koos", dat er nu dubbel in zou
+zitten. De og:description is bewust ongewijzigd gebleven.
+
 ---
 
 ## 20 oktober 2026
