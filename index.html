@@ -172,9 +172,16 @@
     background:var(--honing);color:var(--mos-diep);border:none;padding:18px 26px;
     border-radius:14px;font-family:inherit;font-weight:600;font-size:17px;cursor:pointer}
   .belknop:hover{background:var(--honing-hover)}
+  /* Het echte apparaat naast de nagebootste terminal. Licht gedraaid met dezelfde
+     harde schaduw als de kaarten elders, en dezelfde ontzadiging als de hero. */
+  .modem{margin:6px 0 0;max-width:330px;transform:rotate(-2deg)}
+  .modem img{width:100%;height:190px;object-fit:cover;border-radius:14px;
+    filter:saturate(.6);box-shadow:8px 8px 0 rgba(0,0,0,.18)}
+  .modem figcaption{margin-top:12px;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:rgba(242,234,213,.5)}
   .terminal{background:var(--mos-diep);border-radius:22px;padding:30px 30px 26px;
-    min-height:300px;display:flex;flex-direction:column;justify-content:space-between;
-    gap:24px;box-shadow:8px 8px 0 rgba(0,0,0,.18)}
+    min-height:300px;display:flex;flex-direction:column;gap:24px;
+    box-shadow:8px 8px 0 rgba(0,0,0,.18)}
   .leds{display:flex;justify-content:space-between;align-items:center}
   .leds div{display:flex;gap:8px}
   .led{width:11px;height:11px;border-radius:50%;background:rgba(242,234,213,.18)}
@@ -187,7 +194,7 @@
   .regels .honing{color:var(--honing)}
   .regels .ruis{color:rgba(242,234,213,.75)}
   .regels .duur{color:rgba(242,234,213,.55)}
-  .lijnweg{display:flex;align-items:center;gap:16px}
+  .lijnweg{display:flex;align-items:center;gap:16px;margin-top:auto}
   /* Zonder deze regel wint display:flex van het hidden-attribuut, en dan staat de
      afloop van het ritueel al in beeld voordat er is ingebeld. */
   .lijnweg[hidden]{display:none}
@@ -347,6 +354,10 @@
       <h2>Herken je &rsquo;m nog?</h2>
       <p class="uitleg">Zet je geluid aan en bel in. Zo voelt online gaan met Mona: een klein ritueel, met een begin en een eind.</p>
       <button class="belknop" id="belknop" type="button">&#9654; Bel in en hoor de lijn</button>
+      <figure class="modem">
+        <img src="/assets/modem.webp" alt="Een US Robotics Sportster-modem uit de jaren negentig op een bureau, naast een oude computer" width="1408" height="768">
+        <figcaption>US Robotics Sportster, 14.400 bps</figcaption>
+      </figure>
     </div>
     <div class="terminal">
       <div class="leds">

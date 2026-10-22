@@ -5,6 +5,34 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ---
 
+## 22 oktober 2026
+
+**De drie kolommen in de verhaalband delen nu dezelfde rasterlijnen** (subgrid).
+De bodytekst in de middelste kolom begon 37 pixels hoger, precies een kopregel,
+omdat "Je bent altijd online." een regel is en de andere twee koppen er twee
+zijn. In het Engels viel het niet op. Opgelost met gedeelde rijen in plaats van
+een minimale hoogte, zodat het ook klopt als een kop drie regels wordt.
+
+**De drie gezichtjes hebben een eigen kleur**, via een masker in plaats van een
+nieuwe export: de png levert de tekening, de css de kleur. Groen, rood en
+#FFD400. Dat laatste is bewust geler dan het eerste voorstel, want #FF7A00 stond
+qua helderheid te dicht bij het rood. Ze zweven los op het salie, op verzoek.
+Dat kost contrast: groen haalt daar 1,89 staat tot 1, geel-oranje 1,79 en rood
+1,39. Voor een sierlijntekening mag dat. Met een donker vlakje eronder haalden
+dezelfde kleuren 9,51, 4,93 en 3,63, voor als het ooit terug moet.
+
+**De afloop van het ritueel stond in beeld voordat er was ingebeld.** De regel
+"Lijn weg. Tijd voor buiten." draagt een hidden-attribuut, maar de eigen
+display:flex won daarvan. Dat gaf de clou weg en is nu rechtgezet. Daarbij viel
+de terminaltekst naar de onderkant van het venster, want dat verdeelde zijn
+ruimte over drie blokken waarvan er een verdween; de regels staan nu bovenaan en
+de afsluiter plakt onderaan.
+
+**De modemfoto staat in de inbelband**, onder de belknop: een US Robotics
+Sportster van de oprichter zelf, met op het schermpje op de achtergrond CONNECT
+14400. Het echte apparaat naast de nagebootste terminal, in dezelfde ontzadiging
+als de hero en met dezelfde harde schaduw als de kaarten elders.
+
 ## 21 oktober 2026
 
 **Engelse copy.** "For a family photo to a headline" werd "From a family photo
