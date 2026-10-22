@@ -51,6 +51,7 @@
   :root{
     --room:#F2EAD5;--room-input:#FBF7EC;--salie:#8FA98A;--ochtendblauw:#B9D0D6;
     --mos:#2F4A3A;--mos-diep:#22362A;--honing:#DDA552;--honing-hover:#E8B566;
+    --fluor-groen:#39FF14;--fluor-rood:#FF3B30;--fluor-oranje:#FF7A00;
     --pad:clamp(20px, 5vw, 72px);--band:clamp(64px, 8vw, 112px)
   }
   *{box-sizing:border-box;margin:0}
@@ -140,7 +141,19 @@
     .verhaal .mid{row-gap:clamp(28px,4vw,56px)}
     .verhaal article{display:flex;flex-direction:column;gap:18px}
   }
-  .verhaal img{width:86px;height:70px;object-fit:contain;object-position:left}
+  /* De gezichtjes zijn transparante pngs, dus ze werken als masker en kunnen elke
+     kleur aannemen. De tekening komt uit --gezichtbron, de kleur uit --gezichtkleur.
+     Het donkere vlakje eronder is geen versiering maar een voorwaarde: op het
+     saliegroen haalt fluorescerend oranje 1,02 staat tot 1 en groen 1,89, dus daar
+     verdwijnt de lijn. Op mos-diep halen dezelfde kleuren 4,93 en 9,51. */
+  .verhaal .gezichtvak{display:inline-flex;align-items:center;justify-content:center;
+    width:104px;height:84px;border-radius:16px;background:var(--mos-diep)}
+  .verhaal .gezicht{width:72px;height:58px;background-color:var(--gezichtkleur);
+    -webkit-mask:var(--gezichtbron) no-repeat center/contain;
+    mask:var(--gezichtbron) no-repeat center/contain}
+  .verhaal .toen{--gezichtbron:url(/assets/face-wink-mos.png);--gezichtkleur:var(--fluor-groen)}
+  .verhaal .nu{--gezichtbron:url(/assets/face-neutral-mos.png);--gezichtkleur:var(--fluor-rood)}
+  .verhaal .mona{--gezichtbron:url(/assets/face-x-mos.png);--gezichtkleur:var(--fluor-oranje)}
   .verhaal h2{font-size:34px;line-height:1.08;color:var(--mos-diep)}
   .verhaal p{font-size:16px;line-height:1.75;text-wrap:pretty}
 
@@ -305,19 +318,19 @@
 <section class="verhaal">
   <div class="mid">
     <article>
-      <img src="/assets/face-wink-mos.png" alt="" width="86" height="70">
+      <span class="gezichtvak toen"><span class="gezicht"></span></span>
       <span class="oog">Then</span>
       <h2>Offline was simply normal.</h2>
       <p>You went online only when you decided to. To check your mail. To look something up. Or to read the news.</p>
     </article>
     <article>
-      <img src="/assets/face-neutral-mos.png" alt="" width="86" height="70">
+      <span class="gezichtvak nu"><span class="gezicht"></span></span>
       <span class="oog">Now</span>
       <h2>You are always online.</h2>
       <p>For most people the reflex to reach for their phone is too strong to resist. Even in the most beautiful place.</p>
     </article>
     <article>
-      <img src="/assets/face-x-mos.png" alt="" width="86" height="70">
+      <span class="gezichtvak mona"><span class="gezicht"></span></span>
       <span class="oog">Mona</span>
       <h2>Dial in, like the old days.</h2>
       <p>Mona makes that reflex a little stiffer. It slows you down and your time online is rationed, so an hour does not disappear into cat videos.</p>
