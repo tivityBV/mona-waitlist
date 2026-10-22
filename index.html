@@ -158,8 +158,11 @@
 
   /* Inbelband */
   .inbellen{background:var(--mos);color:var(--room);padding:var(--band) var(--pad)}
-  .inbellen .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));
-    gap:clamp(32px,5vw,72px);align-items:center}
+  /* Een kolom, in leesvolgorde: kop en tekst, dan het echte apparaat, dan wat het
+     deed. Foto en terminal delen dezelfde breedte. */
+  .inbellen .mid{display:flex;flex-direction:column;gap:clamp(28px,4vw,44px);
+    align-items:flex-start}
+  .inbellen .rechts{width:100%;max-width:720px}
   .inbellen .kolom{display:flex;flex-direction:column;gap:22px}
   .inbellen h2{font-size:clamp(38px,4.4vw,56px);line-height:1.04}
   .inbellen .uitleg{font-size:17px;line-height:1.7;color:rgba(242,234,213,.85);max-width:460px}
@@ -183,7 +186,7 @@
   .modem figcaption{margin:12px 4px 2px;font-size:12px;letter-spacing:.16em;
     text-transform:uppercase;color:rgba(242,234,213,.5)}
   .terminal{background:var(--mos-diep);border-radius:22px;padding:30px 30px 26px;
-    min-height:300px;display:flex;flex-direction:column;gap:24px;
+    min-height:230px;display:flex;flex-direction:column;gap:24px;
     box-shadow:8px 8px 0 rgba(0,0,0,.18)}
   .leds{display:flex;justify-content:space-between;align-items:center}
   .leds div{display:flex;gap:8px}
