@@ -163,7 +163,11 @@
      deed. Foto en terminal delen dezelfde breedte. */
   .inbellen .mid{display:flex;flex-direction:column;gap:clamp(28px,4vw,44px);
     align-items:flex-start}
-  .inbellen .rechts{width:100%;max-width:720px}
+  /* Foto links, terminal rechts. De plek van de terminal wordt altijd
+     gereserveerd, ook als hij nog onzichtbaar is, anders springt de foto opzij op
+     het moment dat je inbelt. */
+  .inbellen .rechts{width:100%;display:grid;align-items:start;gap:24px;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
   .inbellen .kolom{display:flex;flex-direction:column;gap:22px}
   .inbellen h2{font-size:clamp(38px,4.4vw,56px);line-height:1.04}
   .inbellen .uitleg{font-size:17px;line-height:1.7;color:rgba(242,234,213,.85);max-width:460px}
@@ -179,7 +183,6 @@
   /* Het echte apparaat boven de nagebootste terminal, in hetzelfde kader: zelfde
      achtergrond, zelfde ronding en dezelfde harde schaduw. De foto houdt zijn
      eigen verhouding, dus er wordt niets afgesneden. */
-  .inbellen .rechts{display:flex;flex-direction:column;gap:24px}
   .modem{margin:0;background:var(--mos-diep);border-radius:22px;padding:14px;
     box-shadow:8px 8px 0 rgba(0,0,0,.18)}
   .modem img{width:100%;height:auto;aspect-ratio:1408/768;object-fit:cover;
@@ -188,7 +191,18 @@
     text-transform:uppercase;color:rgba(242,234,213,.5)}
   .terminal{background:var(--mos-diep);border-radius:22px;padding:30px 30px 26px;
     min-height:230px;display:flex;flex-direction:column;gap:24px;
-    box-shadow:8px 8px 0 rgba(0,0,0,.18)}
+    box-shadow:8px 8px 0 rgba(0,0,0,.18);
+    /* Onzichtbaar tot er wordt ingebeld, dan veert hij op. De vertraging op
+       visibility houdt hem uit de voorleesvolgorde zolang hij niet in beeld is. */
+    opacity:0;visibility:hidden;transform:scale(.88) translateY(10px);
+    transition:opacity .3s ease,transform .5s cubic-bezier(.34,1.56,.64,1),
+      visibility 0s linear .5s}
+  .terminal.aan{opacity:1;visibility:visible;transform:none;
+    transition:opacity .25s ease,transform .5s cubic-bezier(.34,1.56,.64,1),
+      visibility 0s}
+  @media (prefers-reduced-motion:reduce){
+    .terminal,.terminal.aan{transition:none;transform:none}
+  }
   .leds{display:flex;justify-content:space-between;align-items:center}
   .leds div{display:flex;gap:8px}
   .led{width:11px;height:11px;border-radius:50%;background:rgba(242,234,213,.18)}
@@ -367,7 +381,7 @@
         <img src="/assets/modem.webp" alt="A US Robotics Sportster modem from the nineties on a desk, next to an old computer" width="1408" height="768">
         <figcaption>US Robotics Sportster, 14,400 bps</figcaption>
       </figure>
-    <div class="terminal">
+    <div class="terminal" id="terminal">
       <div class="leds">
         <div>
           <span class="led" id="ledTx"></span>
@@ -534,6 +548,7 @@
 
   function bel() {
     stop();
+    $('terminal').classList.add('aan');
     huidigeStap = -1;
     zet(1);
     try { modem.pause(); modem.currentTime = 0; } catch (e) {}

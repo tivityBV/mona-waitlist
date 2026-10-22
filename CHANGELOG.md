@@ -28,8 +28,10 @@ de terminaltekst naar de onderkant van het venster, want dat verdeelde zijn
 ruimte over drie blokken waarvan er een verdween; de regels staan nu bovenaan en
 de afsluiter plakt onderaan.
 
-**De modemfoto staat in de inbelband**, boven de terminal en in hetzelfde
-kader: een US Robotics
+**De modemfoto staat in de inbelband**, links naast de terminal en in hetzelfde
+kader. Het terminalvenster is onzichtbaar tot je op de belknop drukt en veert
+dan tevoorschijn; zijn plek wordt wel altijd gereserveerd, anders springt de foto
+opzij op het moment van klikken: een US Robotics
 Sportster van de oprichter zelf, met op het schermpje op de achtergrond CONNECT
 14400. Het echte apparaat naast de nagebootste terminal, in dezelfde ontzadiging
 als de hero en met dezelfde harde schaduw als de kaarten elders.
