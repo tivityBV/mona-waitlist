@@ -51,7 +51,7 @@
   :root{
     --room:#F2EAD5;--room-input:#FBF7EC;--salie:#8FA98A;--ochtendblauw:#B9D0D6;
     --mos:#2F4A3A;--mos-diep:#22362A;--honing:#DDA552;--honing-hover:#E8B566;
-    --fluor-groen:#39FF14;--fluor-rood:#FF3B30;--fluor-oranje:#FF7A00;
+    --fluor-groen:#39FF14;--fluor-rood:#FF3B30;--fluor-oranje:#FFD400;
     --pad:clamp(20px, 5vw, 72px);--band:clamp(64px, 8vw, 112px)
   }
   *{box-sizing:border-box;margin:0}
@@ -143,14 +143,14 @@
   }
   /* De gezichtjes zijn transparante pngs, dus ze werken als masker en kunnen elke
      kleur aannemen. De tekening komt uit --gezichtbron, de kleur uit --gezichtkleur.
-     Het donkere vlakje eronder is geen versiering maar een voorwaarde: op het
-     saliegroen haalt fluorescerend oranje 1,02 staat tot 1 en groen 1,89, dus daar
-     verdwijnt de lijn. Op mos-diep halen dezelfde kleuren 4,93 en 9,51. */
-  .verhaal .gezichtvak{display:inline-flex;align-items:center;justify-content:center;
-    width:104px;height:84px;border-radius:16px;background:var(--mos-diep)}
-  .verhaal .gezicht{width:72px;height:58px;background-color:var(--gezichtkleur);
-    -webkit-mask:var(--gezichtbron) no-repeat center/contain;
-    mask:var(--gezichtbron) no-repeat center/contain}
+     Ze zweven los op het salie, op verzoek van de eigenaar. Dat kost contrast:
+     groen haalt daar 1,89 staat tot 1, geel-oranje 1,79 en rood 1,39. Voor een
+     sierlijntekening mag dat, voor tekst of een knop zou het te weinig zijn. Een
+     donker vlakje eronder bracht dezelfde kleuren op 9,51, 4,93 en 3,63. */
+  .verhaal .gezichtvak{display:block;width:86px;height:70px}
+  .verhaal .gezicht{display:block;width:86px;height:70px;background-color:var(--gezichtkleur);
+    -webkit-mask:var(--gezichtbron) no-repeat left center/contain;
+    mask:var(--gezichtbron) no-repeat left center/contain}
   .verhaal .toen{--gezichtbron:url(/assets/face-wink-mos.png);--gezichtkleur:var(--fluor-groen)}
   .verhaal .nu{--gezichtbron:url(/assets/face-neutral-mos.png);--gezichtkleur:var(--fluor-rood)}
   .verhaal .mona{--gezichtbron:url(/assets/face-x-mos.png);--gezichtkleur:var(--fluor-oranje)}
