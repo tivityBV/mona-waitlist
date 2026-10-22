@@ -173,12 +173,15 @@
     background:var(--honing);color:var(--mos-diep);border:none;padding:18px 26px;
     border-radius:14px;font-family:inherit;font-weight:600;font-size:17px;cursor:pointer}
   .belknop:hover{background:var(--honing-hover)}
-  /* Het echte apparaat naast de nagebootste terminal. Licht gedraaid met dezelfde
-     harde schaduw als de kaarten elders, en dezelfde ontzadiging als de hero. */
-  .modem{margin:6px 0 0;max-width:330px;transform:rotate(-2deg)}
-  .modem img{width:100%;height:190px;object-fit:cover;border-radius:14px;
-    filter:saturate(.6);box-shadow:8px 8px 0 rgba(0,0,0,.18)}
-  .modem figcaption{margin-top:12px;font-size:12px;letter-spacing:.14em;
+  /* Het echte apparaat boven de nagebootste terminal, in hetzelfde kader: zelfde
+     achtergrond, zelfde ronding en dezelfde harde schaduw. De foto houdt zijn
+     eigen verhouding, dus er wordt niets afgesneden. */
+  .inbellen .rechts{display:flex;flex-direction:column;gap:24px}
+  .modem{margin:0;background:var(--mos-diep);border-radius:22px;padding:14px;
+    box-shadow:8px 8px 0 rgba(0,0,0,.18)}
+  .modem img{width:100%;height:auto;aspect-ratio:1408/768;object-fit:cover;
+    border-radius:12px;filter:saturate(.6)}
+  .modem figcaption{margin:12px 4px 2px;font-size:12px;letter-spacing:.16em;
     text-transform:uppercase;color:rgba(242,234,213,.5)}
   .terminal{background:var(--mos-diep);border-radius:22px;padding:30px 30px 26px;
     min-height:300px;display:flex;flex-direction:column;gap:24px;
@@ -355,11 +358,12 @@
       <h2>Remember that sound?</h2>
       <p class="uitleg">Turn your sound on and dial in. This is how going online with Mona feels: a small ritual, with a beginning and an end.</p>
       <button class="belknop" id="belknop" type="button">&#9654; Dial in and hear the line</button>
+    </div>
+    <div class="rechts">
       <figure class="modem">
         <img src="/assets/modem.webp" alt="A US Robotics Sportster modem from the nineties on a desk, next to an old computer" width="1408" height="768">
         <figcaption>US Robotics Sportster, 14,400 bps</figcaption>
       </figure>
-    </div>
     <div class="terminal">
       <div class="leds">
         <div>
@@ -376,6 +380,7 @@
         <img src="/assets/face-x-honing.png" alt="" width="64" height="52">
         <span>Line gone. Time to go outside.</span>
       </div>
+    </div>
     </div>
   </div>
   <audio id="modem" src="/modem.mp3" preload="auto"></audio>
