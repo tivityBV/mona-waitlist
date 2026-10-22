@@ -129,8 +129,17 @@
   /* Verhaalband */
   .verhaal{background:var(--salie);padding:var(--band) var(--pad)}
   .verhaal .mid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
-    gap:clamp(28px,4vw,56px)}
-  .verhaal article{display:flex;flex-direction:column;gap:18px;color:var(--mos-diep)}
+    grid-template-rows:auto auto auto auto;column-gap:clamp(28px,4vw,56px);row-gap:18px}
+  /* Elke kolom valt op dezelfde vier rasterlijnen: gezicht, label, kop, tekst. Zonder
+     dit begint de tekst in de kolom met een kop van een regel hoger dan in de andere
+     twee, en dat zie je meteen. */
+  .verhaal article{display:grid;grid-template-rows:subgrid;grid-row:span 4;color:var(--mos-diep)}
+  /* Staan de drie onder elkaar, dan is dat gedeelde raster juist niet gewenst: dan
+     horen de kolommen ruim uit elkaar te liggen in plaats van 18 pixels. */
+  @media (max-width:660px){
+    .verhaal .mid{row-gap:clamp(28px,4vw,56px)}
+    .verhaal article{display:flex;flex-direction:column;gap:18px}
+  }
   .verhaal img{width:86px;height:70px;object-fit:contain;object-position:left}
   .verhaal h2{font-size:34px;line-height:1.08;color:var(--mos-diep)}
   .verhaal p{font-size:16px;line-height:1.75;text-wrap:pretty}
