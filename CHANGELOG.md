@@ -24,6 +24,12 @@ dat er tijd verstrijkt: eerst online, dan valt de lijn weg.
 "Tijd voor buiten" is geen goed Nederlands. Het Engelse "Line gone. Time to go
 outside." zei het al goed en blijft staan.
 
+**Onderschrift bij de modemfoto.** "US Robotics Sportster, 14.400 bps" werd
+"1993 dial-up modem, 14.400 bps" (EN met 14,400). Het voorstel was 1996, maar
+de Sportster 14.400 kwam rond 1992-1993 uit en in 1996 waren 28.800 en 33.600
+bps gangbaar. Het Centre for Computing History dateert hem op 1993. De
+alt-tekst van de foto noemt het merk nog wel.
+
 ---
 
 ## 22 oktober 2026
