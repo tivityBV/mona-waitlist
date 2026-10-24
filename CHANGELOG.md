@@ -15,6 +15,11 @@ CONNECT, zoals voorheen. De code telt het einde (NO CARRIER) nu af van het
 aantal regels in plaats van een vast getal, zodat een volgende regel erbij geen
 losse aanpassingen meer vraagt. (`45c0683`)
 
+**"… 7 minuten online …" werd "… 7 minuten later …"** (EN "… 7 minutes later
+…"). De reeks eindigt met NO CARRIER omdat Mona de lijn vanzelf laat vallen,
+maar zo las het alsof inbellen op ophangen uitliep. Met "later" is duidelijk
+dat er tijd verstrijkt: eerst online, dan valt de lijn weg.
+
 ---
 
 ## 22 oktober 2026
