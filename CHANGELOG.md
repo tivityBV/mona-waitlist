@@ -5,6 +5,18 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ---
 
+## 24 oktober 2026
+
+**Terminal in de inbelband.** Tussen de ruis en CONNECT verschijnt nu
+"hardware handshake…", in beide talen gelijk, in de grijze stijl van de
+ruisregel. Met geluid valt hij halverwege tussen de ruis en CONNECT, zonder
+geluid 1300 ms na de vorige regel, net als de rest. De CD-led gaat pas aan bij
+CONNECT, zoals voorheen. De code telt het einde (NO CARRIER) nu af van het
+aantal regels in plaats van een vast getal, zodat een volgende regel erbij geen
+losse aanpassingen meer vraagt. (`45c0683`)
+
+---
+
 ## 22 oktober 2026
 
 **De drie kolommen in de verhaalband delen nu dezelfde rasterlijnen** (subgrid).
