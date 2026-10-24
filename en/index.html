@@ -491,20 +491,25 @@
   const REGELS = [
     { tekst: '&gt; ATDT 0800 MONA',                klasse: 'honing' },
     { tekst: 'piieeeeee… krrrrshhh…',    klasse: 'ruis'   },
+    { tekst: 'hardware handshake…',                 klasse: 'ruis'   },
     { tekst: 'CONNECT 14400',                      klasse: ''       },
     { tekst: '… 7 minutes online …',     klasse: 'duur'   }
   ];
 
+  /* Na de laatste regel volgt NO CARRIER. */
+  const EINDE = REGELS.length + 1;
+
   /* Wanneer elke regel verschijnt. De eerste twee staan vast aan het begin van de
-     handshake, de laatste twee rekenen terug vanaf het eind van het bestand. Zo
+     handshake, de laatste twee rekenen terug vanaf het eind van het bestand en
+     "hardware handshake" valt daar precies tussenin. Zo
      blijft het kloppen als modem.mp3 ooit wordt vervangen: de opname op deze site
      duurt 19,3 seconde en die in de app 16,4, en met vaste tijden hangt CONNECT
      dan op de verkeerde plek. */
   function momenten() {
     const d = isFinite(modem.duration) && modem.duration > 6 ? modem.duration : 16.4;
-    return [0, 1.6, d - 2.8, d - 1.5];
+    return [0, 1.6, (1.6 + d - 2.8) / 2, d - 2.8, d - 1.5];
   }
-  const ZONDER_GELUID = [0, 1300, 2600, 3900, 5200];
+  const ZONDER_GELUID = [0, 1300, 2600, 3900, 5200, 6500];
 
   const modem = $('modem');
   let tellers = [], bezig = false, tijdHaak = null, huidigeStap = -1;
@@ -522,19 +527,19 @@
   }
 
   function leds(stap) {
-    const bezigNu = stap > 0 && stap < 5;
+    const bezigNu = stap > 0 && stap < EINDE;
     $('ledTx').className = 'led' + (bezigNu ? ' aan' : '');
-    $('ledRx').className = 'led' + (stap >= 2 && stap < 5 ? ' aan' : '');
-    $('ledCd').className = 'led' + (stap >= 3 && stap < 5 ? ' cd' : '');
+    $('ledRx').className = 'led' + (stap >= 2 && bezigNu ? ' aan' : '');
+    $('ledCd').className = 'led' + (stap >= 4 && bezigNu ? ' cd' : '');
   }
 
   function zet(stap) {
     // timeupdate vuurt een paar keer per seconde, dus alleen tekenen bij een echte stap.
     if (stap === huidigeStap) return;
     huidigeStap = stap;
-    bezig = stap > 0 && stap < 5;
-    if (stap === 5) {
-      toonRegels(4);
+    bezig = stap > 0 && stap < EINDE;
+    if (stap === EINDE) {
+      toonRegels(REGELS.length);
       $('regels').insertAdjacentHTML('beforeend', '<div class="honing">NO CARRIER</div>');
       $('lijnweg').hidden = false;
     } else {
@@ -543,7 +548,7 @@
     }
     leds(stap);
     $('belknop').innerHTML = bezig ? 'Dialing in…'
-      : (stap === 5 ? '&#9654; Once more' : '&#9654; Dial in and hear the line');
+      : (stap === EINDE ? '&#9654; Once more' : '&#9654; Dial in and hear the line');
   }
 
   function bel() {
@@ -571,7 +576,7 @@
     }).catch(terugval);
   }
 
-  modem.addEventListener('ended', () => { stop(); zet(5); });
+  modem.addEventListener('ended', () => { stop(); zet(EINDE); });
   $('belknop').addEventListener('click', bel);
 
 
