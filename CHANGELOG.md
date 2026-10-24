@@ -20,6 +20,10 @@ losse aanpassingen meer vraagt. (`45c0683`)
 maar zo las het alsof inbellen op ophangen uitliep. Met "later" is duidelijk
 dat er tijd verstrijkt: eerst online, dan valt de lijn weg.
 
+**"Lijn weg. Tijd voor buiten." werd "Lijn weg. Tijd om naar buiten te gaan."**
+"Tijd voor buiten" is geen goed Nederlands. Het Engelse "Line gone. Time to go
+outside." zei het al goed en blijft staan.
+
 ---
 
 ## 22 oktober 2026
