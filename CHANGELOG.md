@@ -5,6 +5,16 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ---
 
+## 28 oktober 2026
+
+**Intro op de homepage.** "Van een familiefoto" werd "Van een foto van je neefje
+in de familie-app", en de slotregel werd "Het wordt allemaal doorgeduwd, maar
+ooit was het internet op gaan je eigen beslissing." Het Engels volgt: "From a
+photo of your nephew in the family group chat" en "It all gets pushed to you,
+but going online used to be your own decision."
+
+---
+
 ## 24 oktober 2026
 
 **Terminal in de inbelband.** Tussen de ruis en CONNECT verschijnt nu
