@@ -21,6 +21,10 @@ get an invitation."). De bevestigingsmail volgt: de aparte iPhone-tekst ("Mona
 bestaat nu alleen voor Android") is weg, iPhone krijgt dezelfde wachtlijstmail
 als Android, in beide talen.
 
+**De introtekst staat 4 pixels naar rechts** (NL en EN). De payoff heeft een
+ruwe rand en de M en N beginnen iets naar binnen, waardoor de tekst op dezelfde
+lijn optisch te ver naar links stond. De knoppen blijven op de lijn.
+
 ---
 
 ## 24 oktober 2026

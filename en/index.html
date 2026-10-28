@@ -94,7 +94,10 @@
   /* De introtekst staat in de hero, boven de knoppen. Vijf zinnen plus een
      slotregel vragen om een iets kleinere letter en een bredere kolom dan de
      korte subregel uit de ontwerpbriefing, anders wordt het een muur. */
-  .subregel{display:flex;flex-direction:column;gap:14px;max-width:680px}
+  /* Optische correctie: de letters van de payoff hebben een ruwe rand en de M en N
+     staan iets naar binnen, dus de tekst op dezelfde lijn oogt te ver naar links.
+     Vier pixels erbij en hij staat er visueel onder. */
+  .subregel{display:flex;flex-direction:column;gap:14px;max-width:680px;padding-left:4px}
   .subregel p{font-size:clamp(16px,1.4vw,18px);line-height:1.7}
   /* Elke regel die de eigenaar aangaf is een eigen blokje. Met een <br> balanceert
      de browser de hele alinea als een geheel, en dan blijft er een los woord op de
