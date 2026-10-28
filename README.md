@@ -120,15 +120,14 @@ insert op public.waitlist
    -> SMTP2GO verstuurt de bevestiging
 ```
 
-**Vijf teksten, automatisch gekozen** uit de kolommen die er al zijn:
+**Drie teksten, automatisch gekozen** op de kolom `source`. iPhone en Android
+zitten allebei in de bètatest, dus `android` maakt voor de tekst niet meer uit.
 
-| `source` | `android` | Tekst |
-|---|---|---|
-| `app` | maakt niet uit | je hebt Mona al, je staat op de lijst voor nieuwe versies |
-| `waitlist` | `true` | wachtlijst, de besloten test groeit stap voor stap |
-| `waitlist` | `false` | iPhone, versie in ontwikkeling, ontwikkelaarsaccount bij Apple is rond |
-| `waitlist-en` | `true` | dezelfde wachtlijsttekst, in het Engels |
-| `waitlist-en` | `false` | dezelfde iPhone-tekst, in het Engels |
+| `source` | Tekst |
+|---|---|
+| `app` | je hebt Mona al, je staat op de lijst voor nieuwe versies |
+| `waitlist` | wachtlijst, de besloten test groeit stap voor stap |
+| `waitlist-en` | dezelfde wachtlijsttekst, in het Engels |
 
 De Engelse pagina schrijft `source` als `waitlist-en`. Zonder dat verschil krijgt
 iemand die zich op `/en/` aanmeldt een Nederlandse bevestiging terug. `lib/mail.js`

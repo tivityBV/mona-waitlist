@@ -13,9 +13,11 @@
 
 import { aanhef, verstuur } from '../lib/mail.js';
 
-// Drie Nederlandse teksten, precies de drie die ACTIELIJST punt 14b noemt, en
-// twee Engelse voor wie zich op /en/ aanmeldt. Welke het wordt volgt uit de
-// kolommen `android` en `source`, dus er is geen extra veld nodig.
+// Twee Nederlandse teksten en een Engelse voor wie zich op /en/ aanmeldt. Welke
+// het wordt volgt uit de kolom `source`, dus er is geen extra veld nodig.
+// ACTIELIJST punt 14b noemde er drie, met een eigen tekst voor iPhone. Die is op
+// 28 oktober 2026 vervallen: iPhone en Android zitten allebei in de bètatest en
+// krijgen dezelfde wachtlijsttekst.
 //
 // De pagina onder /en/ schrijft `source` als 'waitlist-en'. Zonder dat verschil
 // zou iemand die zich op de Engelse pagina aanmeldt een Nederlandse mail
@@ -41,67 +43,35 @@ function bericht(rij) {
     };
   }
 
-  if (rij.android === true) {
-    return {
-      onderwerp: 'Je staat op de wachtlijst van Mona',
-      regels: [
-        hoi + ',',
-        '',
-        'Je staat op de wachtlijst. Mona draait op dit moment in een besloten test bij een',
-        'kleine groep die de app dagelijks gebruikt, en die groep groeit stap voor stap.',
-        '',
-        'Zodra er plek is, krijg je van ons een bericht met een uitnodiging en hoe je',
-        'meedoet. Tot die tijd hoef je niets te doen.'
-      ]
-    };
-  }
-
   return {
-    onderwerp: 'Je staat op de lijst, de iPhone-versie komt eraan',
+    onderwerp: 'Je staat op de wachtlijst van Mona',
     regels: [
       hoi + ',',
       '',
-      'Je staat op de lijst. Wel even eerlijk zijn over waar je aan toe bent: Mona bestaat',
-      'nu alleen voor Android. De iPhone-versie is in ontwikkeling. Ons ontwikkelaarsaccount',
-      'bij Apple is rond, dus we zijn al druk aan het bouwen.',
+      'Je staat op de wachtlijst. Mona draait op dit moment in een besloten test bij een',
+      'kleine groep die de app dagelijks gebruikt, en die groep groeit stap voor stap.',
       '',
-      'Dat betekent dat het bij jou wat langer duurt dan bij Android. Zodra er iets te',
-      'installeren valt, ben jij een van de eersten die het hoort.'
+      'Zodra er plek is, krijg je van ons een bericht met een uitnodiging en hoe je',
+      'meedoet. Tot die tijd hoef je niets te doen.'
     ]
   };
 }
 
-// Dezelfde twee gevallen als hierboven, in het Engels. De app meldt zich nooit
+// De wachtlijsttekst van hierboven, in het Engels. De app meldt zich nooit
 // in het Engels aan, want zijn testers komen uit de Nederlandse werving.
 function berichtEngels(rij) {
   const hi = aanhef(rij.name, 'en');
 
-  if (rij.android === true) {
-    return {
-      onderwerp: 'You are on the Mona waitlist',
-      regels: [
-        hi + ',',
-        '',
-        'You are on the waitlist. Mona is running in a closed test with a small group who',
-        'use the app every day, and that group grows step by step.',
-        '',
-        'As soon as there is room, you will get a message from us with an invitation and',
-        'how to join. Until then you do not have to do anything.'
-      ]
-    };
-  }
-
   return {
-    onderwerp: 'You are on the list, the iPhone version is coming',
+    onderwerp: 'You are on the Mona waitlist',
     regels: [
       hi + ',',
       '',
-      'You are on the list. To be honest about what to expect: Mona exists for Android',
-      'only at the moment. The iPhone version is in development. Our developer account',
-      'with Apple is in place, so we are already building.',
+      'You are on the waitlist. Mona is running in a closed test with a small group who',
+      'use the app every day, and that group grows step by step.',
       '',
-      'That means it will take longer for you than for Android. As soon as there is',
-      'something to install, you will be one of the first to hear.'
+      'As soon as there is room, you will get a message from us with an invitation and',
+      'how to join. Until then you do not have to do anything.'
     ]
   };
 }

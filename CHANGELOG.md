@@ -13,6 +13,14 @@ ooit was het internet op gaan je eigen beslissing." Het Engels volgt: "From a
 photo of your nephew in the family group chat" en "It all gets pushed to you,
 but going online used to be your own decision."
 
+**iPhone en Android zitten allebei in de bètatest.** De hints op het formulier
+zeiden nog dat de iPhone-versie in ontwikkeling was en Android als eerste kwam.
+Nu is er één hint voor beide: "Mona zit in de bètatest. Zodra er plek is, krijg
+je een uitnodiging." (EN "Mona is in beta. As soon as there is room, you will
+get an invitation."). De bevestigingsmail volgt: de aparte iPhone-tekst ("Mona
+bestaat nu alleen voor Android") is weg, iPhone krijgt dezelfde wachtlijstmail
+als Android, in beide talen.
+
 ---
 
 ## 24 oktober 2026

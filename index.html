@@ -595,17 +595,15 @@
 
   /* ---------------------------------------------------------------- formulier */
   let telefoon = null;
-  const HINTS = {
-    iphone: 'De iPhone-versie is in ontwikkeling. We laten het weten zodra hij er is.',
-    android: 'De Android-versie komt als eerste. Je hoort het als je mag beginnen.'
-  };
+  // iPhone en Android zitten allebei in de bètatest, dus de hint is voor beide gelijk.
+  const HINT = 'Mona zit in de bètatest. Zodra er plek is, krijg je een uitnodiging.';
 
   document.querySelectorAll('.segment button').forEach(b => {
     b.addEventListener('click', () => {
       telefoon = b.dataset.telefoon;
       document.querySelectorAll('.segment button').forEach(x =>
         x.setAttribute('aria-pressed', String(x === b)));
-      $('telefoonHint').textContent = HINTS[telefoon];
+      $('telefoonHint').textContent = HINT;
       $('foutTelefoon').textContent = '';
     });
   });
