@@ -644,7 +644,10 @@
     $('verzend').disabled = true;
     $('verzend').textContent = 'Bezig…';
 
-    const row = { name: naam, email, android: telefoon === 'android', scroll_freq: scroll, source: 'waitlist' };
+    // Wie via monaoffline.com/beta binnenkomt heeft ?source=beta in de URL (zie
+    // api/beta.js). Zo is in Supabase te zien wie via de testlink kwam.
+    const BRON = new URLSearchParams(location.search).get('source') === 'beta' ? 'beta' : 'waitlist';
+    const row = { name: naam, email, android: telefoon === 'android', scroll_freq: scroll, source: BRON };
 
     try {
       if (CONFIGURED) {

@@ -128,6 +128,8 @@ zitten allebei in de bètatest, dus `android` maakt voor de tekst niet meer uit.
 | `app` | je hebt Mona al, je staat op de lijst voor nieuwe versies |
 | `waitlist` | wachtlijst, de besloten test groeit stap voor stap |
 | `waitlist-en` | dezelfde wachtlijsttekst, in het Engels |
+| `beta` | wachtlijsttekst, aangemeld via monaoffline.com/beta |
+| `beta-en` | dezelfde, in het Engels |
 
 De Engelse pagina schrijft `source` als `waitlist-en`. Zonder dat verschil krijgt
 iemand die zich op `/en/` aanmeldt een Nederlandse bevestiging terug. `lib/mail.js`

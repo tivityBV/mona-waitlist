@@ -8,7 +8,8 @@
 //    berichten kloppen.
 // 2. Eén adres voor beide telefoons. Een iPhone of iPad gaat naar TestFlight, Android
 //    naar BETA_ANDROID_URL (de opt-in-link van Play). Een telefoon zonder testlink
-//    (de variabele ontbreekt, of het is geen iPhone of Android) gaat naar de wachtlijst.
+//    (de variabele ontbreekt, of het is geen iPhone of Android) gaat naar de wachtlijst,
+//    met ?source=beta zodat de aanmelding in Supabase source 'beta' of 'beta-en' krijgt.
 //    Een computer krijgt /beta-telefoon: een QR-code naar dit adres, om met de
 //    telefoon te scannen. Sinds 29 okt 2026, daarvoor ging alles naar de homepage.
 // 3. Niet vindbaar. Er is niets om te indexeren, en de kop X-Robots-Tag zegt het
@@ -29,7 +30,7 @@ export default function handler(req, res) {
   let doel;
   if (ios && process.env.BETA_IOS_URL) doel = process.env.BETA_IOS_URL;
   else if (android && process.env.BETA_ANDROID_URL) doel = process.env.BETA_ANDROID_URL;
-  else if (telefoon) doel = nl ? '/#wachtlijst' : '/en/#wachtlijst';
+  else if (telefoon) doel = nl ? '/?source=beta#wachtlijst' : '/en/?source=beta#wachtlijst';
   else doel = nl ? '/beta-telefoon' : '/en/beta-phone';
 
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');

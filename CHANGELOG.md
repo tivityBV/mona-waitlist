@@ -27,6 +27,13 @@ nagelezen met een QR-lezer. Niet vindbaar: meta robots en de kop `X-Robots-Tag`
 bewust geen robots.txt-regel: een Disallow zou Google beletten de noindex te
 lezen, en robots.txt is openbaar.
 
+**Aanmeldingen via /beta zijn herkenbaar.** De telefoons zonder testlink en de
+link "Zet je op de wachtlijst" op de QR-pagina gaan naar `/?source=beta#wachtlijst`
+(EN `/en/?source=beta#wachtlijst`). Het formulier schrijft dan `source` als `beta`
+of `beta-en` in plaats van `waitlist` of `waitlist-en`, zodat in Supabase te zien
+is wie via de testlink kwam. De bevestigingsmail kiest Engels nu voor alles wat op
+`-en` eindigt, dus `beta-en` krijgt ook de Engelse mail.
+
 ---
 
 ## 28 oktober 2026

@@ -19,12 +19,17 @@ import { aanhef, verstuur } from '../lib/mail.js';
 // 28 oktober 2026 vervallen: iPhone en Android zitten allebei in de bètatest en
 // krijgen dezelfde wachtlijsttekst.
 //
-// De pagina onder /en/ schrijft `source` als 'waitlist-en'. Zonder dat verschil
-// zou iemand die zich op de Engelse pagina aanmeldt een Nederlandse mail
-// terugkrijgen. De soort gaat mee naar verstuur(), die er de voet en de
+// De pagina onder /en/ schrijft `source` als 'waitlist-en', of 'beta-en' voor wie
+// via monaoffline.com/beta kwam. Alles wat op -en eindigt krijgt de Engelse mail.
+// Zonder dat verschil zou iemand die zich op de Engelse pagina aanmeldt een
+// Nederlandse mail terugkrijgen. De soort gaat mee naar verstuur(), die er de voet en de
 // afsluiting op kiest.
+function engels(rij) {
+  return String(rij.source || '').endsWith('-en');
+}
+
 function bericht(rij) {
-  if (rij.source === 'waitlist-en') return berichtEngels(rij);
+  if (engels(rij)) return berichtEngels(rij);
 
   const hoi = aanhef(rij.name);
 
@@ -108,7 +113,7 @@ export default async function handler(req, res) {
   }
 
   const b = bericht(rij);
-  const soort = rij.source === 'waitlist-en' ? 'wachtlijst-en' : 'wachtlijst';
+  const soort = engels(rij) ? 'wachtlijst-en' : 'wachtlijst';
   const gelukt = await verstuur(sleutel, rij.email, b.onderwerp, b.regels, soort);
 
   if (!gelukt) {
@@ -119,7 +124,7 @@ export default async function handler(req, res) {
 
   console.log('welkom: bevestiging verstuurd, variant ' +
     (rij.source === 'app' ? 'app'
-      : (rij.source === 'waitlist-en' ? 'en-' : '') +
+      : (engels(rij) ? 'en-' : '') +
         (rij.android === true ? 'android' : 'iphone')));
   return res.status(200).json({ verstuurd: true });
 }
