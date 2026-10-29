@@ -15,6 +15,18 @@ als `BETA_IOS_URL` en `BETA_ANDROID_URL`. Ontbreekt er een, of komt iemand van e
 computer, dan landt die op de homepage. De kop `X-Robots-Tag: noindex` houdt het adres
 uit zoekmachines.
 
+**/beta voor wie geen testlink krijgt.** Een computer gaat nu naar
+`/beta-telefoon` (EN `/en/beta-phone`, gekozen op de eerste browsertaal, zoals de
+homepage): "Open deze link op je telefoon", met een QR-code naar
+monaoffline.com/beta en een verwijzing naar de wachtlijst. Een telefoon zonder
+testlink (de variabele ontbreekt, of het is geen iPhone of Android) gaat naar de
+wachtlijst op de homepage. iPhone en Android met link gaan zoals voorheen naar
+TestFlight en Play. De QR (`assets/beta-qr.svg`) is lokaal gemaakt met segno en
+nagelezen met een QR-lezer. Niet vindbaar: meta robots en de kop `X-Robots-Tag`
+(via `vercel.json`) op beide pagina's en de QR, en geen link vanaf de site. Er is
+bewust geen robots.txt-regel: een Disallow zou Google beletten de noindex te
+lezen, en robots.txt is openbaar.
+
 ---
 
 ## 28 oktober 2026

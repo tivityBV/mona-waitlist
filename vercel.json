@@ -1,6 +1,38 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/beta", "destination": "/api/beta" }
+    {
+      "source": "/beta",
+      "destination": "/api/beta"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/beta-telefoon",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/en/beta-phone",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/assets/beta-qr.svg",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }

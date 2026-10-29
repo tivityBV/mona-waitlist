@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Open deze link op je telefoon | Mona Offline</title>
+<meta name="theme-color" content="#2F4A3A">
+<style>
+  /* Lettertypes zelf gehost, zie de toelichting op de homepage. */
+  @font-face{font-family:'Grandstander';font-style:normal;font-weight:900;font-display:swap;
+    src:url(/fonts/grandstander-900-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'Grandstander';font-style:normal;font-weight:900;font-display:swap;
+    src:url(/fonts/grandstander-900-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-400-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-400-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-500-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-500-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');
+    unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+  @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;
+    src:url(/fonts/ibm-plex-mono-600-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+  /* Palet Buitenadem, gelijk aan de homepage. */
+  :root{
+    --room:#F2EAD5;--room-input:#FBF7EC;--salie:#8FA98A;--ochtendblauw:#B9D0D6;
+    --mos:#2F4A3A;--mos-diep:#22362A;--honing:#DDA552;--honing-hover:#E8B566;
+    --pad:clamp(20px, 5vw, 72px)
+  }
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--room);color:var(--mos);
+    font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:16px;line-height:1.75}
+  img{display:block}
+  a{color:var(--mos);text-decoration:underline;text-underline-offset:3px}
+  a:hover{color:var(--honing)}
+
+  /* Kop, gelijk aan de homepage */
+  nav{display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:22px var(--pad)}
+  nav .merk{display:flex;align-items:center;gap:12px;text-decoration:none}
+  nav .merk img{width:54px;height:54px;object-fit:contain}
+  .navrechts{display:flex;align-items:center;gap:22px;font-size:14px}
+  .lang{display:flex;gap:8px}
+  .lang a{text-decoration:none;opacity:.6;font-weight:400}
+  .lang a[aria-current]{opacity:1;font-weight:600;text-decoration:underline}
+  .lang span{opacity:.4}
+  .pil{text-decoration:none;background:var(--mos);color:var(--room);
+    padding:11px 18px;border-radius:999px;font-weight:600;font-size:14px}
+  .pil:hover{background:var(--mos-diep);color:var(--room)}
+
+  /* Het document zelf. Dezelfde kaart als het wachtlijstformulier: harde schaduw
+     zonder vervaging, ruime binnenmarge, en een regellengte die leesbaar blijft. */
+  .blad{padding:clamp(28px,4vw,56px) var(--pad) clamp(56px,8vw,104px)}
+  .doc{max-width:760px;margin:0 auto;background:var(--room-input);border-radius:24px;
+    padding:clamp(26px,4vw,48px);box-shadow:8px 8px 0 rgba(47,74,58,.16)}
+  .doc .kicker{font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--mos);opacity:.6;margin-bottom:14px}
+  .doc h1{font-family:Grandstander,system-ui,sans-serif;font-weight:900;
+    font-size:clamp(32px,4vw,46px);line-height:1.06;margin-bottom:10px;text-wrap:balance}
+  .doc .updated{font-size:13px;color:var(--mos);opacity:.6;margin-bottom:28px}
+  .doc h2{font-family:Grandstander,system-ui,sans-serif;font-weight:900;font-size:24px;
+    line-height:1.15;margin:34px 0 10px;text-wrap:balance}
+  .doc h3{font-size:15px;font-weight:600;margin:22px 0 6px}
+  .doc p{margin-bottom:14px;text-wrap:pretty}
+  .doc ul{margin:0 0 14px 20px;padding:0}
+  .doc li{margin-bottom:8px}
+  .doc .adr{font-style:normal;line-height:1.85;margin-bottom:14px}
+  .doc .mail{font-size:19px;font-weight:600;margin:6px 0 22px}
+  .doc code{font-size:14px;background:var(--room);padding:2px 7px;border-radius:6px}
+
+  /* Voet, gelijk aan de homepage. De bedrijfsregel en de interne links staan er
+     sinds 1 september 2026, omdat Apple de inschrijving afwees toen die ontbraken. */
+  footer{background:var(--mos);color:var(--room);padding:44px var(--pad)}
+  footer .mid{max-width:1220px;margin:0 auto;display:flex;flex-wrap:wrap;
+    justify-content:space-between;align-items:center;gap:24px;font-size:14px}
+  footer img{width:48px;height:48px;object-fit:contain}
+  footer nav{display:flex;flex-wrap:wrap;gap:22px;padding:0}
+  footer a{color:var(--room)}
+  footer a:hover{color:var(--honing)}
+  .bedrijf{width:100%;border-top:1px solid rgba(242,234,213,.18);padding-top:18px;
+    font-size:12.5px;line-height:1.75;color:rgba(242,234,213,.6);font-style:normal}
+
+  /* Pagina voor wie monaoffline.com/beta op een computer opent. Niet vindbaar:
+     noindex hieronder, de kop X-Robots-Tag via vercel.json, en geen link vanaf
+     de rest van de site. */
+  .doc.beta{max-width:560px;text-align:center}
+  .beta .qr{width:min(240px,70vw);height:auto;margin:26px auto 10px;border-radius:12px}
+  .beta .onder{font-size:14px;opacity:.75;margin-bottom:26px}
+  .beta .nog{border-top:1px solid rgba(47,74,58,.15);padding-top:22px;margin-bottom:0}
+</style>
+<script>
+/* Onthoudt de taalkeuze onder mona-lang, net als de rest van de site. Deze pagina
+   leidt zelf niet om: api/beta.js kiest de taal al op de browsertaal. */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('.lang a') : null;
+    if (a) try { localStorage.setItem('mona-lang', a.getAttribute('hreflang') === 'en' ? 'en' : 'nl'); } catch (x) {}
+  });
+})();
+</script>
+</head>
+<body>
+
+<nav>
+  <a class="merk" href="/" aria-label="Mona Offline, naar de homepage">
+    <img src="/assets/mona-logo-mos.png" alt="Mona Offline" width="54" height="54">
+  </a>
+  <div class="navrechts">
+    <div class="lang"><a href="/beta-telefoon" hreflang="nl" lang="nl" aria-current="page">NL</a><span>|</span><a href="/en/beta-phone" hreflang="en" lang="en">EN</a></div>
+    <a class="pil" href="/#wachtlijst">Wachtlijst</a>
+  </div>
+</nav>
+
+<main class="blad">
+  <div class="doc beta">
+    <h1>Open deze link op je telefoon.</h1>
+    <p>MONA test je op je iPhone of Android-telefoon.</p>
+    <img class="qr" src="/assets/beta-qr.svg" alt="QR-code naar monaoffline.com/beta" width="264" height="264">
+    <p class="onder">Scan de code met de camera van je telefoon.</p>
+    <p class="nog">Nog geen uitnodiging? <a href="/#wachtlijst">Zet je op de wachtlijst.</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="mid">
+    <img src="/assets/mona-logo-room.png" alt="Mona Offline" width="48" height="48">
+    <nav>
+      <a href="/over">Over Mona</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+      <a href="https://www.instagram.com/monaoffline.app/" target="_blank" rel="noopener noreferrer">@monaoffline.app</a>
+      <a href="https://www.tiktok.com/@mona.offline" target="_blank" rel="noopener noreferrer">@mona.offline</a>
+      <a href="mailto:hello@monaoffline.com">hello@monaoffline.com</a>
+    </nav>
+    <address class="bedrijf">
+      Mona Offline is een product van <a href="https://tivity.nl">tivity B.V.</a>,
+      Keizersgracht 720 HV, 1017 EW Amsterdam, Nederland. KvK 84898569.
+    </address>
+  </div>
+</footer>
+
+</body>
+</html>
