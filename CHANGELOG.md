@@ -5,6 +5,18 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ---
 
+## 29 oktober 2026
+
+**monaoffline.com/beta, de link voor nieuwe testers.** Staat onder het eerste
+instructieplaatje dat testers in WhatsApp krijgen. Het is een doorverwijzing
+(`api/beta.js`, plus een rewrite in `vercel.json`): een iPhone gaat naar TestFlight,
+Android naar de opt-in-link van Play. De links zelf staan niet in de repo maar in Vercel
+als `BETA_IOS_URL` en `BETA_ANDROID_URL`. Ontbreekt er een, of komt iemand van een
+computer, dan landt die op de homepage. De kop `X-Robots-Tag: noindex` houdt het adres
+uit zoekmachines.
+
+---
+
 ## 28 oktober 2026
 
 **Intro op de homepage.** "Van een familiefoto" werd "Van een foto van je neefje
