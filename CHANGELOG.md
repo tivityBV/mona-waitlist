@@ -7,6 +7,14 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ## 29 oktober 2026
 
+**monaoffline.com/android, voor Android-testers die al op de lijst staan.** De Android-test
+is intern: alleen wie op de lijst "Founding members" in Play Console staat kan installeren.
+/beta stuurt Android-telefoons daarom naar de wachtlijst. Wie op de lijst is gezet, krijgt in
+een persoonlijk bericht monaoffline.com/android, en dat gaat naar de opt-in-link van Play
+(`ANDROID_TESTER_URL` in Vercel, `api/android.js`). Bewust een andere variabele dan
+`BETA_ANDROID_URL`, zodat /beta niet meeverandert. Zonder variabele: de wachtlijst. Noindex
+zoals /beta.
+
 **monaoffline.com/beta, de link voor nieuwe testers.** Staat onder het eerste
 instructieplaatje dat testers in WhatsApp krijgen. Het is een doorverwijzing
 (`api/beta.js`, plus een rewrite in `vercel.json`): een iPhone gaat naar TestFlight,

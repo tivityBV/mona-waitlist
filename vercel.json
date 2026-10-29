@@ -4,6 +4,10 @@
     {
       "source": "/beta",
       "destination": "/api/beta"
+    },
+    {
+      "source": "/android",
+      "destination": "/api/android"
     }
   ],
   "headers": [
