@@ -29,7 +29,10 @@ export default function handler(req, res) {
 
   let doel;
   if (ios && process.env.BETA_IOS_URL) doel = process.env.BETA_IOS_URL;
-  else if (android && process.env.BETA_ANDROID_URL) doel = process.env.BETA_ANDROID_URL;
+  // Eis oprichter, 29 okt: /beta doet voor Android hetzelfde als de lange opt-in-link, dus
+  // direct naar Play. ANDROID_TESTER_URL (ook gebruikt door /android) is daarvoor genoeg.
+  else if (android && (process.env.BETA_ANDROID_URL || process.env.ANDROID_TESTER_URL))
+    doel = process.env.BETA_ANDROID_URL || process.env.ANDROID_TESTER_URL;
   else if (telefoon) doel = nl ? '/?source=beta#wachtlijst' : '/en/?source=beta#wachtlijst';
   else doel = nl ? '/beta-telefoon' : '/en/beta-phone';
 

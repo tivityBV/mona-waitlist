@@ -7,6 +7,12 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ## 29 oktober 2026
 
+**/beta stuurt Android nu ook direct naar Play.** Eis van de oprichter: monaoffline.com/beta
+moet doen wat de lange links deden, dus iPhone naar TestFlight en Android naar de opt-in van
+Play. /beta gebruikt daarvoor `ANDROID_TESTER_URL` als `BETA_ANDROID_URL` ontbreekt. Gevolg,
+bewust geaccepteerd: wie nog niet op de lijst "Founding members" staat, ziet bij Google
+"niet beschikbaar" in plaats van de wachtlijst.
+
 **monaoffline.com/android, voor Android-testers die al op de lijst staan.** De Android-test
 is intern: alleen wie op de lijst "Founding members" in Play Console staat kan installeren.
 /beta stuurt Android-telefoons daarom naar de wachtlijst. Wie op de lijst is gezet, krijgt in
