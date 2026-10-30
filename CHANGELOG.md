@@ -5,6 +5,32 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ---
 
+
+## 30 oktober 2026
+
+
+**Het wachtlijstformulier gaf "Er ging iets mis". Oorzaak: het Supabase-project staat
+gepauzeerd.** Een aanmelding vanaf een pc mislukte, en de melding bleek niet aan de
+pagina te liggen. De hostnaam van het project, `lftibffclhufvwxrpumo.supabase.co`,
+bestaat niet meer in het DNS: zowel de resolver van Google als die van deze machine
+antwoordt "non-existent domain", terwijl supabase.com en monaoffline.com gewoon
+antwoorden. Supabase doet dat bij een gepauzeerd project: de hostnaam wordt niet meer
+bediend, dus elke `fetch` vanuit de browser faalt al voordat er een statuscode is. In
+`index.html` valt dat in dezelfde `catch` als een echte fout, en de bezoeker leest
+"Er ging iets mis. Probeer het zo nog eens."
+
+Wat dit betekent: sinds het pauzeren is geen enkele aanmelding opgeslagen, in beide
+talen, en de bevestigingsmail (die aan een database-webhook hangt) is dus ook niet
+verstuurd. Die aanmeldingen zijn niet te herstellen, ze hebben de database nooit
+bereikt. Een gratis Supabase-project pauzeert na een week zonder activiteit, en de
+site doet alleen iets bij een aanmelding, dus het pauzeert opnieuw zodra het een week
+stil blijft.
+
+Niet de oorzaak, wel de eerste verdenking: `source = 'beta'` uit commit 38d0462. Dat
+is uitgesloten, want het DNS faalt voor elke aanmelding, met of zonder `?source=beta`.
+Het schema zet `source` ook als vrije tekst, zonder check-constraint.
+
+
 ## 29 oktober 2026
 
 **/beta stuurt Android nu ook direct naar Play.** Eis van de oprichter: monaoffline.com/beta
