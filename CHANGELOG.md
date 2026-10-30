@@ -33,7 +33,11 @@ bewaartermijnen bij SMTP2GO en Vercel staan er hard in (35 dagen voor de gegeven
 een verstuurde mail, de inhoud bewaart SMTP2GO niet; een uur voor de logregels van
 Vercel) in plaats van een belofte om het later aan te vullen. Dat dit project op het
 Hobby-plan van Vercel draait, het gratis plan, is dezelfde dag door de oprichter
-bevestigd, dus daar staat één termijn en niet twee.
+bevestigd, dus daar staat één termijn en niet twee. De naam van dat plan stond
+eerst in de publieke zin, maar die is er later die dag weer uit: de lezer heeft aan
+de termijn genoeg en hoeft niet te weten wat wij bij Vercel afnemen. In de
+verborgen notitie op de pagina staat het plan wel, zodat een volgende sessie kan
+nazoeken waar dat uur vandaan komt.
 
 *Engels natuurlijker.* "Mona makes that reflex a little stiffer" is "Mona puts a
 little friction in the way of that reflex" geworden, en op de overpagina zijn "takes
