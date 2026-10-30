@@ -30,9 +30,10 @@ de datapakketjes" naast "er wordt niets uitgelezen" las als een tegenspraak; er 
 nu dat de app de pakketjes van de tunnel afhaalt en weggooit, dat dat afhalen moet
 omdat de tunnel anders volloopt, en dat geen regel code kijkt wat erin zit. En de
 bewaartermijnen bij SMTP2GO en Vercel staan er hard in (35 dagen voor de gegevens over
-een verstuurde mail, de inhoud bewaart SMTP2GO niet; een uur of een dag voor de
-logregels van Vercel) in plaats van een belofte om het later aan te vullen. Nog te
-bevestigen: welk Vercel-plan voor dit project geldt, dan kan die zin korter.
+een verstuurde mail, de inhoud bewaart SMTP2GO niet; een uur voor de logregels van
+Vercel) in plaats van een belofte om het later aan te vullen. Dat dit project op het
+gratis plan van Vercel draait is dezelfde dag door de oprichter bevestigd, dus daar
+staat één termijn en niet twee.
 
 *Engels natuurlijker.* "Mona makes that reflex a little stiffer" is "Mona puts a
 little friction in the way of that reflex" geworden, en op de overpagina zijn "takes
