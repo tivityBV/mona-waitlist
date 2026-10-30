@@ -148,7 +148,7 @@
 <main class="blad">
   <div class="doc">
     <h1>Privacybeleid Mona Offline</h1>
-    <p class="updated">Laatst bijgewerkt: 19 oktober 2026</p>
+    <p class="updated">Laatst bijgewerkt: 30 oktober 2026</p>
 
     <p>Mona Offline is gemaakt door tivity B.V. in Amsterdam. Dit beleid beschrijft
     welke gegevens de app en deze website verwerken, waarom, en wat je daaraan kunt
@@ -188,11 +188,14 @@
             PermissionHelpView.swift draagt zelf nog een twijfelpunt, de naam van dat
             scherm staat alleen op pagina's van derden, en iOS 26.4 heeft het gedrag
             veranderd. "In de instellingen van je toestel" blijft dus staan.
-         3. Bewaartermijnen bij SMTP2GO (35 dagen standaard) en Vercel (1 uur op
-            Hobby, 1 dag op Pro) staan sinds 19 oktober in de tekst, met erbij dat
-            ze van het abonnement afhangen en voor onze eigen accounts nog niet
-            bevestigd zijn. Zodra dat wel zo is, hoort hier een harde termijn te
-            staan en kan die zin weg.
+         3. Bewaartermijnen staan er sinds 30 oktober hard in, niet meer als een
+            punt dat later wordt aangevuld. SMTP2GO: gegevens over een verstuurde
+            mail worden na 35 dagen verwijderd, de inhoud bewaart SMTP2GO niet
+            (archivering is een aparte functie die wij niet gebruiken). Vercel:
+            een uur op het gratis plan, een dag op het betaalde. Beide zijn de
+            eigen documentatie van die diensten. Nog te bevestigen: welk
+            Vercel-plan voor dit project geldt. Is dat het gratis plan, dan kan
+            de zin worden ingekort tot "een uur".
          4. Wat Google bij de ping ziet (het IP-adres van de verbinding) staat er
             sinds 19 oktober bij. Dat volgt uit hoe HTTP werkt en niet uit onze
             code, dus er valt niets aan te verifiëren in modem.html.
@@ -202,7 +205,7 @@
     zelf aan, en allebei kun je ze op elk moment weer uitzetten. Zet je ze niet aan,
     dan verlaat er geen enkel gegeven je toestel.</p>
 
-    <h3>1. Anonieme gebruiksstatistiek</h3>
+    <h3>1. Pseudonieme gebruiksstatistiek</h3>
     <p>Als je hiervoor kiest tijdens de introductie, stuurt de app één keer per dag
     een klein bericht met:</p>
     <ul>
@@ -221,6 +224,12 @@
     Hij is niet afgeleid van je toestel, niet van je Google-account, en niet van de
     advertentie-identificatie van Android. Hij bestaat alleen in de app en op onze
     kant.</p>
+    <p><strong>Waarom pseudoniem en niet anoniem.</strong> Anoniem zou betekenen dat de
+    berichten niet bij elkaar te brengen zijn. Dat is niet zo: de code blijft gelijk,
+    dus de berichten van één installatie vormen samen een reeks. Wij kunnen die reeks
+    niet bij een persoon brengen en we proberen dat ook niet, maar het blijft een code
+    die bij jouw installatie hoort. Daarom noemen we het pseudoniem, en daarom staat de
+    code in het instellingenscherm van de app: zo kun je om verwijdering vragen.</p>
     <p><strong>Waarvoor.</strong> Om te zien of mensen Mona blijven gebruiken. Dat is
     de enige vraag die we ermee stellen.</p>
     <p><strong>Wat Google daarbij ziet.</strong> Het bericht gaat naar Google Apps
@@ -263,9 +272,11 @@
     is precies wat er gebeurt.</p>
     <p>De verbinding gaat nergens heen. Mona zet een tunnel op die alleen op je eigen
     toestel bestaat, zonder server aan de andere kant. Er is geen eindpunt, geen
-    DNS-server en geen doorgifte. De app leest de datapakketjes en gooit ze weg, en
-    dat is alles. Er wordt niets bekeken, uitgelezen, geteld, opgeslagen of
-    verzonden.</p>
+    DNS-server en geen doorgifte. De app haalt de datapakketjes van die tunnel af en
+    gooit ze weg. Dat afhalen moet, anders loopt de tunnel vol, maar er wordt niet in
+    gekeken: niets wordt ontleed, geteld, opgeslagen of verzonden. "Lezen" betekent
+    hier dus niet meer dan binnenhalen en weggooien, en de app heeft geen regel die
+    kijkt wat erin zit.</p>
     <p>Omdat er geen verkeer je toestel verlaat via Mona, is er ook geen traject
     waarover iets zou kunnen meelezen.</p>
     <p>De apps die jij op je eigen lijst zet, blijven volledig buiten die tunnel. Hun
@@ -291,7 +302,7 @@
     <p>Met niemand, in de zin dat niemand ze voor eigen doeleinden krijgt.</p>
     <p>Vier diensten verwerken gegevens namens ons en volgens onze instructies:</p>
     <ul>
-      <li>Google Apps Script ontvangt en bewaart de anonieme gebruiksstatistiek.</li>
+      <li>Google Apps Script ontvangt en bewaart de pseudonieme gebruiksstatistiek.</li>
       <li>Supabase ontvangt en bewaart de wachtlijstaanmeldingen.</li>
       <li>SMTP2GO verstuurt de bevestigingsmail na een aanmelding en ontvangt
       daarvoor je e-mailadres en je naam. Is Supabase op dat moment niet bereikbaar,
@@ -310,12 +321,13 @@
     installatiecode. Daarna verwijderen we de regels.</p>
     <p>Wachtlijstaanmeldingen: tot je je afmeldt, en uiterlijk tot 12 maanden na de
     lancering van de app.</p>
-    <p>Bij SMTP2GO en Vercel ligt de termijn niet bij ons, maar bij hun eigen beleid,
-    en daar hangt hij af van het abonnement. SMTP2GO noemt in zijn documentatie 35
-    dagen als standaard voor e-mailgegevens. Vercel bewaart de logregels van zijn
-    functies kort, van een uur tot enkele dagen. Welke termijn voor onze eigen
-    accounts geldt, staat hier nog niet vast, en we vullen het aan zodra we het bij
-    beide diensten hebben bevestigd.</p>
+    <p>Bij SMTP2GO en Vercel ligt de termijn bij hun eigen beleid en niet bij ons.
+    SMTP2GO bewaart de gegevens over een verstuurde mail (afzender, ontvanger,
+    aflevering) en verwijdert ze na 35 dagen; de inhoud van de mail bewaart SMTP2GO
+    niet, want dat is een aparte archiveringsfunctie die wij niet gebruiken. Vercel
+    bewaart de logregels van zijn functies kort: een uur op het gratis plan, een dag
+    op het betaalde. In die logregels staat je e-mailadres niet, want onze functies
+    schrijven het er niet in.</p>
     <p>Vraag je eerder om verwijdering, dan doen we dat eerder. Zie hieronder.</p>
 
     <h2>Je rechten</h2>

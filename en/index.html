@@ -174,6 +174,23 @@
   .inbellen .kolom{display:flex;flex-direction:column;gap:22px}
   .inbellen h2{font-size:clamp(38px,4.4vw,56px);line-height:1.04}
   .inbellen .uitleg{font-size:17px;line-height:1.7;color:rgba(242,234,213,.85);max-width:460px}
+  /* De harde cijfers, voor wie wil weten wat de app precies doet. Ze staan hier en
+     niet in de drie kolommen hierboven, want die lijnen op elkaars hoogte uit en
+     worden scheef van een extra regel. Subgrid zet de waarden onder elkaar zonder
+     een vaste breedte, zodat de Engelse en de Nederlandse tekst elk hun eigen
+     kolombreedte krijgen. */
+  .werking{list-style:none;padding:0;display:grid;grid-template-columns:max-content 1fr;
+    gap:12px 18px;max-width:460px;font-size:15px;color:rgba(242,234,213,.85)}
+  .werking li{display:grid;grid-template-columns:subgrid;grid-column:1/-1;
+    align-items:baseline}
+  .werking .oog{color:var(--honing);white-space:nowrap}
+  /* Op een telefoon is er geen ruimte voor twee kolommen: dan valt de omschrijving
+     elke keer over twee regels en wordt het een blok. Daar staat de waarde boven
+     zijn eigen regel. */
+  @media (max-width:560px){
+    .werking{grid-template-columns:1fr;gap:18px}
+    .werking li{grid-template-columns:1fr;gap:4px}
+  }
   .netwerklabel{display:flex;align-items:center;gap:10px;color:var(--honing)}
   .stip{width:10px;height:10px;border-radius:50%;background:var(--honing);flex:none;
     animation:monaBlink 1.6s steps(1,end) infinite}
@@ -360,13 +377,13 @@
       <span class="gezichtvak nu"><span class="gezicht"></span></span>
       <span class="oog">Now</span>
       <h2>You are always online.</h2>
-      <p>For most people the reflex to reach for their phone is too strong to resist. Even in the most beautiful place.</p>
+      <p>For most people the reflex to reach for their phone is too strong to resist. Even when you are somewhere beautiful.</p>
     </article>
     <article>
       <span class="gezichtvak mona"><span class="gezicht"></span></span>
       <span class="oog">Mona</span>
       <h2>Dial in, like the old days.</h2>
-      <p>Mona makes that reflex a little stiffer. It slows you down and your time online is rationed, so an hour does not disappear into cat videos.</p>
+      <p>Mona puts a little friction in the way of that reflex. It slows you down and rations your time online, so you do not lose an hour to cat videos.</p>
     </article>
   </div>
 </section>
@@ -377,6 +394,11 @@
       <div class="netwerklabel oog"><span class="stip" aria-hidden="true"></span><span>Dial-Up Networking</span></div>
       <h2>Remember that sound?</h2>
       <p class="uitleg">Turn your sound on and dial in. This is how going online with Mona feels: a small ritual, with a beginning and an end.</p>
+      <ul class="werking">
+        <li><span class="oog">16 sec</span><span>dialing in, every single time</span></li>
+        <li><span class="oog">3, 7 or 30 min</span><span>online, you choose how long</span></li>
+        <li><span class="oog">your own list</span><span>stays reachable, even offline</span></li>
+      </ul>
       <button class="belknop" id="belknop" type="button">&#9654; Dial in and hear the line</button>
     </div>
     <div class="rechts">
@@ -434,7 +456,7 @@
         <span class="fout" id="foutTelefoon" role="alert"></span>
       </div>
 
-      <label class="veld" for="scroll">How often do you catch yourself scrolling without having decided to?
+      <label class="veld" for="scroll">How often do you catch yourself scrolling without meaning to?
         <select id="scroll" name="scroll">
           <option value="" disabled selected>Choose&hellip;</option>
           <option value="bijna-nooit">Almost never</option>

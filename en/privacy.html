@@ -148,7 +148,7 @@
 <main class="blad">
   <div class="doc">
     <h1>Mona Offline Privacy Policy</h1>
-    <p class="updated">Last updated: October 19, 2026</p>
+    <p class="updated">Last updated: October 30, 2026</p>
 
     <p>Mona Offline is made by tivity B.V. in Amsterdam. This policy describes which
     data the app and this website process, why, and what you can do about it.</p>
@@ -183,7 +183,7 @@
     and you can switch both off again at any time. If you do not switch them on, no
     data at all leaves your device.</p>
 
-    <h3>1. Anonymous usage statistics</h3>
+    <h3>1. Pseudonymous usage statistics</h3>
     <p>If you choose this during the introduction, the app sends one small message a
     day containing:</p>
     <ul>
@@ -202,6 +202,12 @@
     <code>m3a9c1fad</code>. It is not derived from your device, your Google account,
     or the advertising identifier of Android. It exists only in the app and on our
     side.</p>
+    <p><strong>Why pseudonymous and not anonymous.</strong> Anonymous would mean the
+    messages cannot be brought together. They can: the code stays the same, so the
+    messages from one installation form a series. We cannot connect that series to a
+    person and we do not try to, but it remains a code that belongs to your
+    installation. That is why we call it pseudonymous, and why the code is in the
+    app's settings screen: so that you can ask for it to be deleted.</p>
     <p><strong>What for.</strong> To see whether people keep using Mona. That is the
     only question we ask with it.</p>
     <p><strong>What Google sees along the way.</strong> The message goes to Google
@@ -244,8 +250,11 @@
     happens.</p>
     <p>The connection goes nowhere. Mona sets up a tunnel that exists only on your own
     device, with no server on the other end. There is no endpoint, no DNS server and
-    no forwarding. The app reads the data packets and throws them away, and that is
-    all. Nothing is inspected, read, counted, stored or sent.</p>
+    no forwarding. The app takes the data packets off that tunnel and throws them
+    away. Taking them off is necessary, otherwise the tunnel fills up, but nothing
+    looks inside them: nothing is parsed, counted, stored or sent. "Reading" here
+    means no more than taking in and discarding, and the app holds no line of code
+    that looks at what is inside.</p>
     <p>Because no traffic leaves your device through Mona, there is also no path over
     which anything could be intercepted.</p>
     <p>The apps you put on your own list stay completely outside that tunnel. Their
@@ -269,7 +278,7 @@
     <p>With nobody, in the sense that nobody receives it for their own purposes.</p>
     <p>Four services process data on our behalf and on our instructions:</p>
     <ul>
-      <li>Google Apps Script receives and stores the anonymous usage statistics.</li>
+      <li>Google Apps Script receives and stores the pseudonymous usage statistics.</li>
       <li>Supabase receives and stores the waitlist signups.</li>
       <li>SMTP2GO sends the confirmation email after a signup and receives your email
       address and your name for that purpose. If Supabase cannot be reached at that
@@ -288,10 +297,12 @@
     <p>Waitlist signups: until you unsubscribe, and at the latest 12 months after the
     launch of the app.</p>
     <p>For SMTP2GO and Vercel the period is set by their own policy rather than by
-    us, and it depends on the plan. SMTP2GO documents 35 days as the default for
-    email data. Vercel keeps the log lines of its functions briefly, from an hour to
-    a few days. Which period applies to our own accounts is not fixed here yet, and
-    we will add it once we have confirmed it with both services.</p>
+    us. SMTP2GO keeps the data about a sent email (sender, recipient, delivery) and
+    deletes it after 35 days; it does not keep the content of the email, since that is
+    a separate archiving feature which we do not use. Vercel keeps the log lines of
+    its functions briefly: an hour on the free plan, a day on the paid one. Those log
+    lines do not contain your email address, because our functions do not write it
+    into them.</p>
     <p>If you ask for deletion sooner, we do it sooner. See below.</p>
 
     <h2>Your rights</h2>

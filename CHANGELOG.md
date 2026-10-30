@@ -8,6 +8,38 @@ Wat er aan monaoffline.com veranderde, met de reden erbij. De commits staan in
 
 ## 30 oktober 2026
 
+**Vier punten uit een terugkoppeling op de site verwerkt.**
+
+*Over Mona noemde alleen Android,* terwijl het formulier, de privacypagina en de
+bètatest allang ook iPhone noemen. De openingszin zegt nu "een app voor Android en
+iPhone", en bij "Wat bereikbaar blijft" staat waarin de twee verschillen: op Android
+onderbreekt een lokale VPN-verbinding het verkeer en kies je welke apps bereikbaar
+blijven, op iPhone zet Mona met Schermtijd de apps die jij kiest achter de kiestoon,
+dus daar staat het omgekeerd en valt de systeemverbinding nooit weg.
+
+*De werking stond nergens concreet op de homepage.* In de inbelband staan nu drie
+regels: 16 sec inbellen, 3, 7 of 30 min online, en je eigen lijst blijft bereikbaar.
+Bewust daar en niet in de drie kolommen erboven, want die lijnen op elkaars hoogte uit
+en worden scheef van een extra regel. Onder 560 pixels staat de waarde boven zijn eigen
+omschrijving, anders valt elke omschrijving over twee regels en wordt het een blok.
+
+*Privacy, drie aanscherpingen.* De gebruiksstatistiek heet nu pseudoniem en niet
+anoniem, met de reden erbij: de installatiecode blijft gelijk, dus de berichten van
+één installatie vormen een reeks, en dat is precies wat anoniem niet is. "De app leest
+de datapakketjes" naast "er wordt niets uitgelezen" las als een tegenspraak; er staat
+nu dat de app de pakketjes van de tunnel afhaalt en weggooit, dat dat afhalen moet
+omdat de tunnel anders volloopt, en dat geen regel code kijkt wat erin zit. En de
+bewaartermijnen bij SMTP2GO en Vercel staan er hard in (35 dagen voor de gegevens over
+een verstuurde mail, de inhoud bewaart SMTP2GO niet; een uur of een dag voor de
+logregels van Vercel) in plaats van een belofte om het later aan te vullen. Nog te
+bevestigen: welk Vercel-plan voor dit project geldt, dan kan die zin korter.
+
+*Engels natuurlijker.* "Mona makes that reflex a little stiffer" is "Mona puts a
+little friction in the way of that reflex" geworden, en op de overpagina zijn "takes
+another road", "screeching and hiss", "nothing is forbidden to you" en "whatever data
+does go around" herschreven. De Nederlandse copy is niet aangeraakt, en de introtekst
+in de hero in beide talen ook niet: die is van de oprichter zelf.
+
 
 **Het wachtlijstformulier gaf "Er ging iets mis". Oorzaak: het Supabase-project staat
 gepauzeerd.** Een aanmelding vanaf een pc mislukte, en de melding bleek niet aan de

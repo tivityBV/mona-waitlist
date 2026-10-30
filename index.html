@@ -173,6 +173,23 @@
   .inbellen .kolom{display:flex;flex-direction:column;gap:22px}
   .inbellen h2{font-size:clamp(38px,4.4vw,56px);line-height:1.04}
   .inbellen .uitleg{font-size:17px;line-height:1.7;color:rgba(242,234,213,.85);max-width:460px}
+  /* De harde cijfers, voor wie wil weten wat de app precies doet. Ze staan hier en
+     niet in de drie kolommen hierboven, want die lijnen op elkaars hoogte uit en
+     worden scheef van een extra regel. Subgrid zet de waarden onder elkaar zonder
+     een vaste breedte, zodat de Engelse en de Nederlandse tekst elk hun eigen
+     kolombreedte krijgen. */
+  .werking{list-style:none;padding:0;display:grid;grid-template-columns:max-content 1fr;
+    gap:12px 18px;max-width:460px;font-size:15px;color:rgba(242,234,213,.85)}
+  .werking li{display:grid;grid-template-columns:subgrid;grid-column:1/-1;
+    align-items:baseline}
+  .werking .oog{color:var(--honing);white-space:nowrap}
+  /* Op een telefoon is er geen ruimte voor twee kolommen: dan valt de omschrijving
+     elke keer over twee regels en wordt het een blok. Daar staat de waarde boven
+     zijn eigen regel. */
+  @media (max-width:560px){
+    .werking{grid-template-columns:1fr;gap:18px}
+    .werking li{grid-template-columns:1fr;gap:4px}
+  }
   .netwerklabel{display:flex;align-items:center;gap:10px;color:var(--honing)}
   .stip{width:10px;height:10px;border-radius:50%;background:var(--honing);flex:none;
     animation:monaBlink 1.6s steps(1,end) infinite}
@@ -376,6 +393,11 @@
       <div class="netwerklabel oog"><span class="stip" aria-hidden="true"></span><span>Dial-Up Networking</span></div>
       <h2>Herken je &rsquo;m nog?</h2>
       <p class="uitleg">Zet je geluid aan en bel in. Zo voelt online gaan met Mona: een klein ritueel, met een begin en een eind.</p>
+      <ul class="werking">
+        <li><span class="oog">16 sec</span><span>inbellen, elke keer opnieuw</span></li>
+        <li><span class="oog">3, 7 of 30 min</span><span>online, jij kiest hoe lang</span></li>
+        <li><span class="oog">je eigen lijst</span><span>blijft bereikbaar, ook offline</span></li>
+      </ul>
       <button class="belknop" id="belknop" type="button">&#9654; Bel in en hoor de lijn</button>
     </div>
     <div class="rechts">
