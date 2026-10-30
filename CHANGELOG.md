@@ -30,6 +30,31 @@ Niet de oorzaak, wel de eerste verdenking: `source = 'beta'` uit commit 38d0462.
 is uitgesloten, want het DNS faalt voor elke aanmelding, met of zonder `?source=beta`.
 Het schema zet `source` ook als vrije tekst, zonder check-constraint.
 
+**Twee vangnetten, zodat dit niet terugkomt.** Het eerste is `api/wakker.js`, elke dag
+om 06:00 via een cron in `vercel.json`: één vraag aan de tabel met de publieke sleutel
+die ook in de pagina staat. Er komt geen rij terug, want anon mag niet lezen, maar het
+verzoek bereikt Postgres en dat is de activiteit die het pauzeren tegenhoudt. Het maakt
+een gepauzeerd project niet wakker, dat blijft handwerk in het dashboard.
+
+Het tweede is `api/wachtlijst.js`, het vangnet voor een aanmelding die Supabase niet
+bereikt: hij gaat dan per mail naar hello@monaoffline.com, en de bezoeker ziet gewoon
+"Je staat erop", want wij hebben hem dan ook. De bevestigingsmail blijft aan de
+database-webhook hangen, dus die krijgt iemand zodra de aanmelding met de hand in de
+tabel staat. Bewust niet ook hier versturen: twee plekken die dezelfde mail sturen
+leveren vroeg of laat twee mails op. Mislukt het vangnet ook, dan ziet de bezoeker
+alsnog de foutmelding, en dat is het enige geval waarin een aanmelding verdwijnt.
+
+Nagelopen met een nagebootste `fetch`: een gepauzeerd project geeft 503 op /api/wakker
+en elk ander antwoord 200 (ook een 401, want dat betekent dat het project draait), het
+vangnet weigert een niet-adres met 400 en een mislukte verzending met 502, en de twee
+homepages tonen "Je staat erop" zodra het vangnet lukt en de foutmelding zodra ook dat
+mislukt. De aanmelding die dan doorgaat draagt de juiste bron, `waitlist` of
+`waitlist-en`.
+
+De privacypagina noemt dit in beide talen bij SMTP2GO: is Supabase niet bereikbaar, dan
+draagt SMTP2GO de aanmelding naar ons eigen adres. Zonder die regel zou er een route
+bestaan die er niet staat.
+
 
 ## 29 oktober 2026
 

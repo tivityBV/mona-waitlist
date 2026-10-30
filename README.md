@@ -10,6 +10,8 @@ Statische site, negen pagina's zonder bouwstap, met een wachtlijst-formulier dat
 - `modem.mp3`: het inbelgeluid (hero-knop).
 - `CHANGELOG.md`: wat er aan de site veranderde en waarom.
 - `schema.sql`: draai dit één keer in Supabase (waitlist-tabel + insert-only RLS).
+- `api/wakker.js`: één verzoek per dag aan Supabase, zodat het project niet pauzeert.
+- `api/wachtlijst.js`: het vangnet, als een aanmelding Supabase niet bereikt.
 
 ## Supabase koppelen (2 plekken invullen)
 1. Draai `schema.sql` in Supabase → **SQL Editor**.
@@ -99,6 +101,40 @@ invuller dragen dezelfde `sid`. De twee uitleesqueries staan onderaan
 **Geen naam verplicht**, en er wordt niets stils meegestuurd: geen toestelgegevens,
 geen browserinformatie. Dat past niet bij een app die belooft niets van je bij te
 houden.
+
+## Als het formulier "Er ging iets mis" geeft
+
+Dat is bijna altijd Supabase, niet de pagina. Op 30 oktober 2026 stond het project
+gepauzeerd: een gratis Supabase-project pauzeert na een week zonder activiteit, en dan
+wordt de hostnaam niet meer bediend. De `fetch` in de pagina faalt dan al voordat er
+een statuscode is, en de bezoeker leest de algemene foutmelding.
+
+Zo controleer je het in één regel, zonder dashboard:
+
+```
+nslookup lftibffclhufvwxrpumo.supabase.co 8.8.8.8
+```
+
+"Non-existent domain" betekent gepauzeerd. Aanzetten kan alleen met de hand, in het
+Supabase-dashboard bij de projectlijst (Restore of Resume). Reken daarna op een paar
+minuten voor het DNS.
+
+Twee dingen houden dit tegen, allebei sinds 30 oktober 2026:
+
+1. **`api/wakker.js`**, elke dag om 06:00 via de cron in `vercel.json`. Eén vraag aan
+   de tabel, met de publieke sleutel die ook in de pagina staat. Dat is genoeg
+   activiteit om het pauzeren te voorkomen. Het maakt een gepauzeerd project niet
+   wakker, het houdt een draaiend project wakker. Staat `CRON_SECRET` in Vercel, dan
+   controleert de functie die kop.
+2. **`api/wachtlijst.js`**, het vangnet. Lukt de insert niet, dan sturen de twee
+   homepages de aanmelding hierheen en gaat hij per mail naar `hello@monaoffline.com`.
+   De bezoeker ziet gewoon "Je staat erop", want wij hebben hem dan. Zet zo iemand met
+   de hand in de tabel zodra Supabase weer draait: de database-webhook stuurt dan de
+   bevestiging die hij nog niet had. Het vangnet gebruikt `SMTP2GO_API_KEY`, dezelfde
+   variabele als de bevestigingsmail, en stuurt nooit iets naar de bezoeker zelf.
+
+Mislukt het vangnet ook, dan ziet de bezoeker alsnog de foutmelding en staat de knop
+weer aan. Dat is het enige geval waarin een aanmelding verdwijnt.
 
 ## Data uitlezen
 Supabase → **Table editor → waitlist**, of exporteer naar CSV. (Anon kan niet lezen; jij wel via het dashboard.)

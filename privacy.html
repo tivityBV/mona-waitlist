@@ -294,7 +294,10 @@
       <li>Google Apps Script ontvangt en bewaart de anonieme gebruiksstatistiek.</li>
       <li>Supabase ontvangt en bewaart de wachtlijstaanmeldingen.</li>
       <li>SMTP2GO verstuurt de bevestigingsmail na een aanmelding en ontvangt
-      daarvoor je e-mailadres en je naam.</li>
+      daarvoor je e-mailadres en je naam. Is Supabase op dat moment niet bereikbaar,
+      dan stuurt SMTP2GO je aanmelding naar ons eigen adres, zodat hij niet verloren
+      gaat. Dan gaan ook je naam, je antwoord over je telefoon en je antwoord over
+      scrollen mee.</li>
       <li>Vercel host deze website en voert de functie uit die de bevestigingsmail
       klaarzet. Daarbij verwerkt Vercel technische gegevens van je verbinding, zoals
       je IP-adres.</li>

@@ -272,7 +272,10 @@
       <li>Google Apps Script receives and stores the anonymous usage statistics.</li>
       <li>Supabase receives and stores the waitlist signups.</li>
       <li>SMTP2GO sends the confirmation email after a signup and receives your email
-      address and your name for that purpose.</li>
+      address and your name for that purpose. If Supabase cannot be reached at that
+      moment, SMTP2GO carries your signup to our own address instead, so that it is not
+      lost. Your name, your answer about your phone and your answer about scrolling then
+      go along with it.</li>
       <li>Vercel hosts this website and runs the function that prepares the
       confirmation email. In doing so, Vercel processes technical data about your
       connection, such as your IP address.</li>

@@ -673,11 +673,30 @@
       toonGelukt();
     } catch (e2) {
       console.error(e2);
+      if (await vangnet(row)) { toonGelukt(); return; }
       $('foutAlgemeen').textContent = 'Something went wrong. Please try again in a moment.';
       $('verzend').disabled = false;
       $('verzend').textContent = 'Put me on the list';
     }
   });
+
+  // Het vangnet, als de aanmelding Supabase niet bereikt. Op 30 oktober 2026 stond het
+  // project gepauzeerd, bestond de hostnaam niet eens in het DNS, en verdween elke
+  // aanmelding in de catch hierboven. Nu gaat hij per mail naar ons en ziet de bezoeker
+  // gewoon dat hij erop staat, want dat is dan ook waar. Zie api/wachtlijst.js.
+  async function vangnet(rij) {
+    try {
+      const res = await fetch('/api/wachtlijst', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(rij)
+      });
+      return res.ok;
+    } catch (e3) {
+      console.error(e3);
+      return false;
+    }
+  }
 
   function toonGelukt() {
     $('form').style.display = 'none';
