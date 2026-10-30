@@ -49,6 +49,19 @@ beide talen, zodat de twee homepages niet uit elkaar lopen, al heeft het Engels 
 die plek geen samenstelling met een koppelteken. Nagemeten op 375 en op 320 pixels:
 het woord blijft heel en de pagina schuift niet opzij.
 
+*Diezelfde zin ging daarna uit de copy.* De oprichter leverde twee nieuwe regels: "De
+hele dag en de hele nacht ben je bereikbaar." en "Voor een video van je neefjes
+afzwemmen tot een headline waar je niet op zat te wachten." Daarmee verdween
+"familie-app" van de pagina, en de stijlregel die dat woord heel hield is weer weg,
+want niets anders in de alinea heeft een koppelteken. Het Engels is meegegaan ("All
+day and all night long, you are reachable." en "From a video of your nephew's
+swimming test to a headline you were not waiting for."), met "From ... to ..." in
+plaats van een letterlijke vertaling van "Voor ... tot ...", want dat loopt in het
+Engels niet. In de aangeleverde tekst stond "neefje's"; dat is "neefjes" geworden,
+omdat een apostrof in het Nederlands alleen na een lange klinker komt (Anna's, maar
+neefjes). Nagemeten op 375 pixels: beide talen blijven binnen de pagina en geen enkele
+regel valt scheef af.
+
 
 **Het wachtlijstformulier gaf "Er ging iets mis". Oorzaak: het Supabase-project staat
 gepauzeerd.** Een aanmelding vanaf een pc mislukte, en de melding bleek niet aan de
