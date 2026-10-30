@@ -102,6 +102,11 @@
      de browser de hele alinea als een geheel, en dan blijft er een los woord op de
      laatste regel staan. Per blokje balanceert hij elke zin apart. */
   .subregel p span,.verhaal .lead span{display:block;text-wrap:balance}
+  /* Een samenstelling met een koppelteken mag na dat koppelteken afbreken, en dan
+     staat "app" van "familie-app" alleen op de volgende regel. Een span met deze
+     klasse houdt zo'n woord heel. De display hoort erbij, want de regel hierboven
+     maakt elke span in deze alinea een blok. */
+  .subregel p span.heel{display:inline;white-space:nowrap}
   .subregel .slot{font-weight:600;color:var(--mos-diep);font-size:clamp(17px,1.5vw,19px);
     text-wrap:balance}
   .knoppen{display:flex;flex-wrap:wrap;gap:14px}
@@ -346,7 +351,7 @@
       <span>Waar je ook bent, je staat in contact met de hele wereld.</span>
       <span>En de hele wereld staat in contact met jou.</span>
       <span>De hele dag, en de hele nacht.</span>
-      <span>Van een foto van je neefje in de familie-app tot een krantenkop waar je niet om vroeg.</span>
+      <span>Van een foto van je neefje in de <span class="heel">familie-app</span> tot een krantenkop waar je niet om vroeg.</span>
       <span>Het wordt allemaal doorgeduwd, maar ooit was het internet op gaan je eigen beslissing.</span></p>
       <p class="slot">Mona helpt je de updatereflex te onderbreken, zodat jij
       bepaalt wanneer en waar je dat bericht leest.</p>

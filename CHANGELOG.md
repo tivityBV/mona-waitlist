@@ -41,6 +41,14 @@ another road", "screeching and hiss", "nothing is forbidden to you" en "whatever
 does go around" herschreven. De Nederlandse copy is niet aangeraakt, en de introtekst
 in de hero in beide talen ook niet: die is van de oprichter zelf.
 
+*"familie-app" viel uit elkaar over twee regels.* Een browser mag na een koppelteken
+afbreken, en op een telefoon stond "app" daardoor alleen op de volgende regel. Het
+woord staat nu in een span met `white-space:nowrap`, en met `display:inline` erbij,
+want de regel erboven maakt elke span in die alinea een blok. De stijlregel staat in
+beide talen, zodat de twee homepages niet uit elkaar lopen, al heeft het Engels op
+die plek geen samenstelling met een koppelteken. Nagemeten op 375 en op 320 pixels:
+het woord blijft heel en de pagina schuift niet opzij.
+
 
 **Het wachtlijstformulier gaf "Er ging iets mis". Oorzaak: het Supabase-project staat
 gepauzeerd.** Een aanmelding vanaf een pc mislukte, en de melding bleek niet aan de
